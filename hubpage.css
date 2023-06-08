@@ -1,0 +1,31 @@
+body {
+    background-size:10%;
+    background-color:rgb(67, 225, 80, 0.3);
+    
+    }
+
+input {
+    background-image: linear-gradient(red, yellow);
+    height: 36;
+    width:100;
+    border-radius: 10px;
+    
+}
+
+Table, tr, th {
+    border-bottom:1px solid rgba(255, 0, 255, 0.9);
+    border-top:1px solid rgba(255, 0, 255, 0.9);
+    border-left:1px solid rgba(255, 0, 255, 0.9);
+    border-right:1px solid rgba(255, 0, 255, 0.9);
+    width: 50%;
+}
+
+a {
+    background-color: #e5786e;
+    background-image: url('Tree_1.png');
+    color: rgb(67, 225, 80);
+    padding: 16px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
