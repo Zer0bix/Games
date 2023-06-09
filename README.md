@@ -1,2 +1,2 @@
-# Tetris_Game
- Basic tetris game created in pygame, python
+# Idle Game Code Hub Thing
+idk
