@@ -1,3 +1,6 @@
+
+
+// Basic Clicking Function
 var trees = 1;
 var tree = 1;
 var price = 1;
@@ -30,11 +33,3 @@ function upgrade_click() {
     }
 }
 document.getElementById("upgbut").innerHTML = price;
-
-function open_tab(tab) {
-    tabcontent = document.getElementsByClassName("tabcontent");
-    for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-    }
-    document.getElementById(tab).style.display = "block";
-}
