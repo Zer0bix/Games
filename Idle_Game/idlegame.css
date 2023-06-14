@@ -1,3 +1,7 @@
+* {
+    color: white;
+}
+
 body {
     background-size:10%;
     background-color:rgba(37, 75, 40, 0.9);
@@ -12,6 +16,11 @@ input {
     align-self: center;
     
 }
+
+/* Create an active/current tablink class */
+.tab button.active {
+    background-color: #ccc;
+  }
 
 Table, tr, th {
     border-bottom:1px solid rgba(255, 0, 255, 0.9);
@@ -30,6 +39,7 @@ a {
     text-decoration: none;
     display: inline-block;
 }
+
 #tree_count {
     margin-top: 100px;
     margin-left: 250px;

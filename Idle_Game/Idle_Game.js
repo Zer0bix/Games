@@ -32,7 +32,9 @@ function upgrade_click() {
 document.getElementById("upgbut").innerHTML = price;
 
 function open_tab(tab) {
-    if (document.getElementById("Games_Table").style.display === "none")
-        document.getElementById("Games_Table").style.display = "block";
-    else document.getElementById("Games_Table").style.display = "none";
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    document.getElementById(tab).style.display = "block";
 }
