@@ -6,6 +6,7 @@ var tree = 1;
 var price = 1;
 var ex_tree = tree;
 var ex_price = price;
+var trees_chopped = 0;
 function gain() {
     click_tree();
 }
@@ -18,6 +19,7 @@ window.onload = function() {
 }
 function click_tree() {
     trees += tree
+    trees_chopped += tree
     document.getElementById("output").innerHTML = trees;
     if (Math.log10(trees) < 5) {
         document.getElementById("tree_count_logo").style.right = 125 + Math.floor(Math.log10(trees))*18;
