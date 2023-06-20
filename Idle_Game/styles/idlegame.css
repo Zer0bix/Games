@@ -64,3 +64,8 @@ a {
     position: absolute;
     right: 125
 }
+
+.import_box, .export_box {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.7)
+}

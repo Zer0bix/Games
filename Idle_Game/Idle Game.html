@@ -1,22 +1,25 @@
 <HTML>
 <head>
 	<script type="text/javascript" src="scripts/main.js"></script>
-	<link rel="stylesheet" href="styles/idlegame.css">
+	
+	<link rel="stylesheet" href="styles/idlegame.css" id="idlegamecss">
+	<link rel="stylesheet" href="styles/nothing.c" id="backsheet">
+	
 	<Title>     dem web pages</title>
 		
 		<script type="text/javascript" src="scripts/main.js"></script>
 		<script type="text/javascript" src="scripts/clicking.js"></script>
 		<script type="text/javascript" src="scripts/tabs.js"></script>
+		<script type="text/javascript" src="scripts/save.js"></script>
 </head>
 
 <body>
 	<divtabs>
 		<input id="Tab_1" onclick="open_tab('tab_1');" type="button" class="tablinks" value="Main"></input>
 		<input id="Tab_2" onclick="open_tab('tab_2');" type="button" class="tablinks" value="Upgrades"></input>
-		<input id="Tab_3" onclick="open_tab('tab_3');" type="button" class="tablinks" value="	"></input>
+		<input id="Tab_3" onclick="open_tab('tab_3');" type="button" class="tablinks" value="	" style="display:none"></input>
 		<input id="Tab_4" onclick="open_tab('tab_4');" type="button" class="tablinks" value="View Tree"></input>
 		<input id="Tab_5" onclick="open_tab('tab_5');" type="button" class="tablinks" value="Settings"></input>
-		<input id="Tab_6" onclick="background_change12();" type="button" class="tablinks" value="thingy"></input>
 	</divtabs>
 	<div id="tree_count">
 		<h1>
@@ -47,7 +50,13 @@
 		<p>TO BE CONTINUED #4</p>
 	</divtab4>
 	<divtab5 id="tab_5" style="display:none" class="tabcontent">
-		<p>TO BE CONTINUED #5</p>
+		<input type="button" onClick="export_save();" class="button">
+		<input class="export_box" type="text" id="export_box" value="click button to export save"></p>
+		<p id="export_box">exported_save</p>
+		<br>
+		<input type="button" onClick="import_save();" class="button">
+		<p>Import save:</p>
+		<input class="import_box" type="text" id="import_box">
 	</divtab5>
 
 </body>

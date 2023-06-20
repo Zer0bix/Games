@@ -24,6 +24,7 @@ function click_tree() {
     if (Math.log10(trees) < 5) {
         document.getElementById("tree_count_logo").style.right = 125 + Math.floor(Math.log10(trees))*18;
     }
+    
 }
 function upgrade_click() {
     if(trees>price-1) {
