@@ -10,13 +10,7 @@ var trees_chopped = 0;
 function gain() {
     click_tree();
 }
-window.onload = function() {
-    document.getElementById("output").innerHTML = trees;
-    document.getElementById("upgbut2").innerHTML = price;
-    setInterval(gain, 1000);
-    setInterval(background_change, 100);
 
-}
 function click_tree() {
     trees += tree
     trees_chopped += tree

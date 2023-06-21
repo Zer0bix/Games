@@ -24,3 +24,35 @@ function import_save() {
     trees_chopped = parseInt(pardata[5]);
     alert([trees, tree, price, ex_tree, ex_price, trees_chopped])
 }
+
+function localsave() {
+    const data = [trees, tree, price, ex_tree, ex_price, trees_chopped];
+
+    const localsavestore = JSON.stringify(data);
+    localStorage.setItem('saveData', localsavestore);
+    alert("Progress saved to localLoad")
+}
+
+function localLoad() {
+    alert("local loading")
+    const loadSaveStateString = localStorage.getItem('saveData')
+    const loadSaveState = JSON.parse(loadSaveStateString)
+    
+    trees = parseInt(loadSaveState[0]);
+    tree = parseInt(loadSaveState[1]);
+    price = parseInt(loadSaveState[2]);
+    ex_tree = parseInt(loadSaveState[3]);
+    ex_price = parseInt(loadSaveState[4]);
+    trees_chopped = parseInt(loadSaveState[5]);
+    alert([trees, tree, price, ex_tree, ex_price, trees_chopped])
+
+}
+function wipeSave() {
+    alert("wiping save")
+    trees = 1;
+    tree = 1;
+    price = 1;
+    ex_tree = tree;
+    ex_price = price;
+    trees_chopped = 0;
+}
