@@ -14,7 +14,14 @@
 </head>
 
 <body>
-	<divtabs>
+	<divwarning id="warning" style="display:none">
+		<p>Are you sure you want to wipe save?</p>
+		<input type="button" value="0" id="wipe_check_num" style="color:black;"></input>/10
+		<input id="erase_save_1" class="button" type="button" onClick="wipe_check();" value="WIPE SAVE">
+		<input id="erase_save_2" class="button" type="button" onClick="no_wipe();" value="CANCEL">
+
+	</divwarning>
+	<divtabs id="divider_tabs">
 		<input id="Tab_1" onclick="open_tab('tab_1');" type="button" class="tablinks" value="Main"></input>
 		<input id="Tab_2" onclick="open_tab('tab_2');" type="button" class="tablinks" value="Upgrades"></input>
 		<input id="Tab_3" onclick="open_tab('tab_3');" type="button" class="tablinks" value="	" style="display:none"></input>
@@ -27,47 +34,47 @@
 		</h1>
 	</div>
 	<br><br><br><br><br>
-	<divtab1 id="tab_1" style="display:block" class="tabcontent">
+	<divback id="underlay_back">
+		<divmain id="main_dividor">
+			<divtab1 id="tab_1" style="display:block" class="tabcontent">
 
-		<!--The buttons to click or buy clicking power increase-->
-		<input type="button" onClick="click_tree();" class="button">
-		<divclick id="big_tree">Click Tree</divclick><br>
-		<divinfo>Click Power: <div id="click_power">1</div></divinfo>
-		<br>
-		<input type="button" onClick="upgrade_click();" class="button">
-		<divupg id="upgbut">upgrade clicker <divupg2 id="upgbut2">(trees)</divupg2><br></divupg>	
-		
-		</input>
-		<div2>
-		<br>
-	</divtab1>
-	<divtab2 id="tab_2" style="display:none" class="tabcontent">
-	</divtab2>
-	<divtab3 id="tab_3" style="display:none" class="tabcontent">
-		<p>TO BE CONTINUED #3</p>
-	</divtab3>
-	<divtab4 id="tab_4" style="display:none" class="tabcontent">
-		<p>TO BE CONTINUED #4</p>
-	</divtab4>
-	<divtab5 id="tab_5" style="display:none" class="tabcontent">
-		<input type="button" onClick="export_save();" class="button">
-		<input class="export_box" type="text" id="export_box" value="click button to export save"></p>
-		<p id="export_box">exported_save</p>
-		<br>
-		<input type="button" onClick="import_save();" class="button">
-		<p>Import save:</p>
-		<input class="import_box" type="text" id="import_box">
-		<p>localLoad</p>
-		<input class="localLoad" type="button" id="localLoad_button" onClick="localLoad();">
-		<p style="color: red;"><strong>WIPE SAVE</strong></p>
-		<input class="wipeSave" type="button" id="wipeSave_button" onClick="wipeSave();">
-	</divtab5>
+				<!--The buttons to click or buy clicking power increase-->
+				<input type="button" onClick="click_tree();" class="button">
+				<divclick id="big_tree">Click Tree</divclick><br>
+				<divinfo>Click Power: <div id="click_power">1</div></divinfo>
+				<br>
+				<input type="button" onClick="upgrade_click();" class="button">
+				<divupg id="upgbut">upgrade clicker <divupg2 id="upgbut2">(trees)</divupg2><br></divupg>	
+				
+				</input>
+				<div2>
+				<br>
+			</divtab1>
+			<divtab2 id="tab_2" style="display:none" class="tabcontent">
+			</divtab2>
+			<divtab3 id="tab_3" style="display:none" class="tabcontent">
+				<p>TO BE CONTINUED #3</p>
+			</divtab3>
+			<divtab4 id="tab_4" style="display:none" class="tabcontent">
+				<p>TO BE CONTINUED #4</p>
+			</divtab4>
+			<divtab5 id="tab_5" style="display:none" class="tabcontent">
+				<input type="button" onClick="export_save();" class="button">
+				<input class="export_box" type="text" id="export_box" value="click button to export save"></p>
+				<p id="export_box">exported_save</p>
+				<br>
+				<input type="button" onClick="import_save();" class="button">
+				<p>Import save:</p>
+				<input class="import_box" type="text" id="import_box">
+				<p>localLoad</p>
+				<input class="button" type="button" id="localLoad_button" onClick="localLoad();">
+				<p style="color: red;"><strong>WIPE SAVE</strong></p>
+				<input class="button" type="button" id="wipeSave_button" onClick="wipeSave();" value="WIPE">
+			</divtab5>
+		</divmain>
+	</divback>
+
 
 </body>
-<foot>
-	<strong><i>
-	hello
-	</strong></i>
-</foot>
 
 </html>

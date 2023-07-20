@@ -1,11 +1,11 @@
 window.onload = function() {
     document.getElementById("output").innerHTML = trees;
     document.getElementById("upgbut2").innerHTML = price;
-    setInterval(gain, 1000);
     localLoad();
+    setInterval(gain, 1000);
     setInterval(background_change, 100);
-    
-    setInterval(localsave, 10000);
+    setInterval(localsave, 1000);
+    start_screen();
 
 }
 

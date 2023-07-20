@@ -25,6 +25,9 @@ body {
     align-self: center;
     background-image: linear-gradient(rgba(55, 155, 155, 0.9), rgba(0, 0, 0, 0.8));
     transition-duration: 0.5s;
+    padding: 10px;
+    margin-top: 10px;
+    margin-left: 10px;
 }
 
 .tablinks:hover {
@@ -68,4 +71,38 @@ a {
 .import_box, .export_box {
     color: white;
     background-color: rgba(0, 0, 0, 0.7)
+}
+
+#underlay_back {
+    width: 75%;
+    height: 50%;
+    position: fixed;
+	background-color: rgba(0,0,0,0.5);
+	border-radius: 25px;
+}
+
+#divider_tabs {
+    width: 475;
+    height: 56;
+    position: fixed;
+	background-color: rgba(0,0,0,0.7);
+	border-radius: 15px;
+}
+
+#main_dividor {
+    position: absolute;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+#warning {
+    position: absolute;
+    margin-top: 2%;
+    margin-left: 40%;
+
+}
+
+#erase_save_1 {
+    position: absolute;
+    background-color: rgba(255, 0, 0, 0.8)
 }

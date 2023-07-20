@@ -7,6 +7,7 @@ var price = 1;
 var ex_tree = tree;
 var ex_price = price;
 var trees_chopped = 0;
+var wipe_times = 0;
 function gain() {
     click_tree();
 }
