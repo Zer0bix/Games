@@ -57,7 +57,7 @@ function wipe_check() {
     wipe_times += 1;
     document.getElementById("wipe_check_num").value = wipe_times;
     document.getElementById("erase_save_1").style.marginTop = Math.random()*300;
-    document.getElementById("erase_save_1").style.marginLeft = Math.random()*300;
+    document.getElementById("erase_save_1").style.marginLeft = Math.random()*300+100;
     
     
     if (wipe_times > 10) {
@@ -65,7 +65,7 @@ function wipe_check() {
     }
 }
 function true_wipe() {
-    // hide the 
+    // hide the warnings
     dialog_box = document.getElementById("warning");
     dialog_box.style.display = "none";
     alert("wiping save (close page to prevent from taking place, or restore an exported save.");
@@ -76,6 +76,8 @@ function true_wipe() {
     ex_tree = tree;
     ex_price = price;
     trees_chopped = 0;
+    wipe_times = 0;
+    document.getElementById("wipe_check_num").value = wipe_times;
     // display the main interface.
     document.getElementById("underlay_back").style.display = "block";
 }

@@ -21,10 +21,10 @@
 		<input id="erase_save_2" class="button" type="button" onClick="no_wipe();" value="CANCEL">
 
 	</divwarning>
-	<divtabs id="divider_tabs">
+	<divtabs id="divider_tabs" class="wrapper2">
 		<input id="Tab_1" onclick="open_tab('tab_1');" type="button" class="tablinks" value="Main"></input>
 		<input id="Tab_2" onclick="open_tab('tab_2');" type="button" class="tablinks" value="Upgrades"></input>
-		<input id="Tab_3" onclick="open_tab('tab_3');" type="button" class="tablinks" value="	" style="display:none"></input>
+		<input id="Tab_3" onclick="open_tab('tab_3');" type="button" class="tablinks" value="potato" stle="display:none"></input>
 		<input id="Tab_4" onclick="open_tab('tab_4');" type="button" class="tablinks" value="View Tree"></input>
 		<input id="Tab_5" onclick="open_tab('tab_5');" type="button" class="tablinks" value="Settings"></input>
 	</divtabs>
@@ -35,16 +35,15 @@
 	</div>
 	<br><br><br><br><br>
 	<divback id="underlay_back">
-		<divmain id="main_dividor">
+		<divmain id="main_dividor" class="wrapper">
 			<divtab1 id="tab_1" style="display:block" class="tabcontent">
 
 				<!--The buttons to click or buy clicking power increase-->
-				<input type="button" onClick="click_tree();" class="button">
-				<divclick id="big_tree">Click Tree</divclick><br>
+				<input type="button" onClick="click_tree();" class="button" id="click_tree">
 				<divinfo>Click Power: <div id="click_power">1</div></divinfo>
 				<br>
-				<input type="button" onClick="upgrade_click();" class="button">
-				<divupg id="upgbut">upgrade clicker <divupg2 id="upgbut2">(trees)</divupg2><br></divupg>	
+				<input type="button" onClick="upgrade_click();" class="button" id="upg_but">
+				<divupg id="upgbut">upgrade clicker <divupg2 id="upgbutprice">(trees)</divupg2><br></divupg>	
 				
 				</input>
 				<div2>

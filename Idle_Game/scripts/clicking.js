@@ -30,7 +30,7 @@ function upgrade_click() {
         price = Math.round(ex_price);
 
         document.getElementById("output").innerHTML = trees;
-        document.getElementById("upgbut2").innerHTML = price;
+        document.getElementById("upgbutprice").innerHTML = price;
         document.getElementById("click_power").innerHTML = tree;
         if (Math.log10(trees) < 22) {
             document.getElementById("tree_count_logo").style.right = 125 + Math.floor(Math.log10(trees))*18;
