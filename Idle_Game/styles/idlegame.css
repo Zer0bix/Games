@@ -12,7 +12,7 @@ body {
 .button {
     background-image: linear-gradient(rgba(255, 255, 255, 0.9), rgba(0, 0, 0, 0.5));
     height: 36;
-    width:100;
+    width:36;
     border-radius: 10px;
     align-self: center;
     
@@ -80,7 +80,6 @@ a {
     padding-bottom: 10px;
     padding-left: 10px;
     padding-top: 10px;
-    position: fixed;
 	background-color: rgba(0,0,0,0.7);
 	border-radius: 15px;
 }

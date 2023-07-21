@@ -11,6 +11,7 @@
 		<script type="text/javascript" src="scripts/clicking.js"></script>
 		<script type="text/javascript" src="scripts/tabs.js"></script>
 		<script type="text/javascript" src="scripts/save.js"></script>
+		<script type="text/javascript" src="scripts/settings.js"></script>
 </head>
 
 <body>
@@ -35,20 +36,26 @@
 	</div>
 	<br><br><br><br><br>
 	<divback id="underlay_back">
-		<divmain id="main_dividor" class="wrapper">
+		<divmain id="main_dividor">
 			<divtab1 id="tab_1" style="display:block" class="tabcontent">
-
-				<!--The buttons to click or buy clicking power increase-->
-				<input type="button" onClick="click_tree();" class="button" id="click_tree">
-				<divinfo>Click Power: <div id="click_power">1</div></divinfo>
-				<br>
-				<input type="button" onClick="upgrade_click();" class="button" id="upg_but">
-				<divupg id="upgbut">upgrade clicker <divupg2 id="upgbutprice">(trees)</divupg2><br></divupg>	
-				
-				</input>
-				<div2>
-				<br>
-			</divtab1>
+				<div class="wrapper">
+					<!--The buttons to click or buy clicking power increase-->
+					<input type="button" onClick="click_tree();" class="button" id="click_tree">
+					<divinfo>Click Power: <div id="click_power">1</div></divinfo>
+					<br>
+					<input type="button" onClick="upgrade_click();" class="button" id="upg_but">
+					<divupg id="upgbut">upgrade clicker <divupg2 id="upgbutprice">(trees)</divupg2><br></divupg>	
+					
+					</input>
+					<div2>
+					<br>
+			</div>
+			<br><br><br>
+			<div class="wrapper">
+				<h3>Upgrade Tree</h3>
+				<input type="button" onClick="upgrade_tree" class="button" id="upg_tree"></input>
+			</div>
+		</divtab1>
 			<divtab2 id="tab_2" style="display:none" class="tabcontent">
 			</divtab2>
 			<divtab3 id="tab_3" style="display:none" class="tabcontent">
@@ -58,17 +65,21 @@
 				<p>TO BE CONTINUED #4</p>
 			</divtab4>
 			<divtab5 id="tab_5" style="display:none" class="tabcontent">
-				<input type="button" onClick="export_save();" class="button">
-				<input class="export_box" type="text" id="export_box" value="click button to export save"></p>
-				<p id="export_box">exported_save</p>
-				<br>
-				<input type="button" onClick="import_save();" class="button">
-				<p>Import save:</p>
-				<input class="import_box" type="text" id="import_box">
-				<p>localLoad</p>
-				<input class="button" type="button" id="localLoad_button" onClick="localLoad();">
-				<p style="color: red;"><strong>WIPE SAVE</strong></p>
-				<input class="button" type="button" id="wipeSave_button" onClick="wipeSave();" value="WIPE">
+				<div class="wrapper">
+					<input type="button" onClick="export_save();" class="button">
+					<input class="export_box" type="text" id="export_box" value="click button to export save"></p>
+					<p id="export_box">exported_save</p>
+					<br>
+					<input type="button" onClick="import_save();" class="button">
+					<p>Import save:</p>
+					<input class="import_box" type="text" id="import_box">
+					<p>localLoad</p>
+					<input class="button" type="button" id="localLoad_button" onClick="localLoad();">
+					<p style="color: red;"><strong>WIPE SAVE</strong></p>
+					<input class="button" type="button" id="wipeSave_button" onClick="wipeSave();" value="WIPE">
+					<p>Toggle Background</p>
+					<input type="button" id="change_background_toggle" onClick="toggleBackgroundChange();">
+				</div>
 			</divtab5>
 		</divmain>
 	</divback>
