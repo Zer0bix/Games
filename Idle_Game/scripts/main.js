@@ -80,7 +80,7 @@ function refresh() {
         document.getElementById("divider_tabs").style.display = "block";
     }
     else {
-        document.getElementById("divider_tabs").style.display = "none";
+        //document.getElementById("divider_tabs").style.display = "none";
     }
 
 }
