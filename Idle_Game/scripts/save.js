@@ -1,5 +1,5 @@
 function export_save() {
-    const data = [trees, tree, price, ex_tree, ex_price, trees_chopped];
+    const data = [trees, tree, price, ex_tree, ex_price, trees_chopped, change_background, tree_levels];
 
     // Convert numbers to strings before encoding
     const pardata = data.map((item) => item.toString());
@@ -23,11 +23,13 @@ function import_save() {
     ex_tree = parseInt(pardata[3]);
     ex_price = parseInt(pardata[4]);
     trees_chopped = parseInt(pardata[5]);
-    alert([trees, tree, price, ex_tree, ex_price, trees_chopped])
+    change_background = parseInt(pardata[6]);
+    tree_levels = parseInt(pardata[7]);
+    alert([trees, tree, price, ex_tree, ex_price, trees_chopped, change_background, tree_levels])
 }
 
 function localsave() {
-    const data = [trees, tree, price, ex_tree, ex_price, trees_chopped];
+    const data = [trees, tree, price, ex_tree, ex_price, trees_chopped, change_background, tree_levels];
 
     const localsavestore = JSON.stringify(data);
     localStorage.setItem('saveData', localsavestore);
@@ -44,6 +46,8 @@ function localLoad() {
     ex_tree = parseInt(loadSaveState[3]);
     ex_price = parseInt(loadSaveState[4]);
     trees_chopped = parseInt(loadSaveState[5]);
+    change_background = parseInt(loadSaveState[6]);
+    tree_levels = parseInt(loadSaveState[7]);
 
 }
 
@@ -77,9 +81,12 @@ function true_wipe() {
     ex_price = price;
     trees_chopped = 0;
     wipe_times = 0;
+    change_background = 0;
+    tree_levels = -1;
     document.getElementById("wipe_check_num").value = wipe_times;
     // display the main interface.
     document.getElementById("underlay_back").style.display = "block";
+    open_tab('tab_1');  
 }
 function no_wipe() {
     dialog_box = document.getElementById("warning");

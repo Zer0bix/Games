@@ -8,6 +8,8 @@ var ex_tree = tree;
 var ex_price = price;
 var trees_chopped = 0;
 var wipe_times = 0;
+var upgrade_tree_price = 10;
+var tree_levels = -1;
 function gain() {
     click_tree();
 }
@@ -37,4 +39,10 @@ function upgrade_click() {
             }
     }
 }
-document.getElementById("upgbut").innerHTML = price;
+
+function upgrade_tree() {
+    if (trees>upgrade_tree_price-1) {
+        tree_levels += 1;
+        trees -= upgrade_tree_price;
+    }
+}

@@ -1,4 +1,5 @@
 var change_background = 1;
+var auto_save = 1;
 
 window.onload = function() {
     document.getElementById("output").innerHTML = trees;
@@ -6,9 +7,8 @@ window.onload = function() {
 
     localLoad();
     setInterval(gain, 1000);
-    setInterval(localsave, 1000);
+    const localsave_int = setInterval(localsave, 1000);
     setInterval(refresh, 100);
-    start_screen();
 
     
 }
@@ -38,26 +38,30 @@ function background_change() {
 function refresh() {
     try {
         if (change_background == 1) {
-            background_change();
-            var id = document.getElementById("change_background_toggle");
             
-            changeBackground(id, "green");
+            background_change();
         }
         else {
-            alert("hejd1")
-            document.getElementById("change_background_toggle").style.background = "linear-gradient(rgba(255, 0, 0, 0.5), rgba(0, 0, 0, 0.5));"
-            document.getElementById("change_background_toggle").innerHTML = "HIHI"
-            alert("hejd")
-            //changeBackground(document.getElementById("change_background_toggle"), red);
-            //document.body.style.background = "url('Images/Terraria_5.png') no-repeat center center fixed";
+            console.log("hi");
+            changeBackground("change_background_toggle", "red");
+            document.body.style.backgroundImage = "url('Images/clean_background.png')";
+            console.log("done");
         }
     }
     //if it don't work I still want the other code to run
     catch(firstinstance) {}
+    if (auto_save == 1) {
+        const localsave_int = setInterval(localsave, 1000);
 
+    }
+    else {
+        clearInterval(localsave_int)
+        changeBackground("auto_save_toggle", "red");
+    }
     document.getElementById("output").innerHTML = trees;
     document.getElementById("upgbutprice").innerHTML = price;
     document.getElementById("click_power").innerHTML = tree;
+    document.getElementById("tree_level_display").innerHTML = tree_levels;
 
     if (Math.log10(trees) < 22) {
         document.getElementById("tree_count_logo").style.right = 125 + Math.floor(Math.log10(trees))*18;
@@ -71,6 +75,14 @@ function refresh() {
     else {
         document.getElementById("upg_but").style.background = "url('Images/red_up_arrow.png') no-repeat";
     }
+
+    if (tree_levels > -1) {
+        document.getElementById("divider_tabs").style.display = "block";
+    }
+    else {
+        document.getElementById("divider_tabs").style.display = "none";
+    }
+
 }
 
 function shortenum(num) {

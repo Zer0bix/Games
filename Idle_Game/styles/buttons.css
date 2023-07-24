@@ -1,0 +1,27 @@
+
+.button {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.9), rgba(0, 0, 0, 0.5));
+    height: 36;
+    width:36;
+    border-radius: 10px;
+    align-self: center;
+    
+}
+
+.button2 {
+    background-image: linear-gradient(rgba(255, 0, 0, 0.9), rgba(0, 0, 0, 0.5));
+    height: 16;
+    width:36;
+    border-radius: 10px;
+    align-self: center;
+    
+}
+
+.button3 {
+    background-image: linear-gradient(rgba(0, 255, 0, 0.9), rgba(0, 0, 0, 0.5));
+    height: 16;
+    width:36;
+    border-radius: 10px;
+    align-self: center;
+    
+}

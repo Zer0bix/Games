@@ -3,6 +3,7 @@
 	<script type="text/javascript" src="scripts/main.js"></script>
 	
 	<link rel="stylesheet" href="styles/idlegame.css" id="idlegamecss">
+	<link rel="stylesheet" href="styles/buttons.css" id="buttoncss">
 	<link rel="stylesheet" href="styles/nothing.c" id="backsheet">
 	
 	<Title>     dem web pages</title>
@@ -15,14 +16,14 @@
 </head>
 
 <body>
-	<divwarning id="warning" style="display:none">
+	<divwarning id="warning" style="display:none" class="wrapper">
 		<p>Are you sure you want to wipe save?</p>
 		<input type="button" value="0" id="wipe_check_num" style="color:black;"></input>/10
-		<input id="erase_save_1" class="button" type="button" onClick="wipe_check();" value="WIPE SAVE">
-		<input id="erase_save_2" class="button" type="button" onClick="no_wipe();" value="CANCEL">
+		<input id="erase_save_1" class="button" type="button" onclick="wipe_check();" value="WIPE SAVE">
+		<input id="erase_save_2" class="button" type="button" onclick="no_wipe();" value="CANCEL">
 
 	</divwarning>
-	<divtabs id="divider_tabs" class="wrapper2">
+	<divtabs id="divider_tabs" class="wrapper2" style="display:none">
 		<input id="Tab_1" onclick="open_tab('tab_1');" type="button" class="tablinks" value="Main"></input>
 		<input id="Tab_2" onclick="open_tab('tab_2');" type="button" class="tablinks" value="Upgrades"></input>
 		<input id="Tab_3" onclick="open_tab('tab_3');" type="button" class="tablinks" value="potato" stle="display:none"></input>
@@ -40,22 +41,24 @@
 			<divtab1 id="tab_1" style="display:block" class="tabcontent">
 				<div class="wrapper">
 					<!--The buttons to click or buy clicking power increase-->
-					<input type="button" onClick="click_tree();" class="button" id="click_tree">
+					<input type="button" onclick="click_tree();" class="button" id="click_tree">
 					<divinfo>Click Power: <div id="click_power">1</div></divinfo>
 					<br>
-					<input type="button" onClick="upgrade_click();" class="button" id="upg_but">
+					<input type="button" onclick="upgrade_click();" class="button" id="upg_but">
 					<divupg id="upgbut">upgrade clicker <divupg2 id="upgbutprice">(trees)</divupg2><br></divupg>	
 					
 					</input>
 					<div2>
 					<br>
-			</div>
-			<br><br><br>
-			<div class="wrapper">
-				<h3>Upgrade Tree</h3>
-				<input type="button" onClick="upgrade_tree" class="button" id="upg_tree"></input>
-			</div>
-		</divtab1>
+				</div>
+				<br><br>
+				<div class="wrapper">
+					<h3>Upgrade Tree</h3>
+					
+					<input type="button" onclick="upgrade_tree();" class="button" id="upg_tree"></input>
+					<span id="tree_level_display" class="number">0</span>
+				</div>
+			</divtab1>
 			<divtab2 id="tab_2" style="display:none" class="tabcontent">
 			</divtab2>
 			<divtab3 id="tab_3" style="display:none" class="tabcontent">
@@ -66,19 +69,26 @@
 			</divtab4>
 			<divtab5 id="tab_5" style="display:none" class="tabcontent">
 				<div class="wrapper">
-					<input type="button" onClick="export_save();" class="button">
+					<input type="button" onclick="export_save();" class="button">
 					<input class="export_box" type="text" id="export_box" value="click button to export save"></p>
 					<p id="export_box">exported_save</p>
 					<br>
-					<input type="button" onClick="import_save();" class="button">
+					<input type="button" onclick="import_save();" class="button">
 					<p>Import save:</p>
 					<input class="import_box" type="text" id="import_box">
 					<p>localLoad</p>
-					<input class="button" type="button" id="localLoad_button" onClick="localLoad();">
+					<input class="button" type="button" id="localLoad_button" onclick="localLoad();">
 					<p style="color: red;"><strong>WIPE SAVE</strong></p>
-					<input class="button" type="button" id="wipeSave_button" onClick="wipeSave();" value="WIPE">
-					<p>Toggle Background</p>
-					<input type="button" id="change_background_toggle" onClick="toggleBackgroundChange();">
+					<input class="button" type="button" id="wipeSave_button" onclick="wipeSave();" value="WIPE">
+				</div>
+				<br>
+				<div class="wrapper">
+					<h2>SETTINGS</h1>
+					<p>Toggle Background Change</p>
+					<input type="button" id="change_background_toggle" onclick="toggleBackgroundChange();" class="button3">
+
+					<p>Toggle Auto Save</p>
+					<input type="button" id="auto_save_toggle" onclick="toggleAutoSave();" class="button3">
 				</div>
 			</divtab5>
 		</divmain>
