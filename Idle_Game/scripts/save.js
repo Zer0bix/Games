@@ -86,7 +86,7 @@ function true_wipe() {
     document.getElementById("wipe_check_num").value = wipe_times;
     // display the main interface.
     document.getElementById("underlay_back").style.display = "block";
-    open_tab('tab_1');  
+    open_tab('tab_1');
 }
 function no_wipe() {
     dialog_box = document.getElementById("warning");
