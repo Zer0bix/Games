@@ -85,7 +85,7 @@ function true_wipe() {
     trees_chopped = 0;
     wipe_times = 0;
     change_background = 0;
-    tree_levels = -1;
+    tree_levels = 0;
     document.getElementById("wipe_check_num").value = wipe_times;
     // display the main interface.
     document.getElementById("underlay_back").style.display = "block";

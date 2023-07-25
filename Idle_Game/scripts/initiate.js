@@ -15,7 +15,7 @@ var ex_price = price;
 var trees_chopped = 0;
 var wipe_times = 0;
 var upgrade_tree_price = 10;
-var tree_levels = -1;
+var tree_levels = 0;
 
 var change_background = 1;
 var auto_save = 60;

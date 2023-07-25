@@ -5,6 +5,7 @@
 	<link rel="stylesheet" href="styles/idlegame.css" id="idlegamecss">
 	<link rel="stylesheet" href="styles/buttons.css" id="buttoncss">
 	<link rel="stylesheet" href="styles/loading_icon.css" id="loading_iconcss">
+	<link rel="stylesheet" href="styles/wrapper.css" id="wrappercss">
 	<link rel="stylesheet" href="styles/nothing.c" id="backsheet">
 	
 	<Title>dem web pages</title>
@@ -51,7 +52,7 @@
 			<img src="Images/Tree_1.png" id="tree_count_logo"><div id="output" value="Display"></div>
 			</h1>
 		</div>
-		<br><br><br><br><br>
+		<br><br><br>
 		<divback id="underlay_back">
 			<divmain id="main_dividor">
 				<divtab1 id="tab_1" style="display:block" class="tabcontent">
@@ -84,10 +85,15 @@
 					<p>TO BE CONTINUED #4</p>
 				</divtab4>
 				<divtab5 id="tab_5" style="display:none" class="tabcontent">
-					<div class="wrapper">
+					<div class="wrapper2" id="settings_tabs">
+						<input id="sTab_1" onclick="sOpen_tab(0);" type="button" class="tablinks" value="Saving"></input>
+						<input id="sTab_2" onclick="sOpen_tab(1);" type="button" class="tablinks" value="Settings"></input>
+					</div>
+					<br><br><br><br>
+					<div class="sTabcontent_4" id='sTab_1' style="display:block;">
 						<p id="export_box">exported_save</p>
 						<input type="button" onclick="export_save();" class="button">
-						<input class="export_box" type="text" id="export_box" value="click button to export save"></p>
+						<input class="export_box" type="text" id="export_box" value="Exported save will be copied to clipboard"></p>
 
 						<p>Import save:</p>
 						<input type="button" onclick="import_save();" class="button">
@@ -103,7 +109,7 @@
 						<input class="button" type="button" id="wipeSave_button" onclick="wipeSave();" value="WIPE">
 					</div>
 					<br>
-					<div class="wrapper">
+					<div class="sTabcontent_4" id='sTab_2'>
 						<h2>SETTINGS</h1>
 						<p>Toggle Background Change</p>
 						<input type="button" id="change_background_toggle" onclick="toggleBackgroundChange();" class="button3">
