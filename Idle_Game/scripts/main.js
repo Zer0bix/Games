@@ -1,15 +1,22 @@
-var change_background = 1;
-var auto_save = 1;
+
 
 window.onload = function() {
+    
     document.getElementById("output").innerHTML = trees;
     document.getElementById("upgbutprice").innerHTML = price;
 
+    //single instance run code
     localLoad();
-    setInterval(gain, 1000);
-    const localsave_int = setInterval(localsave, 1000);
     setInterval(refresh, 100);
-
+    check_load_progress = setInterval(check_load, 100);
+    auto_save_int_true = 0;
+    let id_off = 'auto_save_toggle_' + auto_save;
+    changeBackground(id_off, "green");
+    // tell game that this section is loaded
+    load_check_0 = 1;
+    load_check_3 = 1;
+    load_check_2 = 1;
+    console.log("loaded function window.onload");
     
 }
 
@@ -42,21 +49,23 @@ function refresh() {
             background_change();
         }
         else {
-            console.log("hi");
-            changeBackground("change_background_toggle", "red");
-            document.body.style.backgroundImage = "url('Images/clean_background.png')";
-            console.log("done");
+            //changeBackground("change_background_toggle", "red");
+            document.body.style.background = "url('Images/pattern_background.png')";
         }
     }
     //if it don't work I still want the other code to run
     catch(firstinstance) {}
-    if (auto_save == 1) {
-        const localsave_int = setInterval(localsave, 1000);
-
+    if (auto_save >= 14) {
+        if (auto_save_int_true == 1) {}
+        else {
+            var localsave_int = setInterval(localsave, 1000*auto_save);
+            auto_save_int_true = 1;
+        }
     }
     else {
-        clearInterval(localsave_int)
-        changeBackground("auto_save_toggle", "red");
+        clearInterval(localsave_int);
+        auto_save_int_true = 0;
+        console.log("auto saving off");
     }
     document.getElementById("output").innerHTML = trees;
     document.getElementById("upgbutprice").innerHTML = price;
@@ -76,13 +85,7 @@ function refresh() {
         document.getElementById("upg_but").style.background = "url('Images/red_up_arrow.png') no-repeat";
     }
 
-    if (tree_levels > -1) {
-        document.getElementById("divider_tabs").style.display = "block";
-    }
-    else {
-        //document.getElementById("divider_tabs").style.display = "none";
-    }
-
+    load_check_1 = 1;
 }
 
 function shortenum(num) {
@@ -95,4 +98,5 @@ function shortenum(num) {
         }
 
     }
+    
 }

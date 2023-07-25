@@ -1,15 +1,7 @@
 
 
 // Basic Clicking Function
-var trees = 1;
-var tree = 1;
-var price = 1;
-var ex_tree = tree;
-var ex_price = price;
-var trees_chopped = 0;
-var wipe_times = 0;
-var upgrade_tree_price = 10;
-var tree_levels = -1;
+
 function gain() {
     click_tree();
 }

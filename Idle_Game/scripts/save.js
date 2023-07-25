@@ -7,15 +7,17 @@ function export_save() {
     const encoded = btoa(JSON.stringify(pardata));
 
     document.getElementById("export_box").value = encoded;
-    navigator.clipboard.writeText(encoded)
+    navigator.clipboard.writeText(encoded);
+    console.log("Copied to clipboard!");
 }
 
 function import_save() {
     const new_data = document.getElementById("import_box").value;
     
     const decoded = atob(new_data);
-    
+    console.log(decoded);
     const pardata = JSON.parse(decoded);
+    console.log(pardata);
     
     trees = parseInt(pardata[0]);
     tree = parseInt(pardata[1]);
@@ -25,7 +27,7 @@ function import_save() {
     trees_chopped = parseInt(pardata[5]);
     change_background = parseInt(pardata[6]);
     tree_levels = parseInt(pardata[7]);
-    alert([trees, tree, price, ex_tree, ex_price, trees_chopped, change_background, tree_levels])
+    console.log([trees, tree, price, ex_tree, ex_price, trees_chopped, change_background, tree_levels]);
 }
 
 function localsave() {
@@ -33,13 +35,14 @@ function localsave() {
 
     const localsavestore = JSON.stringify(data);
     localStorage.setItem('saveData', localsavestore);
+    console.log("Game saved as: ", localsavestore);
     
 }
 
 function localLoad() {
     const loadSaveStateString = localStorage.getItem('saveData')
     const loadSaveState = JSON.parse(loadSaveStateString)
-    
+    console.log("Game loaded from: ", loadSaveState);
     trees = parseInt(loadSaveState[0]);
     tree = parseInt(loadSaveState[1]);
     price = parseInt(loadSaveState[2]);

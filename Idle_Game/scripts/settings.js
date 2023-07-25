@@ -1,7 +1,5 @@
-
-
 function changeBackground(id, colour) {
-    id_1 = document.getElementById(id)
+    id_1 = document.getElementById(id);
     if (colour == "red") {
         id_1.classList = "button2";
     }
@@ -26,14 +24,9 @@ function toggleBackgroundChange() {
     }
 }
 
-function toggleAutoSave() {
-    if (auto_save == 1) {
-        auto_save = 0;
-        changeBackground("auto_save_toggle", "red");
-    }
-
-    else {
-        auto_save = 1;
-        changeBackground("auto_save_toggle", "green");
-    }
+function toggleAutoSave(id, val) {
+    let id_off = 'auto_save_toggle_' + auto_save;
+    changeBackground(id_off, "red");
+    auto_save = val;
+    changeBackground(id, "green");
 }

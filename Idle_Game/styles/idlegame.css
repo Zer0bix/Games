@@ -4,9 +4,10 @@
 
 body {
     background-size:100%;
-    background-image:url("../Images/full_forest.avif");
+    background-image:url("../Images/pattern_background.png");
     opacity: 90%;
     background-color: black;
+    overflow: hidden;
     }
 
 
@@ -31,14 +32,11 @@ body {
     background-color: #ccc;
   }
 
-Table, tr, th {
-    border-bottom:1px solid rgba(255, 0, 255, 0.9);
-    border-top:1px solid rgba(255, 0, 255, 0.9);
-    border-left:1px solid rgba(255, 0, 255, 0.9);
-    border-right:1px solid rgba(255, 0, 255, 0.9);
-    width: 50%;
-}
 
+p {
+    color: white;
+    font-family:'Courier New', Courier, monospace;
+}
 a {
     background-color: #e5786e;
     background-image: url('Images/Tree_1.png');
@@ -82,6 +80,17 @@ a {
     position: fixed;
 	background-color: rgba(0,0,0,0.7);
 	border-radius: 15px;
+}
+.wrapper3 {
+    position: fixed;
+    margin-left: 30%;
+    margin-top: 10%;
+    padding-right: 10px;
+    padding-bottom: 10px;
+	background-color: rgba(0,0,0,0.7);
+	border-radius: 15px;
+    border-color: rgba(255, 0, 255, 0.9);
+    width: 40%;
 }
 
 #main_dividor {
