@@ -43,6 +43,7 @@ function localLoad() {
     const loadSaveStateString = localStorage.getItem('saveData')
     const loadSaveState = JSON.parse(loadSaveStateString)
     console.log("Game loaded from: ", loadSaveState);
+    try {
     trees = parseInt(loadSaveState[0]);
     tree = parseInt(loadSaveState[1]);
     price = parseInt(loadSaveState[2]);
@@ -51,6 +52,11 @@ function localLoad() {
     trees_chopped = parseInt(loadSaveState[5]);
     change_background = parseInt(loadSaveState[6]);
     tree_levels = parseInt(loadSaveState[7]);
+    }
+    catch (error) {
+        console.log(fromBinary(loadSaveState));
+
+    }
 
 }
 
@@ -98,3 +104,14 @@ function no_wipe() {
     document.getElementById("underlay_back").style.display = "block";
     document.getElementById("wipe_check_num").value = wipe_times;
 }
+
+
+
+function fromBinary(encoded) {
+    const binary = atob(encoded);
+    const bytes = new Uint8Array(binary.length);
+    for (let i = 0; i < bytes.length; i++) {
+      bytes[i] = binary.charCodeAt(i);
+    }
+    return String.fromCharCode(...new Uint16Array(bytes.buffer));
+  }

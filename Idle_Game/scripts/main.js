@@ -7,7 +7,7 @@ window.onload = function() {
 
     //single instance run code
     localLoad();
-    setInterval(refresh, 100);
+    setInterval(refresh100, 100);
     check_load_progress = setInterval(check_load, 100);
     auto_save_int_true = 0;
     let id_off = 'auto_save_toggle_' + auto_save;
@@ -42,7 +42,7 @@ function background_change() {
     }
 }
 
-function refresh() {
+function refresh100() {
     try {
         if (change_background == 1) {
             
@@ -86,6 +86,10 @@ function refresh() {
     }
 
     load_check_1 = 1;
+}
+
+function refresh10000() {
+
 }
 
 function shortenum(num) {
