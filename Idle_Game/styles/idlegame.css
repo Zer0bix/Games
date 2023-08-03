@@ -39,7 +39,7 @@ a {
 }
 #tree_count_logo {
     position: absolute;
-    right: 125
+    right: 125px;
 }
 
 .import_box, .export_box {

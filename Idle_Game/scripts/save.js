@@ -1,9 +1,9 @@
 function export_save() {
     const data = [trees, tree, price, ex_tree, ex_price, trees_chopped, change_background, tree_levels];
-
+    console.log(data);
     // Convert numbers to strings before encoding
     const pardata = data.map((item) => item.toString());
-
+    console.log(pardata);
     const encoded = btoa(JSON.stringify(pardata));
 
     document.getElementById("export_box").value = encoded;

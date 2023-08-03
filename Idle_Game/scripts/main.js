@@ -73,7 +73,7 @@ function refresh100() {
     document.getElementById("tree_level_display").innerHTML = tree_levels;
 
     if (Math.log10(trees) < 22) {
-        document.getElementById("tree_count_logo").style.right = 125 + Math.floor(Math.log10(trees))*18;
+        document.getElementById("tree_count_logo").style.right = 125 + Math.floor(Math.log10(trees))*18 + "px";
     }
 
     if (trees > price-1) {
