@@ -23,8 +23,8 @@ var auto_save = 60;
 //game_base_values is the constant variable that tells you what the initial values are
 //game_save_name is how you operate each item in the Object like a list
 game_save = Object({trees, tree, trees_chopped, tree_levels, upgrade_tree_price});
-game_save_base = game_save
-const game_base_values = game_save
+var game_save_base = Object({trees, tree, trees_chopped, tree_levels, upgrade_tree_price});
+const game_base_values = Object({trees, tree, trees_chopped, tree_levels, upgrade_tree_price});
 const game_save_name = ["trees", "tree", "trees_chopped", "tree_levels", "upgrade_tree_price"];
 
 //JSON objects for settings, same uses as above, but stores all the settings that will need to be saved.

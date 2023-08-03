@@ -114,9 +114,10 @@ function true_wipe() {
     // hide the warnings
     dialog_box = document.getElementById("warning");
     dialog_box.style.display = "none";
-    // resetting all variables (probably optimize in future using JSON)
-    game_save = game_base_values;
-    setting_save = setting_base_values;
+    // resetting all variables
+    game_save = objectToObject(game_base_values, game_save);
+    setting_save = objectToObject(setting_base_values, setting_save);
+    wipe_times = 0;
 
     document.getElementById("wipe_check_num").value = wipe_times;
     // display the main interface.
