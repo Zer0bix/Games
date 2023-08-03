@@ -8,7 +8,6 @@
 	<link rel="stylesheet" href="styles/buttons.css" id="buttoncss">
 	<link rel="stylesheet" href="styles/loading_icon.css" id="loading_iconcss">
 	<link rel="stylesheet" href="styles/wrapper.css" id="wrappercss">
-	<link rel="stylesheet" href="styles/nothing.c" id="backsheet">
 	
 	<Title>THE web pages</title>
 		
@@ -63,11 +62,13 @@
 						<input type="button" onclick="click_tree();" class="button" id="click_tree">
 						<divinfo>Click Power: <div id="click_power">1</div></divinfo>
 						<br>
-						<input type="button" onclick="upgrade_click();" class="button" id="upg_but">
-						<divupg id="upgbut">upgrade clicker <divupg2 id="upgbutprice">(trees)</divupg2><br></divupg>	
-						
-						</input>
-						<div2>
+						<div id="upgrade_click" style="display:none;">
+							<input type="button"  class="button" id="upg_but" >
+							<divupg id="upgbut">OLD CODE <divupg2 id="upgbutprice">OLD CODE</divupg><br></divupg>	
+							
+							</input>
+							<div2>
+						</div>
 						<br>
 					</div>
 					<br><br>
@@ -116,7 +117,7 @@
 						<p>Toggle Background Change</p>
 						<input type="button" id="change_background_toggle" onclick="toggleBackgroundChange();" class="button3">
 
-						<p>Toggle Auto Save (Recommended not to disable.</p><p>Not currently saved, will reset to 60s every reload)</p>
+						<p>Auto Save Duration</p>
 						<table>
 							<tr>
 								<td>15sec</td>

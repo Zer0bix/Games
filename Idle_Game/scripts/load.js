@@ -22,17 +22,13 @@ function check_load() {
         if (load_progress == 4) {
             try {
             if (load_interval_cleared == 1) {
-                console.log("doing it");
                 clearInterval(check_load_progress);
-                console.log("SUCCESS")
                 load_interval_cleared = 0;
-                console.log("DOUBLE SUCCESS");
                 document.getElementById("loading_screen_icon_cover").style.display = "none";
-                console.log("TRIPLE SUCCESS");
                 document.getElementById("loading_game_text").innerHTML = "Loaded!";
             }
             }
-            catch (exception) {console.log("daboo dee da boo daa")}
+            catch (exception) {console.log("couldn't load")}
 
         }
         else {
@@ -40,7 +36,6 @@ function check_load() {
             move_bar(); 
         }
     }
-    console.log(load_progress, "UND", load_check_0, load_check_1, load_check_2, load_check_3);
 }
 function move_bar() {
     var bar = document.getElementById("loading_screen_icon_cover");

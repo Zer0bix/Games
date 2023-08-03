@@ -1,63 +1,96 @@
-function export_save() {
-    const data = [trees, tree, price, ex_tree, ex_price, trees_chopped, change_background, tree_levels];
-    console.log(data);
-    // Convert numbers to strings before encoding
-    const pardata = data.map((item) => item.toString());
-    console.log(pardata);
-    const encoded = btoa(JSON.stringify(pardata));
+function load(data) {
+    try {    
+        if (typeof(data) == "object") {
+            for (const values in data) {
+                if (isNaN(data[values])) {
+                    console.log("Detected null (NaN) with name:", values, ":with value:", game_save[values]);
+                    game_save_base[values] = game_base_values[j];
+                    console.log("replaced:", game_save_name[values], ":with:", game_save[values])
 
-    document.getElementById("export_box").value = encoded;
+                }
+                else {
+                    game_save_base[values] = data[values];
+                }
+            }
+            return game_save_base;
+        }
+        else {
+            console.log("Data incompatible, should be an object but is a", typeof(data));
+            return game_save
+        }
+    }
+    catch (exception) {
+        console.log("Save data does not have a length attribute, line 26 of save.js");
+        return game_save;
+    }
+    
+}
+
+function settingload(data) {
+
+        if (typeof(data) == "object") {
+            for (const values in data) {
+                if (isNaN(data[values])) {
+                    console.log("Detected null (NaN) with name:", values, ":with value:", setting_save[values]);
+                    setting_save_base[values] = setting_base_values[values];
+                    console.log("replaced:", setting_save_name[values], ":with:", setting_save[values])
+
+                }
+                else {
+                    setting_save_base[values] = data[values];
+                }
+            }
+            return setting_save_base;
+        }
+        else {
+            console.log("Data incompatible, should be an object but is a", typeof(data));
+            return setting_save
+        }
+    }
+
+
+function export_save() {
+
+    let partially_encoded = JSON.stringify(game_save);
+    let encoded = btoa(partially_encoded);
     navigator.clipboard.writeText(encoded);
     console.log("Copied to clipboard!");
 }
 
 function import_save() {
     const new_data = document.getElementById("import_box").value;
-    
-    const decoded = atob(new_data);
-    console.log(decoded);
-    const pardata = JSON.parse(decoded);
-    console.log(pardata);
-    
-    trees = parseInt(pardata[0]);
-    tree = parseInt(pardata[1]);
-    price = parseInt(pardata[2]);
-    ex_tree = parseInt(pardata[3]);
-    ex_price = parseInt(pardata[4]);
-    trees_chopped = parseInt(pardata[5]);
-    change_background = parseInt(pardata[6]);
-    tree_levels = parseInt(pardata[7]);
-    console.log([trees, tree, price, ex_tree, ex_price, trees_chopped, change_background, tree_levels]);
+    localStorage.setItem('tree_game_save_data', new_data);
+    localLoad();
 }
 
 function localsave() {
-    const data = [trees, tree, price, ex_tree, ex_price, trees_chopped, change_background, tree_levels];
-
-    const localsavestore = JSON.stringify(data);
-    localStorage.setItem('saveData', localsavestore);
-    console.log("Game saved as: ", localsavestore);
+    let savegame = btoa(JSON.stringify(game_save));
+    localStorage.setItem('tree_game_save_data', savegame);
+    console.log("Game saved as: ", savegame);
     
+    let savesetgame = btoa(JSON.stringify(setting_save));
+    localStorage.setItem('tree_setting_save', savesetgame);
+    console.log("Settings saved as:", savesetgame);
 }
 
 function localLoad() {
-    const loadSaveStateString = localStorage.getItem('saveData')
-    const loadSaveState = JSON.parse(loadSaveStateString)
-    console.log("Game loaded from: ", loadSaveState);
     try {
-    trees = parseInt(loadSaveState[0]);
-    tree = parseInt(loadSaveState[1]);
-    price = parseInt(loadSaveState[2]);
-    ex_tree = parseInt(loadSaveState[3]);
-    ex_price = parseInt(loadSaveState[4]);
-    trees_chopped = parseInt(loadSaveState[5]);
-    change_background = parseInt(loadSaveState[6]);
-    tree_levels = parseInt(loadSaveState[7]);
-    }
-    catch (error) {
-        console.log(fromBinary(loadSaveState));
+        //loading game_save
+        let loadSaveStateString = localStorage.getItem('tree_game_save_data');
+        let loadSaveState = JSON.parse(atob(loadSaveStateString));
+        console.log("Game loaded from: ", loadSaveState);
+        game_save = load(loadSaveState);
 
+        //loading settings
+        let loadSaveStateStringSettings = localStorage.getItem('tree_setting_save');
+        let loadSaveStateSettings = JSON.parse(atob(loadSaveStateStringSettings));
+        console.log("Settings loaded from: ", loadSaveStateSettings);
+        setting_save = settingload(loadSaveStateSettings);
     }
-
+    catch (exception) {
+        game_save = game_base_values;
+        setting_save = setting_base_values;
+    }
 }
 
 function wipeSave() {
@@ -81,21 +114,14 @@ function true_wipe() {
     // hide the warnings
     dialog_box = document.getElementById("warning");
     dialog_box.style.display = "none";
-    alert("wiping save (close page to prevent from taking place, or restore an exported save.");
     // resetting all variables (probably optimize in future using JSON)
-    trees = 1;
-    tree = 1;
-    price = 1;
-    ex_tree = tree;
-    ex_price = price;
-    trees_chopped = 0;
-    wipe_times = 0;
-    change_background = 0;
-    tree_levels = 0;
+    game_save = game_base_values;
+    setting_save = setting_base_values;
+
     document.getElementById("wipe_check_num").value = wipe_times;
     // display the main interface.
     document.getElementById("underlay_back").style.display = "block";
-    open_tab('tab_1');
+    open_tab(0);
 }
 function no_wipe() {
     dialog_box = document.getElementById("warning");
@@ -104,14 +130,3 @@ function no_wipe() {
     document.getElementById("underlay_back").style.display = "block";
     document.getElementById("wipe_check_num").value = wipe_times;
 }
-
-
-
-function fromBinary(encoded) {
-    const binary = atob(encoded);
-    const bytes = new Uint8Array(binary.length);
-    for (let i = 0; i < bytes.length; i++) {
-      bytes[i] = binary.charCodeAt(i);
-    }
-    return String.fromCharCode(...new Uint16Array(bytes.buffer));
-  }

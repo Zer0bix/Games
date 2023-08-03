@@ -15,20 +15,20 @@ function changeBackground(id, colour) {
 }
 
 function toggleBackgroundChange() {
-    if (change_background == 1) {
-        change_background = 0;
+    if (setting_save['change_background'] == 1) {
+        setting_save['change_background'] = 0;
         changeBackground("change_background_toggle", "red");
     }
 
     else {
-        change_background = 1;
+        setting_save['change_background'] = 1;
         changeBackground("change_background_toggle", "green");
     }
 }
 
 function toggleAutoSave(id, val) {
-    let id_off = 'auto_save_toggle_' + auto_save;
+    let id_off = 'auto_save_toggle_' + setting_save['auto_save'];
     changeBackground(id_off, "red");
-    auto_save = val;
+    setting_save['auto_save'] = val;
     changeBackground(id, "green");
 }
