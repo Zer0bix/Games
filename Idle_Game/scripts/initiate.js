@@ -7,6 +7,10 @@ var load_check_2 = 0;
 var load_interval_cleared = 1;
 var load_progress = 0;
 
+
+// Set that the alert is not currently visible
+alert_visible = 0;
+
 var trees = 1;
 var tree = 1;
 var trees_chopped = 0;

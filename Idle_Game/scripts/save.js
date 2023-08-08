@@ -54,13 +54,14 @@ function export_save() {
     let partially_encoded = JSON.stringify(game_save);
     let encoded = btoa(partially_encoded);
     navigator.clipboard.writeText(encoded);
-    console.log("Copied to clipboard!");
+    alert_box("Save copied to clipboard!");
 }
 
 function import_save() {
     const new_data = document.getElementById("import_box").value;
     localStorage.setItem('tree_game_save_data', new_data);
     localLoad();
+    alert_box("Save imported to game!");
 }
 
 function localsave() {
@@ -71,6 +72,7 @@ function localsave() {
     let savesetgame = btoa(JSON.stringify(setting_save));
     localStorage.setItem('tree_setting_save', savesetgame);
     console.log("Settings saved as:", savesetgame);
+    alert_box("Game saved to localStorage!");
 }
 
 function localLoad() {

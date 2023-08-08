@@ -8,8 +8,10 @@
 	<link rel="stylesheet" href="styles/buttons.css" id="buttoncss">
 	<link rel="stylesheet" href="styles/loading_icon.css" id="loading_iconcss">
 	<link rel="stylesheet" href="styles/wrapper.css" id="wrappercss">
+	<link rel="stylesheet" href="styles/modal.css" id="modalcss">
 	
 	<Title>THE web pages</title>
+		<script type="text/javascript" src="scripts/modal.js"></script>
 		<script type="text/javascript" src="scripts/random.js"></script>
 		<script type="text/javascript" src="scripts/initiate.js"></script>
 		<script type="text/javascript" src="scripts/load.js"></script>
@@ -19,10 +21,11 @@
 		<script type="text/javascript" src="scripts/settings.js"></script>
 		<script type="text/javascript" src="scripts/main.js"></script>
 		
+		
 
 </head>
 
-<body>
+<body id="body">
 
 	<divloading id="loading_screen" style="display:block;" class="wrapper3">
 		<center><center>
@@ -122,12 +125,6 @@
 						<p>Auto Save Duration</p>
 						<table>
 							<tr>
-								<td>15sec</td>
-								<td>30sec</td>
-								<td>60sec</td>
-								<td>Disable</td>
-							</tr>
-							<tr>
 								<td>
 									<input type="button" id="auto_save_toggle_15" onclick="toggleAutoSave('auto_save_toggle_15', 15);" class="button2" value=15>
 								</td>
@@ -148,6 +145,16 @@
 		</divback>
 	</divall>
 
+		    <!-- The Modal -->
+			<div id="alert_div" class="alert_div" style="display:none;">
+
+				<!-- Modal content -->
+				<div class="alert_content" id="alert_content">
+					<p id="alert_content_text">Textity Text Text</p>
+				</div>
+			
+				</div>
+	
 <!--NO STEALING-->
 </body>
 

@@ -1,0 +1,32 @@
+/* Alert Dividor */
+.alert_div {
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+}
+
+/* Alert Content */
+.alert_content {
+    position:relative;
+    background-color: black;
+    color: white;
+    padding: 0;
+    border: 10px;
+    border-style:ridge;
+    border-color: rgba(0,155,0,0.8) rgba(0,150,0,0.9);
+    border-radius: 12px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    animation-duration: 0.5s;
+    left: 0%;
+}
+
+/* Add entrance and leaving Animations for Alert */
+@keyframes animatetop {
+from {left: 100%; opacity: 1; background-color:aqua}
+to {left: 0%; opacity: 1; background-color:black;}
+}
+
+@keyframes animatebottom {
+    from {left: 0%; opacity: 1; background-color:black;}
+    to {left: 100%; opacity: 0; background-color:aqua;}
+}
