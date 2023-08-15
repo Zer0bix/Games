@@ -1,8 +1,9 @@
 * {
     color: white;
-    font-family:'Courier New', Courier, monospace;
+    cursor: url('../Images/cursor_tree.png'), auto;
 }
 
-html {
-    cursor: url('../Images/cursor_tree.png'), auto;
+.number {
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
 }

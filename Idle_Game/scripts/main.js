@@ -27,6 +27,8 @@ window.onload = function() {
         game_save = game_base_values;
     }
 
+
+    //Load some functions now prior to them running after however many seconds
     refresh10000();
     load_check_2 = 1;
     
@@ -65,8 +67,8 @@ function refresh100() {
             document.body.style.background = "url('Images/pattern_background.png')";
         }
     }
-    //if it don't work I still want the other code to run
-    catch(firstinstance) {}
+    catch(firstinstance) {} //The change_background code fails on the first instance, and so this catch command prevents the code from breaking here.
+    
     if (auto_save >= 14) {
         if (auto_save_int_true == 1) {}
         else {
@@ -82,20 +84,17 @@ function refresh100() {
     document.getElementById("output").innerHTML = game_save['trees'];
     //document.getElementById("upgbutprice").innerHTML = price;
     document.getElementById("click_power").innerHTML = game_save['manual_power'];
-    document.getElementById("tree_level_display").innerHTML = tree_levels;
+    document.getElementById("tree_level_display").innerHTML = game_save['tree_levels'];
 
+    //Set the tree display to 
     if (Math.log10(game_save['trees']) < 22) {
         document.getElementById("tree_count_logo").style.right = 125 + Math.floor(Math.log10(game_save['trees']))*18 + "px";
     }
 
-    //if (game_save['trees'] > price-1) {
-    
-  //      document.getElementById("upg_but").style.background = "url('Images/green_up_arrow.png') no-repeat";
-//    }
-
-    //else {
-  //      document.getElementById("upg_but").style.background = "url('Images/red_up_arrow.png') no-repeat";
-//    }
+    //Display the tree_levels upgrade cost
+    document.getElementById('tree_upg_cost_display').innerHTML = upgrade_tree_price;
+    //Check if you can upgrade the tree, and if so, set the class to can upgrade. Also makes sure the code can run only once.
+    upg_tree_set_class_cursor = display_upgrade_yn(document.getElementById("upg_tree_butt"), document.getElementById("tree_upg_cost_display"), game_save['trees'], upgrade_tree_price, upg_tree_set_class_cursor);
 
     load_check_1 = 1;
 }
@@ -117,25 +116,20 @@ function refresh10000() {
         changeBackground(id, "green");
     }
 
-    if (game_save['trees'] > game_save['upgrade_tree_price'])
-    {
-        if (upg_tree_set_class_cursor == 0) {
-            document.getElementById("upg_tree").classList.add('can_upgrade');
-            document.getElementById("upg_tree").classList.remove('cant_upgrade');
-            upg_tree_set_class_cursor = 1;
-        }
-    }
-    else {
-        if (upg_tree_set_class_cursor == 1) {
-            document.getElementById("upg_tree").classList.add('cant_upgrade');
-            document.getElementById("upg_tree").classList.remove('can_upgrade');
-            upg_tree_set_class_cursor = 0;
-        }
-    }
+    //Display the stats
+    document.getElementById('lifetime_clicks').innerHTML = game_save['lifetime_clicks'];
+    document.getElementById('lifetime_trees_chopped').innerHTML = game_save['lifetime_trees_chopped'] + game_save['trees_chopped'];
+    document.getElementById('lifetime_buildings_bought').innerHTML = game_save['lifetime_buildings_bought'];
     
 }
 
 //Sets all the variables for gain and similar to the formulae required
 function game_refresh() {
-    game_save['manual_power'] = 1 + Math.floor(Math.sqrt(clicks_per_sec));
+    //Set the manual clicking power for trees
+    game_save['manual_power'] = (1 + Math.floor(Math.sqrt(clicks_per_sec))) * game_save['tree_levels'];
+    
+    //Set the price of upgrading the tree
+    if (game_save['tree_levels'] < 10) {
+        upgrade_tree_price = tree_upgrade_cost[game_save['tree_levels']];
+    }
 }

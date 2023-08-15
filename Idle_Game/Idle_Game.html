@@ -3,15 +3,16 @@
 <HTML>
 <head>
 	<script type="text/javascript" src="scripts/main.js"></script>
-	
+	<link rel="stylesheet" href="styles/idle_global.css" id="globalcss">
 	<link rel="stylesheet" href="styles/idlegame.css" id="idlegamecss">
 	<link rel="stylesheet" href="styles/buttons.css" id="buttoncss">
 	<link rel="stylesheet" href="styles/loading_icon.css" id="loading_iconcss">
 	<link rel="stylesheet" href="styles/wrapper.css" id="wrappercss">
 	<link rel="stylesheet" href="styles/modal.css" id="modalcss">
-	<link rel="stylesheet" href="styles/idle_global.css" id="globalcss">
+	
 	
 	<Title>THE web pages</title>
+		<script type="text/javascript" src="scripts/refresh.js"></script>
 		<script type="text/javascript" src="scripts/modal.js"></script>
 		<script type="text/javascript" src="scripts/random.js"></script>
 		<script type="text/javascript" src="scripts/initiate.js"></script>
@@ -52,7 +53,7 @@
 			<button id="Tab_2" onclick="open_tab(1);" type="button" class="tablinks">Upgrades</button>
 			<button id="Tab_3" onclick="open_tab(2);" type="button" class="tablinks" value="potato">potato</button>
 			<button id="Tab_4" onclick="open_tab(3);" type="button" class="tablinks" value="View Tree">View Tree</button>
-			<button id="Tab_5" onclick="open_tab(4);" type="button" class="tablinks" value="Settings">Settings</button>
+			<button id="Tab_5" onclick="open_tab(4);" type="button" class="tablinks" value="Settings">Other</button>
 		</divtabs>
 		<div id="tree_count">
 			<h1>
@@ -69,21 +70,15 @@
 						<button type="button" onclick="click_tree(); no_spam('click_tree')" class="button" id="click_tree"></button>
 						<divinfo>Click Power: <div id="click_power">1</div></divinfo>
 						<br>
-						<div id="upgrade_click" style="display:none;">
-							<button type="button"  class="button" id="upg_but" ></button>
-							<divupg id="upgbut">OLD CODE <divupg2 id="upgbutprice">OLD CODE</divupg><br></divupg>	
-							
-							</button>
-							<div2>
-						</div>
 						<br>
 					</div>
 					<br><br>
-					<div class="wrapper">
+					<div class="wrapper" id="upgrade_tree" class="div">
 						<h3>Upgrade Tree</h3>
-						
-						<button type="button" onclick="upgrade_tree();" class="button" id="upg_tree"></button>
-						<span id="tree_level_display" class="number">0</span>
+						<button type="button" onclick="upgrade_tree();" class="button cant_upgrade" id="upg_tree_butt">+1</button>
+						<span id="tree_level_display" class="number">0</span><span class="number">/10</span>
+						<br>
+						<span id="tree_upg_cost_display" class="number cant_upgrade">0</span>
 					</div>
 				</divtab1>
 				<divtab2 id="tab_2" style="display:none" class="tabcontent">
@@ -98,9 +93,12 @@
 					<div class="wrapper2 stabs_div" id="settings_tabs">
 						<button id="sTab_1" onclick="sOpen_tab(0);" type="button" class="stablinks stablinks2" value="Saving">Saving</button>
 						<button id="sTab_2" onclick="sOpen_tab(1);" type="button" class="stablinks" value="Settings">Settings</button>
+						<button id="sTab_3	" onclick="sOpen_tab(2);" type="button" class="stablinks" value="Stats">Stats</button>
 					</div>
 					<br><br><br><br>
+					<!--Saving-->
 					<div class="sTabcontent_4" id='sTab_1' style="display:block;">
+						<h2>SAVING</h2>
 						<p id="export_box">Copy save to clipboard</p>
 						<button type="button" onclick="export_save();" class="button"></button>
 
@@ -118,6 +116,7 @@
 						<button class="button" type="button" id="wipeSave_button" onclick="wipeSave();" value="WIPE">WIPE</button>
 					</div>
 					<br>
+					<!--Settings-->
 					<div class="sTabcontent_4" id='sTab_2'>
 						<h2>SETTINGS</h1>
 						<p>Toggle Background Change</p>
@@ -141,6 +140,16 @@
 							</tr>
 						</table>
 					</div>
+					<!--Stats-->
+					<div class="sTabcontent_4" id="sTab_3">
+						<h2>STATS</h2>
+						<p>Updates every 10 seconds</p>
+						<p>Lifetime Clicks: <span id="lifetime_clicks" class="number">0</span><br>
+						Lifetime Trees Chopped: <span id="lifetime_trees_chopped" class="number">0</span><br>
+						Lifetime Buildings Bought: <span id="lifetime_buildings_bought" class="number">0</span><br>
+						</p>
+					</div>
+
 				</divtab5>
 			</divmain>
 		</divback>
@@ -151,7 +160,7 @@
 
 				<!-- Modal content -->
 				<div class="alert_content" id="alert_content">
-					<p id="alert_content_text">Textity Text Text</p>
+					<p id="alert_content_text">alert_text</p>
 				</div>
 			
 				</div>

@@ -16,12 +16,13 @@ function click_tree() {
 
 function remove_click_tree() {
     clicks_per_sec += -1;
+    game_save['lifetime_clicks'] += 1;
 }
 
 function upgrade_tree() {
-    if (game_save['trees']>game_save['upgrade_tree_price']-1) {
+    if (game_save['trees']>upgrade_tree_price-1) {
         game_save['tree_levels'] += 1;
-        game_save['trees'] -= game_save['upgrade_tree_price'];
+        game_save['trees'] -= upgrade_tree_price;
     }
 }
 
