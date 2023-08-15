@@ -3,17 +3,19 @@
 // Basic Clicking Function
 
 function gain() {
-    click_tree();
+    game_save['trees'] += game_save['manual_power'];
+    game_save['trees_chopped'] += game_save['manual_power'];
+    document.getElementById("output").innerHTML = game_save['trees'];
 }
 
 function click_tree() {
-    game_save['trees'] += game_save['tree']
-    game_save['trees_chopped'] += game_save['tree']
-    document.getElementById("output").innerHTML = game_save['trees'];
-    if (Math.log10(game_save['trees']) < 5) {
-        document.getElementById("tree_count_logo").style.right = 125 + Math.floor(Math.log10(game_save['trees']))*18;
-    }
+    clicks_per_sec += 1;
+    setTimeout(remove_click_tree, 1000);
     
+}
+
+function remove_click_tree() {
+    clicks_per_sec += -1;
 }
 
 function upgrade_tree() {
@@ -21,4 +23,13 @@ function upgrade_tree() {
         game_save['tree_levels'] += 1;
         game_save['trees'] -= game_save['upgrade_tree_price'];
     }
+}
+
+function enable_click_button(id) {
+    document.getElementById(id).disabled = "";
+}
+
+function no_spam(id) {
+    document.getElementById(id).disabled = "disabled";
+    setTimeout(enable_click_button, 1, id);
 }

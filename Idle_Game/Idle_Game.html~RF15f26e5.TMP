@@ -9,7 +9,6 @@
 	<link rel="stylesheet" href="styles/loading_icon.css" id="loading_iconcss">
 	<link rel="stylesheet" href="styles/wrapper.css" id="wrappercss">
 	<link rel="stylesheet" href="styles/modal.css" id="modalcss">
-	<link rel="stylesheet" href="styles/idle_global.css" id="globalcss">
 	
 	<Title>THE web pages</title>
 		<script type="text/javascript" src="scripts/modal.js"></script>
@@ -36,28 +35,27 @@
 			</div>
 			<br>
 			<br>
-			<button type="button" class="button_big" onclick="load_game();" >Click Me!</button>
+			<input type="button" class="button_big" onclick="load_game();" value="Click Me!">
 		</center></center>
 	</divloading>
 	<divall id="page_content" style="display:none;">
 		<divwarning id="warning" style="display:none" class="wrapper">
 			<p>Are you sure you want to wipe save?</p>
-			<input type="button" value="0" id="wipe_check_num" style="color:black;"></button>/10
-			<button id="erase_save_1" class="button" type="button" onclick="wipe_check();" >WIPE SAVE</button>
-			<button id="erase_save_2" class="button" type="button" onclick="no_wipe();" >CANCEL</button>
+			<input type="button" value="0" id="wipe_check_num" style="color:black;"></input>/10
+			<input id="erase_save_1" class="button" type="button" onclick="wipe_check();" value="WIPE SAVE">
+			<input id="erase_save_2" class="button" type="button" onclick="no_wipe();" value="CANCEL">
 
 		</divwarning>
-		<divtabs id="divider_tabs" class="wrapper2" style="display:block">
-			<button id="Tab_1" onclick="open_tab(0);" type="button" class="tablinks tablinks2">Main</button>
-			<button id="Tab_2" onclick="open_tab(1);" type="button" class="tablinks">Upgrades</button>
-			<button id="Tab_3" onclick="open_tab(2);" type="button" class="tablinks" value="potato">potato</button>
-			<button id="Tab_4" onclick="open_tab(3);" type="button" class="tablinks" value="View Tree">View Tree</button>
-			<button id="Tab_5" onclick="open_tab(4);" type="button" class="tablinks" value="Settings">Settings</button>
+		<divtabs id="divider_tabs" class="wrapper2" style="display:block"> <!--change block to none to hide-->
+			<input id="Tab_1" onclick="open_tab(0);" type="button" class="tablinks tablinks2" value="Main"></input>
+			<input id="Tab_2" onclick="open_tab(1);" type="button" class="tablinks" value="Upgrades"></input>
+			<input id="Tab_3" onclick="open_tab(2);" type="button" class="tablinks" value="potato"></input>
+			<input id="Tab_4" onclick="open_tab(3);" type="button" class="tablinks" value="View Tree"></input>
+			<input id="Tab_5" onclick="open_tab(4);" type="button" class="tablinks" value="Settings"></input>
 		</divtabs>
 		<div id="tree_count">
 			<h1>
-			<img src="Images/Tree_1.png" id="tree_count_logo">
-			<div id="output" value="Display">Display</div>
+			<img src="Images/Tree_1.png" id="tree_count_logo"><div id="output" value="Display"></div>
 			</h1>
 		</div>
 		<br><br><br>
@@ -66,14 +64,14 @@
 				<divtab1 id="tab_1" style="display:block" class="tabcontent">
 					<div class="wrapper">
 						<!--The buttons to click or buy clicking power increase-->
-						<button type="button" onclick="click_tree(); no_spam('click_tree')" class="button" id="click_tree"></button>
+						<input type="button" onclick="click_tree();" class="button" id="click_tree">
 						<divinfo>Click Power: <div id="click_power">1</div></divinfo>
 						<br>
 						<div id="upgrade_click" style="display:none;">
-							<button type="button"  class="button" id="upg_but" ></button>
+							<input type="button"  class="button" id="upg_but" >
 							<divupg id="upgbut">OLD CODE <divupg2 id="upgbutprice">OLD CODE</divupg><br></divupg>	
 							
-							</button>
+							</input>
 							<div2>
 						</div>
 						<br>
@@ -82,7 +80,7 @@
 					<div class="wrapper">
 						<h3>Upgrade Tree</h3>
 						
-						<button type="button" onclick="upgrade_tree();" class="button" id="upg_tree"></button>
+						<input type="button" onclick="upgrade_tree();" class="button" id="upg_tree"></input>
 						<span id="tree_level_display" class="number">0</span>
 					</div>
 				</divtab1>
@@ -96,47 +94,47 @@
 				</divtab4>
 				<divtab5 id="tab_5" style="display:none" class="tabcontent">
 					<div class="wrapper2 stabs_div" id="settings_tabs">
-						<button id="sTab_1" onclick="sOpen_tab(0);" type="button" class="stablinks stablinks2" value="Saving">Saving</button>
-						<button id="sTab_2" onclick="sOpen_tab(1);" type="button" class="stablinks" value="Settings">Settings</button>
+						<input id="sTab_1" onclick="sOpen_tab(0);" type="button" class="stablinks stablinks2" value="Saving"></input>
+						<input id="sTab_2" onclick="sOpen_tab(1);" type="button" class="stablinks" value="Settings"></input>
 					</div>
 					<br><br><br><br>
 					<div class="sTabcontent_4" id='sTab_1' style="display:block;">
-						<p id="export_box">Copy save to clipboard</p>
-						<button type="button" onclick="export_save();" class="button"></button>
+						<p id="export_box">exported_save</p>
+						<input type="button" onclick="export_save();" class="button">
 
 						<p>Import save:</p>
-						<button type="button" onclick="import_save();" class="button"></button>
+						<input type="button" onclick="import_save();" class="button">
 						<input class="import_box" type="text" id="import_box">
 
 						<p>Manual Save</p>
-						<button class="button" type="button" id="localSave_button" onclick="localsave();"></button>
+						<input class="button" type="button" id="localSave_button" onclick="localsave();">
 
 						<p>localLoad</p>
-						<button class="button" type="button" id="localLoad_button" onclick="localLoad();"></button>
+						<input class="button" type="button" id="localLoad_button" onclick="localLoad();">
 
 						<p style="color: red;"><strong>WIPE SAVE</strong></p>
-						<button class="button" type="button" id="wipeSave_button" onclick="wipeSave();" value="WIPE">WIPE</button>
+						<input class="button" type="button" id="wipeSave_button" onclick="wipeSave();" value="WIPE">
 					</div>
 					<br>
 					<div class="sTabcontent_4" id='sTab_2'>
 						<h2>SETTINGS</h1>
 						<p>Toggle Background Change</p>
-						<button type="button" id="change_background_toggle" onclick="toggleBackgroundChange();" class="button3"></button>
+						<input type="button" id="change_background_toggle" onclick="toggleBackgroundChange();" class="button3">
 
 						<p>Auto Save Duration</p>
 						<table>
 							<tr>
 								<td>
-									<button type="button" id="auto_save_toggle_15" onclick="toggleAutoSave('auto_save_toggle_15', 15);" class="button2" value=15>15</button>
+									<input type="button" id="auto_save_toggle_15" onclick="toggleAutoSave('auto_save_toggle_15', 15);" class="button2" value=15>
 								</td>
 								<td>
-									<button type="button" id="auto_save_toggle_30" onclick="toggleAutoSave('auto_save_toggle_30', 30);" class="button2" value=30>30</button>
+									<input type="button" id="auto_save_toggle_30" onclick="toggleAutoSave('auto_save_toggle_30', 30);" class="button2" value=30>
 								</td>
 								<td>
-									<button type="button" id="auto_save_toggle_60" onclick="toggleAutoSave('auto_save_toggle_60', 60);" class="button2" value=60>60</button>
+									<input type="button" id="auto_save_toggle_60" onclick="toggleAutoSave('auto_save_toggle_60', 60);" class="button2" value=60>
 								</td>
 								<td>
-									<button type="button" id="auto_save_toggle_off" onclick="toggleAutoSave('auto_save_toggle_off', 'off');" class="button2" value='off'>off</button>
+									<input type="button" id="auto_save_toggle_off" onclick="toggleAutoSave('auto_save_toggle_off', 'off');" class="button2" value='off'>
 								</td>
 							</tr>
 						</table>

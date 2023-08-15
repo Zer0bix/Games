@@ -7,7 +7,6 @@ window.onload = function() {
     localLoad();
     setInterval(refresh100, 100);
     setInterval(refresh10000, 10000);
-    setInterval(game_refresh, 10);
     check_load_progress = setInterval(check_load, 100);
     auto_save_int_true = 0;
     let id_off = 'auto_save_toggle_' + auto_save;
@@ -81,7 +80,7 @@ function refresh100() {
     }
     document.getElementById("output").innerHTML = game_save['trees'];
     //document.getElementById("upgbutprice").innerHTML = price;
-    document.getElementById("click_power").innerHTML = game_save['manual_power'];
+    document.getElementById("click_power").innerHTML = tree;
     document.getElementById("tree_level_display").innerHTML = tree_levels;
 
     if (Math.log10(game_save['trees']) < 22) {
@@ -101,8 +100,6 @@ function refresh100() {
 }
 
 function refresh10000() {
-
-    //Set the colours of setting buttons to either on/off, depending on the value stored in the settings
     if (setting_save['change_backgroud'] == 1) {
         changeBackground("change_background_toggle", "green");
     }
@@ -116,26 +113,5 @@ function refresh10000() {
         changeBackground(id_off, "red");
         changeBackground(id, "green");
     }
-
-    if (game_save['trees'] > game_save['upgrade_tree_price'])
-    {
-        if (upg_tree_set_class_cursor == 0) {
-            document.getElementById("upg_tree").classList.add('can_upgrade');
-            document.getElementById("upg_tree").classList.remove('cant_upgrade');
-            upg_tree_set_class_cursor = 1;
-        }
-    }
-    else {
-        if (upg_tree_set_class_cursor == 1) {
-            document.getElementById("upg_tree").classList.add('cant_upgrade');
-            document.getElementById("upg_tree").classList.remove('can_upgrade');
-            upg_tree_set_class_cursor = 0;
-        }
-    }
-    
 }
 
-//Sets all the variables for gain and similar to the formulae required
-function game_refresh() {
-    game_save['manual_power'] = 1 + Math.floor(Math.sqrt(clicks_per_sec));
-}

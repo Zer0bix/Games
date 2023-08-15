@@ -20,15 +20,11 @@ function alert_box(content) {
 
 // When the user clicks on <span> (x), close the alert
 function hide_alert_1() {
-  clearTimeout(hidd);
-    alert_content.style.animationName = "animatebottom";
+  alert_content.style.animationName = "animatebottom";
   hide_alert = setTimeout(hide_alert_2, 500);
-    
-
 }
 
 function hide_alert_2() {
-  clearTimeout(hide_alert);
   alert_div.style.display = "none";
   alert_visible = 0;
 }
