@@ -29,7 +29,7 @@ window.onload = function() {
 
 
     //Load some functions now prior to them running after however many seconds
-    refresh10000();
+    initial_load();
     load_check_2 = 1;
     
 }
@@ -132,4 +132,17 @@ function game_refresh() {
     if (game_save['tree_levels'] < 10) {
         upgrade_tree_price = tree_upgrade_cost[game_save['tree_levels']];
     }
+}
+
+function initial_load() {
+    //Make sure this element loads in the proper starting configuration (it doesn't work when you start with enough trees)
+    upg_tree_set_class_cursor = 1;
+    upg_tree_set_class_cursor = display_upgrade_yn(document.getElementById("upg_tree_butt"), document.getElementById("tree_upg_cost_display"), game_save['trees'], upgrade_tree_price, upg_tree_set_class_cursor);
+    upg_tree_set_class_cursor = 0;
+    upg_tree_set_class_cursor = display_upgrade_yn(document.getElementById("upg_tree_butt"), document.getElementById("tree_upg_cost_display"), game_save['trees'], upgrade_tree_price, upg_tree_set_class_cursor);
+    
+    //Load some initial functions
+    game_refresh();
+    refresh100();
+    refresh10000();
 }
