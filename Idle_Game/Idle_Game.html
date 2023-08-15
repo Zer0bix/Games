@@ -9,6 +9,7 @@
 	<link rel="stylesheet" href="styles/loading_icon.css" id="loading_iconcss">
 	<link rel="stylesheet" href="styles/wrapper.css" id="wrappercss">
 	<link rel="stylesheet" href="styles/modal.css" id="modalcss">
+	<link rel="stylesheet" href="styles/buildings.css" id="buildingcss">
 	
 	
 	<Title>THE web pages</title>
@@ -52,7 +53,7 @@
 			<button id="Tab_1" onclick="open_tab(0);" type="button" class="tablinks tablinks2">Main</button>
 			<button id="Tab_2" onclick="open_tab(1);" type="button" class="tablinks">Buildings</button>
 			<button id="Tab_3" onclick="open_tab(2);" type="button" class="tablinks" value="potato">Upgrades</button>
-			<button id="Tab_4" onclick="open_tab(3);" type="button" class="tablinks" value="View Tree">View Tree</button>
+			<button id="Tab_4" onclick="open_tab(3);" type="button" class="tablinks" value="View Tree">Productio</button>
 			<button id="Tab_5" onclick="open_tab(4);" type="button" class="tablinks" value="Settings">Other</button>
 		</divtabs>
 		<div id="tree_count">
@@ -82,6 +83,49 @@
 					</div>
 				</divtab1>
 				<divtab2 id="tab_2" style="display:none" class="tabcontent">
+
+					<!--Buildings that can be built-->
+					<div class="wrapper" id="upgrade_click_building">
+						<span>Upgrade Clicks</span>
+						<br><br>
+						<div id="click_build_cost" class="cost_display_wrap">
+							<div class="cost_display">
+								<img src="Images/Tree_1.png" class="icon_0">
+								<span id="click_build_cost_tree">0</span>
+							</div>
+							<div class="cost_display">
+								<img src="Images/Tree_1.png" class="icon_0">
+								<span id="click_build_cost_no">0</span>
+							</div>
+							<div class="cost_display">
+								<img src="Images/Tree_1.png" class="icon_0">
+								<span id="click_build_cost_botato">0</span>
+							</div>
+						</div>
+						<br><br>
+						<button type="button" class="button" onClick="">+1</button>
+					</div>
+
+
+
+					<!--Variables displayed in the buildings tab, only those necessary for building-->
+					<div class="wrapper display_value_wrap">
+						<div id="land_count" class="display_value">
+							<img src="Images/Land_icon.png" id="land_icon" class="icon"></img>
+							<span class="number" id="land_count_num">0</span>
+						</div>
+						<br><br>
+						<div id="buildings_count" class="display_value">
+							<img src="Images/Land_icon.png" id="land_icon" class="icon"></img>
+							<span class="number" id="land_count_num">0</span>
+						</div>
+						<br><br>
+						<div id="" class="display_value">
+							<img src="Images/Land_icon.png" id="land_icon" class="icon"></img>
+							<span class="number" id="land_count_num">0</span>
+						</div>
+						<br><br>
+					</div>
 				</divtab2>
 				<divtab3 id="tab_3" style="display:none" class="tabcontent">
 					<p>TO BE CONTINUED #3</p>

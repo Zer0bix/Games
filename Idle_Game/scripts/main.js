@@ -91,8 +91,14 @@ function refresh100() {
         document.getElementById("tree_count_logo").style.right = 125 + Math.floor(Math.log10(game_save['trees']))*18 + "px";
     }
 
-    //Display the tree_levels upgrade cost
-    document.getElementById('tree_upg_cost_display').innerHTML = upgrade_tree_price;
+    //Display all the various variables
+    document.getElementById('tree_upg_cost_display').innerHTML = upgrade_tree_price; //Upgrade tree cost display
+    document.getElementById('land_count_num').innerHTML = game_save['land']; //land count in Buildings tab
+    
+    //Building costs
+    //Upgrade Clicking Power
+    document.getElementById('click_build_cost_tree').innerHTML = build_click_cost_tree;
+
     //Check if you can upgrade the tree, and if so, set the class to can upgrade. Also makes sure the code can run only once.
     upg_tree_set_class_cursor = display_upgrade_yn(document.getElementById("upg_tree_butt"), document.getElementById("tree_upg_cost_display"), game_save['trees'], upgrade_tree_price, upg_tree_set_class_cursor);
 
@@ -132,6 +138,9 @@ function game_refresh() {
     if (game_save['tree_levels'] < 10) {
         upgrade_tree_price = tree_upgrade_cost[game_save['tree_levels']];
     }
+
+    //Set the amount of remaining land
+    game_save['land'] = game_save['tree_levels']*land_multi-buildings_count;
 }
 
 function initial_load() {
