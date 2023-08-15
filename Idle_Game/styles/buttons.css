@@ -57,7 +57,8 @@
     padding: 10px;
     margin-top: 10px;
     margin-left: 10px;
-    cursor: url('../Images/cursor_tree_hand.png'), auto;
+    cursor: url('../Images/cursor_tree_hand.png') 10 0, auto;
+    cursor:
 }
 
 .tablinks:hover, .stablinks:hover {
