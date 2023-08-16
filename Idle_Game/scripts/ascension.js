@@ -2,6 +2,6 @@
 
 
 function ascend() {
-    game_save['lifetime_trees_chopped'] += game_save['trees_chopped'];
-    game_save['trees_chopped'] = 0;
+    game_save.lifetime_trees_chopped += game_save.trees_chopped;
+    game_save.trees_chopped = 0;
 }

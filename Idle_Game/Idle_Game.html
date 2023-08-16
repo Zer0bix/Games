@@ -13,16 +13,17 @@
 	
 	
 	<Title>THE web pages</title>
-		<script type="text/javascript" src="scripts/refresh.js"></script>
-		<script type="text/javascript" src="scripts/modal.js"></script>
-		<script type="text/javascript" src="scripts/random.js"></script>
-		<script type="text/javascript" src="scripts/initiate.js"></script>
-		<script type="text/javascript" src="scripts/load.js"></script>
-		<script type="text/javascript" src="scripts/clicking.js"></script>
-		<script type="text/javascript" src="scripts/tabs.js"></script>
-		<script type="text/javascript" src="scripts/save.js"></script>
-		<script type="text/javascript" src="scripts/settings.js"></script>
-		<script type="text/javascript" src="scripts/main.js"></script>
+		<script type="text/javascript" src="scripts/refresh.js" id="refreshjs"></script>
+		<script type="text/javascript" src="scripts/modal.js" id="modaljs"></script>
+		<script type="text/javascript" src="scripts/random.js" id="randomjs"></script>
+		<script type="text/javascript" src="scripts/initiate.js" id="initiatejs"></script>
+		<script type="text/javascript" src="scripts/load.js" id="loadjs"></script>
+		<script type="text/javascript" src="scripts/clicking.js" id="clickingjs"></script>
+		<script type="text/javascript" src="scripts/buildings.js" id="buidlingsjs"></script>
+		<script type="text/javascript" src="scripts/tabs.js" id="tabsjs"></script>
+		<script type="text/javascript" src="scripts/save.js" id="savejs"></script>
+		<script type="text/javascript" src="scripts/settings.js" id="settingsjs"></script>
+		<script type="text/javascript" src="scripts/main.js" id="mainjs"></script>
 		
 		
 
@@ -53,8 +54,8 @@
 			<button id="Tab_1" onclick="open_tab(0);" type="button" class="tablinks tablinks2">Main</button>
 			<button id="Tab_2" onclick="open_tab(1);" type="button" class="tablinks">Buildings</button>
 			<button id="Tab_3" onclick="open_tab(2);" type="button" class="tablinks" value="potato">Upgrades</button>
-			<button id="Tab_4" onclick="open_tab(3);" type="button" class="tablinks" value="View Tree">Productio</button>
-			<button id="Tab_5" onclick="open_tab(4);" type="button" class="tablinks" value="Settings">Other</button>
+			<button id="Tab_4" onclick="open_tab(3);" type="button" class="tablinks" value="View Tree">Production</button>
+			<button id="Tab_5" onclick="open_tab(4);" type="button" class="tablinks" value="Settings">Options</button>
 		</divtabs>
 		<div id="tree_count">
 			<h1>
@@ -67,7 +68,7 @@
 			<divmain id="main_dividor">
 				<divtab1 id="tab_1" style="display:block" class="tabcontent">
 					<div class="wrapper">
-						<!--The buttons to click or buy clicking power increase-->
+						<!--The button to click-->
 						<button type="button" onclick="click_tree(); no_spam('click_tree')" class="button" id="click_tree"></button>
 						<divinfo>Click Power: <div id="click_power">1</div></divinfo>
 						<br>
@@ -85,25 +86,124 @@
 				<divtab2 id="tab_2" style="display:none" class="tabcontent">
 
 					<!--Buildings that can be built-->
-					<div class="wrapper" id="upgrade_click_building">
-						<span>Upgrade Clicks</span>
+					<!--Click Building-->
+					<div class="wrapperb b_start" id="click_building" >
+						<span class="b_title">Click Building</span>
+						<br>
+						<span class="b_description">Increases the amount of trees chopped whenever you click</span>
 						<br><br>
 						<div id="click_build_cost" class="cost_display_wrap">
+							<span>Materials</span>
+							<br>
+							<!--Cost display for trees-->
 							<div class="cost_display">
-								<img src="Images/Tree_1.png" class="icon_0">
-								<span id="click_build_cost_tree">0</span>
+								<div class="tooltip">
+									<span class="tooltip_text">Tree</span>
+									<img src="Images/Tree_1.png" class="icon_0">Tree
+								</div>
+								<span id="b_click_cost_tree" class="build_cost">0</span>
 							</div>
-							<div class="cost_display">
-								<img src="Images/Tree_1.png" class="icon_0">
-								<span id="click_build_cost_no">0</span>
+							<!--Cost display for stone-->
+							<div class="cost_display" value="">
+								<div class="tooltip">
+									<span class="tooltip_text">Stone</span> 
+									<img src="Images/Tree_1.png" class="icon_0">Stone
+								</div> 
+								<span id="b_click_cost_stone" class="build_cost">27</span>
 							</div>
-							<div class="cost_display">
-								<img src="Images/Tree_1.png" class="icon_0">
-								<span id="click_build_cost_botato">0</span>
-							</div>
+						
 						</div>
+						<button type="button" class="button" id="button" value="1">+1</button>
+					</div>
+
+					<!--Production Building-->
+					<div class="wrapperb b_midleft" id="production_building">
+						<span class="b_title">Production Building</span>
+						<br>
+						<span class="b_description">Increases the number of trees you chop per second</span>
 						<br><br>
-						<button type="button" class="button" onClick="">+1</button>
+						<div id="click_build_cost" class="cost_display_wrap">
+							<span>Materials</span>
+							<br>
+							<!--Cost display for trees-->
+							<div class="cost_display">
+								<div class="tooltip">
+									<span class="tooltip_text">Tree</span>
+									<img src="Images/Tree_1.png" class="icon_0">Tree
+								</div>
+								<span id="click_build_cost_tree" class="build_cost">0</span>
+							</div>
+							<!--Cost display for stone-->
+							<div class="cost_display">
+								<div class="tooltip">
+									<span class="tooltip_text">Stone</span> 
+									<img src="Images/Tree_1.png" class="icon_0">Stone
+								</div> 
+								<span id="b_click_cost_tree" class="build_cost">27</span>
+							</div>
+						
+					</div>
+					<button type="button" class="button" id="button" value="1">+1</button>
+					</div>
+
+					<!--Research Building-->
+					<div class="wrapperb b_midright" id="research_building">
+						<span class="b_title">Research Building</span>
+						<br>
+						<span class="b_description">Allows you to start researching</span>
+						<br><br>
+						<div id="click_build_cost" class="cost_display_wrap">
+							<span>Materials</span>
+							<br>
+							<!--Cost display for trees-->
+							<div class="cost_display">
+								<div class="tooltip">
+									<span class="tooltip_text">Tree</span>
+									<img src="Images/Tree_1.png" class="icon_0">Tree
+								</div>
+								<span id="click_build_cost_tree" class="build_cost">0</span>
+							</div>
+							<!--Cost display for stone-->
+							<div class="cost_display">
+								<div class="tooltip">
+									<span class="tooltip_text">Stone</span> 
+									<img src="Images/Tree_1.png" class="icon_0">Stone
+								</div> 
+								<span id="b_click_cost_tree" class="build_cost">27</span>
+							</div>
+						
+					</div>
+					<button type="button" class="button" id="button" value="1">+1</button>
+					</div>
+
+					<!--Reduce CostsBuilding-->
+					<div class="wrapperb b_end" id="reduce_building">
+						<span class="b_title">Reduce Cost Building</span>
+						<br>
+						<span class="b_description">Reduces the cost of building and upgrading buildings</span>
+						<br><br>
+						<div id="click_build_cost" class="cost_display_wrap">
+							<span>Materials</span>
+							<br>
+							<!--Cost display for trees-->
+							<div class="cost_display">
+								<div class="tooltip">
+									<span class="tooltip_text">Tree</span>
+									<img src="Images/Tree_1.png" class="icon_0">Tree
+								</div>
+								<span id="click_build_cost_tree" class="build_cost">0</span>
+							</div>
+							<!--Cost display for stone-->
+							<div class="cost_display">
+								<div class="tooltip">
+									<span class="tooltip_text">Stone</span> 
+									<img src="Images/Tree_1.png" class="icon_0">Stone
+								</div> 
+								<span id="b_click_cost_tree" class="build_cost">27</span>
+							</div>
+						
+					</div>
+					<button type="button" class="button" id="button" value="1">+1</button>
 					</div>
 
 

@@ -1,6 +1,6 @@
 window.onload = function() {
     
-    document.getElementById("output").innerHTML = game_save['trees'];
+    document.getElementById("output").innerHTML = game_save.trees;
     //document.getElementById("upgbutprice").innerHTML = price;
 
     //single instance run code
@@ -14,7 +14,6 @@ window.onload = function() {
     changeBackground(id_off, "green");
     // tell game that this section is loaded
     load_check_0 = 1;
-    load_check_3 = 1;
 
     let load_game_data_string = localStorage.getItem('tree_game_save_data');
 
@@ -32,25 +31,36 @@ window.onload = function() {
     initial_load();
     load_check_2 = 1;
     
+    //Event handlers
+    //Building buy handlers
+    let buildings = document.getElementsByClassName('wrapperb');
+    console.log(buildings);
+    for (i=0; i<buildings.length; i++) {
+        console.log(buildings[i].children.button);
+        let ele = buildings[i].children.button;
+        ele.onclick = buy_1;
+    }
+
+    load_check_3 = 1;
 }
 
 
 function background_change() {
-    if (game_save['trees_chopped'] > -1 && game_save['trees_chopped'] < 1000) {
+    if (game_save.trees_chopped > -1 && game_save.trees_chopped < 1000) {
         document.body.style.background = "url('Images/full_forest.avif') no-repeat center center fixed";
         document.body.style.backgroundSize = "cover"
         
     }
-    if (game_save['trees_chopped'] > 999 && game_save['trees_chopped'] < 10000) {
+    if (game_save.trees_chopped > 999 && game_save.trees_chopped < 10000) {
         document.body.style.background = "url('Images/partial_deforest.png') no-repeat center center fixed";
         document.body.style.backgroundSize = "cover"
         
     }
-    if (game_save['trees_chopped'] > 9999 && game_save['trees_chopped'] < 100000) {
+    if (game_save.trees_chopped > 9999 && game_save.trees_chopped < 100000) {
         document.body.style.background = "url('Images/mostly_deforest.avif') no-repeat center center fixed";
         document.body.style.backgroundSize = "cover"
     }
-    if (game_save['trees_chopped'] > 99999) {
+    if (game_save.trees_chopped > 99999) {
         document.body.style.background = "url('Images/deforested_desert.avif') no-repeat center center fixed";
         document.body.style.backgroundSize = "cover"
     }
@@ -81,26 +91,33 @@ function refresh100() {
         auto_save_int_true = 0;
         console.log("auto saving off");
     }
-    document.getElementById("output").innerHTML = game_save['trees'];
+    document.getElementById("output").innerHTML = game_save.trees;
     //document.getElementById("upgbutprice").innerHTML = price;
-    document.getElementById("click_power").innerHTML = game_save['manual_power'];
-    document.getElementById("tree_level_display").innerHTML = game_save['tree_levels'];
+    document.getElementById("click_power").innerHTML = game_save.manual_power;
+    document.getElementById("tree_level_display").innerHTML = game_save.tree_levels;
 
     //Set the tree display to 
-    if (Math.log10(game_save['trees']) < 22) {
-        document.getElementById("tree_count_logo").style.right = 125 + Math.floor(Math.log10(game_save['trees']))*18 + "px";
+    if (Math.log10(game_save.trees) < 22) {
+        document.getElementById("tree_count_logo").style.right = 125 + Math.floor(Math.log10(game_save.trees))*18 + "px";
     }
 
     //Display all the various variables
     document.getElementById('tree_upg_cost_display').innerHTML = upgrade_tree_price; //Upgrade tree cost display
-    document.getElementById('land_count_num').innerHTML = game_save['land']; //land count in Buildings tab
+    document.getElementById('land_count_num').innerHTML = game_save.land; //land count in Buildings tab
     
     //Building costs
     //Upgrade Clicking Power
-    document.getElementById('click_build_cost_tree').innerHTML = build_click_cost_tree;
+    document.getElementById('click_build_cost_tree').innerHTML = b_click_costs.tree;
+    document.getElementById('b_click_cost_tree').innerHTML = b_click_costs.stone;
+    document.getElementById('click_build_cost_tree').innerHTML = b_click_costs.tree;
+    document.getElementById('b_click_cost_tree').innerHTML = b_click_costs.stone;
+    document.getElementById('click_build_cost_tree').innerHTML = b_click_costs.tree;
+    document.getElementById('b_click_cost_tree').innerHTML = b_click_costs.stone;
+    document.getElementById('click_build_cost_tree').innerHTML = b_click_costs.tree;
+    document.getElementById('b_click_cost_tree').innerHTML = b_click_costs.stone;
 
     //Check if you can upgrade the tree, and if so, set the class to can upgrade. Also makes sure the code can run only once.
-    upg_tree_set_class_cursor = display_upgrade_yn(document.getElementById("upg_tree_butt"), document.getElementById("tree_upg_cost_display"), game_save['trees'], upgrade_tree_price, upg_tree_set_class_cursor);
+    upg_tree_set_class_cursor = display_upgrade_yn(document.getElementById("upg_tree_butt"), document.getElementById("tree_upg_cost_display"), game_save.trees, upgrade_tree_price, upg_tree_set_class_cursor);
 
     load_check_1 = 1;
 }
@@ -123,32 +140,32 @@ function refresh10000() {
     }
 
     //Display the stats
-    document.getElementById('lifetime_clicks').innerHTML = game_save['lifetime_clicks'];
-    document.getElementById('lifetime_trees_chopped').innerHTML = game_save['lifetime_trees_chopped'] + game_save['trees_chopped'];
-    document.getElementById('lifetime_buildings_bought').innerHTML = game_save['lifetime_buildings_bought'];
+    document.getElementById('lifetime_clicks').innerHTML = game_save.lifetime_clicks;
+    document.getElementById('lifetime_trees_chopped').innerHTML = game_save.lifetime_trees_chopped + game_save.trees_chopped;
+    document.getElementById('lifetime_buildings_bought').innerHTML = game_save.lifetime_buildings_bought;
     
 }
 
 //Sets all the variables for gain and similar to the formulae required
 function game_refresh() {
     //Set the manual clicking power for trees
-    game_save['manual_power'] = (1 + Math.floor(Math.sqrt(clicks_per_sec))) * game_save['tree_levels'];
+    game_save.manual_power = (1 + Math.floor(Math.sqrt(clicks_per_sec))) * game_save.tree_levels;
     
     //Set the price of upgrading the tree
-    if (game_save['tree_levels'] < 10) {
-        upgrade_tree_price = tree_upgrade_cost[game_save['tree_levels']];
+    if (game_save.tree_levels < 10) {
+        upgrade_tree_price = tree_upgrade_cost[game_save.tree_levels];
     }
 
     //Set the amount of remaining land
-    game_save['land'] = game_save['tree_levels']*land_multi-buildings_count;
+    game_save.land = game_save.tree_levels*land_multi-buildings_count;
 }
 
 function initial_load() {
     //Make sure this element loads in the proper starting configuration (it doesn't work when you start with enough trees)
     upg_tree_set_class_cursor = 1;
-    upg_tree_set_class_cursor = display_upgrade_yn(document.getElementById("upg_tree_butt"), document.getElementById("tree_upg_cost_display"), game_save['trees'], upgrade_tree_price, upg_tree_set_class_cursor);
+    upg_tree_set_class_cursor = display_upgrade_yn(document.getElementById("upg_tree_butt"), document.getElementById("tree_upg_cost_display"), game_save.trees, upgrade_tree_price, upg_tree_set_class_cursor);
     upg_tree_set_class_cursor = 0;
-    upg_tree_set_class_cursor = display_upgrade_yn(document.getElementById("upg_tree_butt"), document.getElementById("tree_upg_cost_display"), game_save['trees'], upgrade_tree_price, upg_tree_set_class_cursor);
+    upg_tree_set_class_cursor = display_upgrade_yn(document.getElementById("upg_tree_butt"), document.getElementById("tree_upg_cost_display"), game_save.trees, upgrade_tree_price, upg_tree_set_class_cursor);
     
     //Load some initial functions
     game_refresh();

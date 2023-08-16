@@ -19,3 +19,11 @@ function objectToObject(a, b) {
     }
     return b
 }
+
+function clone_object(a) {
+    b = Object()
+    for (const values in a) {
+        b[values] = a[values];
+    }
+    return b
+}
