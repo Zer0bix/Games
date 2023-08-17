@@ -71,6 +71,13 @@
     z-index: 2;
 }
 
+.owned_count {
+    color: white;
+    width: 100%;
+    right: -65%;
+    position: absolute;
+}
+
 .b_midleft {
     position: fixed;
     left: 23%;

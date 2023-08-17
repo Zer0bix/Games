@@ -37,6 +37,7 @@
 .button:hover {
     background-image: linear-gradient(rgba(100, 100, 200, 0.7), rgba(50, 50, 150, 0.9));
     border-width: 6px;
+    
 }
 
 .button2 {

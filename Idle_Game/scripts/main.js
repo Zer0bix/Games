@@ -7,7 +7,7 @@ window.onload = function() {
     localLoad();
     setInterval(refresh100, 100);
     setInterval(refresh10000, 10000);
-    setInterval(game_refresh, 10);
+    setInterval(game_refresh, 25);
     check_load_progress = setInterval(check_load, 100);
     auto_save_int_true = 0;
     let id_off = 'auto_save_toggle_' + auto_save;
@@ -34,9 +34,7 @@ window.onload = function() {
     //Event handlers
     //Building buy handlers
     let buildings = document.getElementsByClassName('wrapperb');
-    console.log(buildings);
     for (i=0; i<buildings.length; i++) {
-        console.log(buildings[i].children.button);
         let ele = buildings[i].children.button;
         ele.onclick = buy_1;
     }
@@ -104,17 +102,7 @@ function refresh100() {
     //Display all the various variables
     document.getElementById('tree_upg_cost_display').innerHTML = upgrade_tree_price; //Upgrade tree cost display
     document.getElementById('land_count_num').innerHTML = game_save.land; //land count in Buildings tab
-    
-    //Building costs
-    //Upgrade Clicking Power
-    document.getElementById('click_build_cost_tree').innerHTML = b_click_costs.tree;
-    document.getElementById('b_click_cost_tree').innerHTML = b_click_costs.stone;
-    document.getElementById('click_build_cost_tree').innerHTML = b_click_costs.tree;
-    document.getElementById('b_click_cost_tree').innerHTML = b_click_costs.stone;
-    document.getElementById('click_build_cost_tree').innerHTML = b_click_costs.tree;
-    document.getElementById('b_click_cost_tree').innerHTML = b_click_costs.stone;
-    document.getElementById('click_build_cost_tree').innerHTML = b_click_costs.tree;
-    document.getElementById('b_click_cost_tree').innerHTML = b_click_costs.stone;
+
 
     //Check if you can upgrade the tree, and if so, set the class to can upgrade. Also makes sure the code can run only once.
     upg_tree_set_class_cursor = display_upgrade_yn(document.getElementById("upg_tree_butt"), document.getElementById("tree_upg_cost_display"), game_save.trees, upgrade_tree_price, upg_tree_set_class_cursor);
@@ -144,6 +132,8 @@ function refresh10000() {
     document.getElementById('lifetime_trees_chopped').innerHTML = game_save.lifetime_trees_chopped + game_save.trees_chopped;
     document.getElementById('lifetime_buildings_bought').innerHTML = game_save.lifetime_buildings_bought;
     
+    //Refresh building displays
+    refresh_buildings();
 }
 
 //Sets all the variables for gain and similar to the formulae required

@@ -28,32 +28,36 @@ var land_multi = 10;
 var buildings_count = 0;
 
 //Building costs initial
-function build_object(tree, stone, research, green, mult) {
-    let obj = Object({tree, stone, research, green, mult});
+function build_object(tree, stone, research, green,) {
+    let mult = 1;
+    let owned = 0;
+    let obj = Object({tree, stone, research, green, mult, owned});
     return obj
 }
 
-function build_buildings_list_object(click, production, research, reduce, soul, stone, shop, school, bush, plantation) {
-    let obj = Object({click, production, research, reduce, soul, stone, shop, school, bush, plantation});
-    return obj
-}
+//function build_buildings_list_object(click, production, research, reduce, soul, stone, shop, school, bush, plantation) {
+//    let obj = Object({click, production, research, reduce, soul, stone, shop, school, bush, plantation});
+//    return obj
+//}
 
 
 //Creates objects for each building detailing base costs of each resource.
-var b_empty = build_object(0, 0, 0, 0, 0);
-var b_click_costs = build_object(10, 5, 0, 0, 1);
-var b_prod_costs = build_object(100, 10, 0, 0, 1);
-var b_research_costs = build_object(1000, 25, 0, 0, 1);
-var b_costdown_costs = build_object(2500, 50, 0, 0, 1);
-var b_soul_costs = build_object(5000, 75, 0, 0, 1);
-var b_stone_costs = build_object(7500, 100, 0, 0, 1);
-var b_shop_costs = build_object(10000, 1000, 0, 0, 1);
-var b_school_costs = build_object(12500, 100, 0, 0, 1);
-var b_bush_costs = build_object(1000, 25, 0, 0, 1);
-var b_plantation_costs = build_object(1000, 25, 0, 0, 1);
+var b_empty = build_object(0, 0, 0, 0);
+var b_click_costs = build_object(10, 5, 0, 0);
+var b_prod_costs = build_object(100, 10, 0, 0);
+var b_research_costs = build_object(1000, 25, 0, 0);
+var b_costdown_costs = build_object(2500, 50, 0, 0);
+var b_soul_costs = build_object(5000, 75, 0, 0);
+var b_stone_costs = build_object(7500, 100, 0, 0);
+var b_shop_costs = build_object(10000, 1000, 0, 0);
+var b_school_costs = build_object(12500, 100, 0, 0);
+var b_bush_costs = build_object(1000, 25, 0, 0);
+var b_plantation_costs = build_object(1000, 25, 0, 0);
+var b_num_total = 0;
 
-var buildings_vars = Object({b_click_costs, b_prod_costs, b_research_costs, b_costdown_costs});
-var buildings_vars_base = clone_object(buildings_vars);
+//Usage of JSON.parse(JSON.stringify()) makes the objects no longer bound to the above objects, instead creating new objects. This means
+var buildings_data = Object({b_click_costs, b_prod_costs, b_research_costs, b_costdown_costs, b_num_total});
+var buildings_data_base = JSON.parse(JSON.stringify(clone_object(buildings_data)));
 
 
 //Game data variables
