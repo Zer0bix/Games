@@ -43,5 +43,4 @@ function move_bar() {
     marginleft = 38.3*(1-load_bar_progress);
     bar.style.width = width + "%";
     bar.style.marginLeft = marginleft + "%";
-    console.log(bar);
 }

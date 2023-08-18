@@ -1,30 +1,39 @@
-function load(data) {
-    try {    
+function load(data, recurse_num, recurse_value) {
+    //try {    
         if (typeof(data) == "object") {
-            for (const values in data) {
-                if (isNaN(data[values])) {
-                    console.log("Detected null (NaN) with name:", values, ":with value:", game_save[values]);
-                    game_save_base[values] = game_base_values[j];
-                    console.log("replaced:", game_save_name[values], ":with:", game_save[values])
+            for (const key in data) {
+                if (typeof(data[key]) == "object" && data[key] != null) {
+                    //Recursive call for nested objects, checks if not null as null items are classed as objects.
+                    data[key] = load(data[key], 1+recurse_num, recurse_value[key]);
+                        
+                }
+                //Checks for nulls
+                else if (isNaN(data[key])|| data[key] == null) {
+                    console.log("Detected null (NaN) with name:", key, ":with value:", data[key], ":from:", data);
+                    data[key] = recurse_value[key];
+                    console.log("replaced:", data[key], ":with:", recurse_value[key])
 
                 }
                 else {
-                    game_save_base[values] = data[values];
+                    //If no nulls detected, sets the value of the variable to that of the loaded.
+                    data[key] = data[key];
                 }
             }
-            return game_save_base;
+            return data;
         }
         else {
             console.log("Data incompatible, should be an object but is a", typeof(data));
             return game_save
         }
+        
     }
-    catch (exception) {
-        console.log("Save data does not have a length attribute, line 26 of save.js");
-        return game_save;
-    }
+    //catch (exception) {
+    //    console.log("Save data does not have a length attribute, line 26 of save.js, data:", game_save);
+    //    return game_save;
+    //}
     
-}
+    
+//}
 
 function settingload(data) {
 
@@ -81,13 +90,13 @@ function localLoad() {
         let loadSaveStateString = localStorage.getItem('tree_game_save_data');
         let loadSaveState = JSON.parse(atob(loadSaveStateString));
         console.log("Game loaded from: ", loadSaveState);
-        game_save = load(loadSaveState);
+        game_save = load(loadSaveState, 0, game_base_values);
 
         //loading settings
         let loadSaveStateStringSettings = localStorage.getItem('tree_setting_save');
         let loadSaveStateSettings = JSON.parse(atob(loadSaveStateStringSettings));
         console.log("Settings loaded from: ", loadSaveStateSettings);
-        setting_save = settingload(loadSaveStateSettings);
+        setting_save = settingload(loadSaveStateSettings, 0, game_base_values);
     }
     catch (exception) {
         game_save = game_base_values;
@@ -99,6 +108,7 @@ function wipeSave() {
     dialog_box = document.getElementById("warning");
     dialog_box.style.display = "block";
     document.getElementById("underlay_back").style.display = "none";
+    alert_box("You are about to wipe your save. Are you sure you want to continue?");
 }
 
 function wipe_check() {

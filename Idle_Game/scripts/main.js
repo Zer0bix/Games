@@ -7,7 +7,7 @@ window.onload = function() {
     localLoad();
     setInterval(refresh100, 100);
     setInterval(refresh10000, 10000);
-    setInterval(game_refresh, 25);
+    setInterval(game_refresh, 10);
     check_load_progress = setInterval(check_load, 100);
     auto_save_int_true = 0;
     let id_off = 'auto_save_toggle_' + auto_save;
@@ -17,15 +17,8 @@ window.onload = function() {
 
     let load_game_data_string = localStorage.getItem('tree_game_save_data');
 
-    try {
         let load_game_data = JSON.parse(atob(load_game_data_string));
         console.log("loaded:", load_game_data);
-        game_save = load(load_game_data);
-    }
-    catch (exception) {
-        game_save = game_base_values;
-    }
-
 
     //Load some functions now prior to them running after however many seconds
     initial_load();
@@ -40,6 +33,7 @@ window.onload = function() {
     }
 
     load_check_3 = 1;
+    console.log("loaded all checks in main.py window.onload function()")
 }
 
 
@@ -127,10 +121,10 @@ function refresh10000() {
         changeBackground(id, "green");
     }
 
-    //Display the stats
+    //Display the stats in the stats tab
     document.getElementById('lifetime_clicks').innerHTML = game_save.lifetime_clicks;
     document.getElementById('lifetime_trees_chopped').innerHTML = game_save.lifetime_trees_chopped + game_save.trees_chopped;
-    document.getElementById('lifetime_buildings_bought').innerHTML = game_save.lifetime_buildings_bought;
+    document.getElementById('lifetime_buildings_bought').innerHTML = game_save.lifetime_buildings_bought + game_save.buildings_data.b_num_total;
     
     //Refresh building displays
     refresh_buildings();
@@ -139,7 +133,7 @@ function refresh10000() {
 //Sets all the variables for gain and similar to the formulae required
 function game_refresh() {
     //Set the manual clicking power for trees
-    game_save.manual_power = (1 + Math.floor(Math.sqrt(clicks_per_sec))) * game_save.tree_levels;
+    game_save.manual_power = 1 + (Math.floor(Math.sqrt(clicks_per_sec))) * (1 + game_save.tree_levels);
     
     //Set the price of upgrading the tree
     if (game_save.tree_levels < 10) {

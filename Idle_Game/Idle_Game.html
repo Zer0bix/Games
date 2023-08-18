@@ -46,8 +46,8 @@
 		<divwarning id="warning" style="display:none" class="wrapper">
 			<p>Are you sure you want to wipe save?</p>
 			<input type="button" value="0" id="wipe_check_num" style="color:black;"></button>/10
-			<button id="erase_save_1" class="button" type="button" onclick="wipe_check();" >WIPE SAVE</button>
-			<button id="erase_save_2" class="button" type="button" onclick="no_wipe();" >CANCEL</button>
+			<button id="erase_save_1" class="button_warn" type="button" onclick="wipe_check();" >WIPE SAVE</button>
+			<button id="erase_save_2" class="button_text" type="button" onclick="no_wipe();" >CANCEL</button>
 
 		</divwarning>
 		<divtabs id="divider_tabs" class="wrapper2" style="display:block">
@@ -269,7 +269,7 @@
 						<button class="button" type="button" id="localLoad_button" onclick="localLoad();"></button>
 
 						<p style="color: red;"><strong>WIPE SAVE</strong></p>
-						<button class="button" type="button" id="wipeSave_button" onclick="wipeSave();" value="WIPE">WIPE</button>
+						<button class="button_warn" type="button" id="wipeSave_button" onclick="wipeSave();" value="WIPE"></button>
 					</div>
 					<br>
 					<!--Settings-->
@@ -311,7 +311,7 @@
 		</divback>
 	</divall>
 
-		    <!-- The Modal -->
+		    <!-- The Modal (alert) in the bottom right corner-->
 			<div id="alert_div" class="alert_div" style="display:none;">
 
 				<!-- Modal content -->
