@@ -33,3 +33,16 @@
     border-color: black;
     border-style: outset;
 }
+
+.bar {
+    background-image: url("../Images/Colourful_slider.png");
+    width: 100px;
+    height: 10px;
+}
+
+.border {
+    border-color: grey;
+    border-width: 2px;
+    border-style: ridge;
+    border-radius: 5px;
+}

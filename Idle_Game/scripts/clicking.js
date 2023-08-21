@@ -7,6 +7,9 @@ function gain(rate) {
     game_save.trees += game_save.buildings_data.b_production_costs.effect/rate;
     game_save.trees_chopped += game_save.buildings_data.b_production_costs.effect/rate;
 
+    //Stone
+    game_save.stone += game_save.buildings_data.b_stone_costs.effect/rate + 0.1*clicks_per_sec/rate;
+    
     //Souls
     game_save.souls += game_save.buildings_data.b_soul_costs.effect/rate;
 
@@ -16,7 +19,6 @@ function gain(rate) {
 
 function click_tree() {
     clicks_per_sec += 1;
-    game_save.stone += 0.1;
     setTimeout(remove_click_tree, 1000);
     
 }

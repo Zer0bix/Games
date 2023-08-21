@@ -95,11 +95,15 @@ function refresh100() {
         console.log("auto saving off");
     }
     document.getElementById("output").innerHTML = Math.floor(game_save.trees);
-    document.getElementById("tree_per_sec").innerHTML = "+" + Math.floor(game_save.manual_power + game_save.buildings_data.b_production_costs.effect) + "/s";
+    
     document.getElementById("stone_count_num").innerHTML = Math.floor(game_save.stone);
+    document.getElementById("souls_count_num").innerHTML = Math.floor(game_save.souls);
+    document.getElementById("research_count_num").innerHTML = Math.floor(game_save.research);
     document.getElementById("click_power").innerHTML = Math.floor(game_save.manual_power);
     document.getElementById("tree_level_display").innerHTML = Math.floor(game_save.tree_levels);
-
+    
+    //Per sec displays
+    document.getElementById("tree_per_sec").innerHTML = "+" + Math.floor(game_save.manual_power + game_save.buildings_data.b_production_costs.effect) + "/s";
 
 
     //Display all the various variables
@@ -115,6 +119,9 @@ function refresh100() {
         refresh_buildings();
     }
     load_check_1 = 1;
+
+    //Display the length of the bar for the clicking excersize.
+    document.getElementById("click_bar").style.width = clicks_per_sec*10 + "px";
 }
 
 function refresh10000() {
@@ -167,6 +174,15 @@ function game_refresh() {
 
     let build_prod = game_save.buildings_data.b_production_costs
     build_prod.effect = 1 + build_prod.owned*build_prod.research*5
+
+    let build_research = game_save.buildings_data.b_research_costs
+    build_research.effect = build_research.owned*build_research.research*2
+
+    let build_stone = game_save.buildings_data.b_stone_costs
+    build_stone.effect = build_stone.owned*build_stone.research
+
+    let build_souls = game_save.buildings_data.b_soul_costs
+    build_souls.effect = build_souls.owned*build_souls.research*2
     
 }
 
