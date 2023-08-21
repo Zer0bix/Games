@@ -1,39 +1,30 @@
-function load(data, recurse_num, recurse_value) {
-    //try {    
-        if (typeof(data) == "object") {
-            for (const key in data) {
-                if (typeof(data[key]) == "object" && data[key] != null) {
-                    //Recursive call for nested objects, checks if not null as null items are classed as objects.
-                    data[key] = load(data[key], 1+recurse_num, recurse_value[key]);
-                        
-                }
-                //Checks for nulls
-                else if (isNaN(data[key])|| data[key] == null) {
-                    console.log("Detected null (NaN) with name:", key, ":with value:", data[key], ":from:", data);
-                    data[key] = recurse_value[key];
-                    console.log("replaced:", data[key], ":with:", recurse_value[key])
-
-                }
-                else {
-                    //If no nulls detected, sets the value of the variable to that of the loaded.
-                    data[key] = data[key];
-                }
+function load(data, recurse_num, recurse_value) { 
+    if (typeof(data) == "object") {
+        for (const key in recurse_value) {
+            if (typeof(data[key]) == "object" && data[key] != null) {
+                //Recursive call for nested objects, checks if not null as null items are classed as objects.
+                data[key] = load(data[key], 1+recurse_num, recurse_value[key]);
+                    
             }
-            return data;
+            //Checks for nulls
+            else if (isNaN(data[key])|| data[key] == null) {
+                console.log("Detected null (NaN) with name:", key, ":with value:", recurse_data[key], ":from:", data);
+                data[key] = recurse_value[key];
+                console.log("replaced:", data[key], ":with:", recurse_value[key])
+
+            }
+            else {
+                //If no nulls detected, sets the value of the variable to that of the loaded.
+            }
         }
-        else {
-            console.log("Data incompatible, should be an object but is a", typeof(data));
-            return game_save
-        }
-        
+        return data;
     }
-    //catch (exception) {
-    //    console.log("Save data does not have a length attribute, line 26 of save.js, data:", game_save);
-    //    return game_save;
-    //}
-    
-    
-//}
+    else {
+        console.log("Data incompatible, should be an object but is a", typeof(data));
+        return game_save
+    }
+        
+}
 
 function settingload(data) {
 

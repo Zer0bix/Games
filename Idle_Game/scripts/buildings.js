@@ -39,7 +39,6 @@ function refresh_buildings() {
     let buildings = document.getElementsByClassName('wrapperb');
     for (i=0; i<buildings.length; i++) {
         let ele = buildings[i];
-        console.log(ele);
         let count_tree = ele.children.count; //Locate and store the count div
         let tree_cost = ele.children.build_cost.children[2];
         let stone_cost = ele.children.build_cost.children[3];
@@ -67,6 +66,7 @@ function refresh_buildings() {
         count_tree.innerHTML = "Owned: " + game_save.buildings_data[cost_key].owned;
         
         //Check if you can afford each item, and then add the respective class (can_upgrade or cant_upgrade) to the element.
+        cant_buy_building = 0;
         if (game_save.trees >= game_save.buildings_data[cost_key].trees2) {
             tree_cost.children[1].classList.add("can_upgrade");
             tree_cost.children[1].classList.remove("cant_upgrade");

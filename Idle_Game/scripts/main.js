@@ -121,13 +121,15 @@ function refresh10000() {
         changeBackground(id, "green");
     }
 
+    //Refresh building displays
+    refresh_buildings();
+
     //Display the stats in the stats tab
     document.getElementById('lifetime_clicks').innerHTML = game_save.lifetime_clicks;
     document.getElementById('lifetime_trees_chopped').innerHTML = game_save.lifetime_trees_chopped + game_save.trees_chopped;
     document.getElementById('lifetime_buildings_bought').innerHTML = game_save.lifetime_buildings_bought + game_save.buildings_data.b_num_total;
     
-    //Refresh building displays
-    refresh_buildings();
+
 }
 
 //Sets all the variables for gain and similar to the formulae required
