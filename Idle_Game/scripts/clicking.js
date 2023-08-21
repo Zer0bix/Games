@@ -1,15 +1,22 @@
+//Responsible for increasing the amount of trees, stone, souls, and research we have.
 
+function gain(rate) {
+    //Trees
+    game_save.trees += game_save.manual_power/rate;
+    game_save.trees_chopped += game_save.manual_power/rate;
+    game_save.trees += game_save.buildings_data.b_production_costs.effect/rate;
+    game_save.trees_chopped += game_save.buildings_data.b_production_costs.effect/rate;
 
-// Basic Clicking Function
+    //Souls
+    game_save.souls += game_save.buildings_data.b_soul_costs.effect/rate;
 
-function gain() {
-    game_save.trees += game_save.manual_power;
-    game_save.trees_chopped += game_save.manual_power;
-    document.getElementById("output").innerHTML = game_save.trees;
+    //Research
+    game_save.research += game_save.buildings_data.b_research_costs.effect/rate;
 }
 
 function click_tree() {
     clicks_per_sec += 1;
+    game_save.stone += 0.1;
     setTimeout(remove_click_tree, 1000);
     
 }

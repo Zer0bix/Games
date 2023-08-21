@@ -9,16 +9,14 @@ window.onload = function() {
     setInterval(refresh10000, 10000);
     setInterval(game_refresh, 10);
     check_load_progress = setInterval(check_load, 100);
+    gain_resources = setInterval(gain, 100, 10);
     auto_save_int_true = 0;
     let id_off = 'auto_save_toggle_' + auto_save;
     changeBackground(id_off, "green");
     // tell game that this section is loaded
     load_check_0 = 1;
-
-    let load_game_data_string = localStorage.getItem('tree_game_save_data');
-
-        let load_game_data = JSON.parse(atob(load_game_data_string));
-        console.log("loaded:", load_game_data);
+    
+    //Loading the data
 
     //Load some functions now prior to them running after however many seconds
     initial_load();
@@ -32,8 +30,21 @@ window.onload = function() {
         ele.onclick = buy_1;
     }
 
+    //Building minimize handlers
+    let mins = document.getElementsByClassName("min_button");
+    for (i=0; i<mins.length; i++) {
+        let ele = mins[i];
+        ele.onclick = minimize_buildings;
+
+    }
+    //Building minimize needs this:
+    let building_min = ['click', 'production', 'research', 'reduce'];
+    for (i=0;i<4;i++) {
+        document.getElementById(building_min[i] + "_building").style.display="block";
+    }
+
     load_check_3 = 1;
-    console.log("loaded all checks in main.py window.onload function()")
+    console.log("loaded all checks in main.py window.onload function()");
 }
 
 
@@ -83,24 +94,26 @@ function refresh100() {
         auto_save_int_true = 0;
         console.log("auto saving off");
     }
-    document.getElementById("output").innerHTML = game_save.trees;
-    //document.getElementById("upgbutprice").innerHTML = price;
-    document.getElementById("click_power").innerHTML = game_save.manual_power;
-    document.getElementById("tree_level_display").innerHTML = game_save.tree_levels;
+    document.getElementById("output").innerHTML = Math.floor(game_save.trees);
+    document.getElementById("tree_per_sec").innerHTML = "+" + Math.floor(game_save.manual_power + game_save.buildings_data.b_production_costs.effect) + "/s";
+    document.getElementById("stone_count_num").innerHTML = Math.floor(game_save.stone);
+    document.getElementById("click_power").innerHTML = Math.floor(game_save.manual_power);
+    document.getElementById("tree_level_display").innerHTML = Math.floor(game_save.tree_levels);
 
-    //Set the tree display to 
-    if (Math.log10(game_save.trees) < 22) {
-        document.getElementById("tree_count_logo").style.right = 125 + Math.floor(Math.log10(game_save.trees))*18 + "px";
-    }
+
 
     //Display all the various variables
-    document.getElementById('tree_upg_cost_display').innerHTML = upgrade_tree_price; //Upgrade tree cost display
-    document.getElementById('land_count_num').innerHTML = game_save.land; //land count in Buildings tab
+    document.getElementById('tree_upg_cost_display').innerHTML = Math.floor(upgrade_tree_price); //Upgrade tree cost display
+    document.getElementById('land_count_num').innerHTML = Math.floor(game_save.land); //land count in Buildings tab
 
 
     //Check if you can upgrade the tree, and if so, set the class to can upgrade. Also makes sure the code can run only once.
     upg_tree_set_class_cursor = display_upgrade_yn(document.getElementById("upg_tree_butt"), document.getElementById("tree_upg_cost_display"), game_save.trees, upgrade_tree_price, upg_tree_set_class_cursor);
 
+
+    if (document.getElementById('tab_2').style.display == "block") {
+        refresh_buildings();
+    }
     load_check_1 = 1;
 }
 
@@ -135,7 +148,7 @@ function refresh10000() {
 //Sets all the variables for gain and similar to the formulae required
 function game_refresh() {
     //Set the manual clicking power for trees
-    game_save.manual_power = 1 + (Math.floor(Math.sqrt(clicks_per_sec))) * (1 + game_save.tree_levels);
+    game_save.manual_power = (Math.floor(Math.sqrt(clicks_per_sec))) * (1 + game_save.tree_levels + game_save.buildings_data.b_click_costs.effect);
     
     //Set the price of upgrading the tree
     if (game_save.tree_levels < 10) {
@@ -143,7 +156,18 @@ function game_refresh() {
     }
 
     //Set the amount of remaining land
-    game_save.land = game_save.tree_levels*land_multi-buildings_count;
+    game_save.land = game_save.tree_levels*land_multi-buildings_count - game_save.buildings_data.b_num_total;
+
+    //Set the multiplier for a building's cost.
+    buildings_multi = 1.01**game_save.buildings_data.b_num_total * (1-game_save.buildings_data.b_reduce_costs.owned*0.05);
+
+    //Set the effect for each building
+    let build_click = game_save.buildings_data.b_click_costs
+    build_click.effect = 1 + build_click.owned*(build_click.research)*0.5
+
+    let build_prod = game_save.buildings_data.b_production_costs
+    build_prod.effect = 1 + build_prod.owned*build_prod.research*5
+    
 }
 
 function initial_load() {

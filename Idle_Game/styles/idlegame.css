@@ -3,8 +3,7 @@ body {
     background-image:url("../Images/pattern_background.png");
     opacity: 90%;
     background-color: black;
-    overflow: hidden;
-    }
+}
 
 /* Create an active/current tablink class */
 .tab button.active {
@@ -24,17 +23,6 @@ a {
     text-align: center;
     text-decoration: none;
     display: inline-block;
-}
-
-#output {
-    text-shadow: 0 0 3px #ff0000;
-    font-family: "Papyrus";
-    position: absolute;
-    right: 100px;
-}
-#tree_count_logo {
-    position: absolute;
-    right: 125px;
 }
 
 .import_box, .export_box {
@@ -88,4 +76,19 @@ a {
 /* Show the tooltip text when you mouse over the tooltip container */
 .tooltip:hover .tooltip_text {
   display: block;
+}
+
+.right {
+    position: fixed;
+    right: 5px;
+    width: 80px;
+
+}
+
+.min_button {
+    top: 10%;
+    right: 10%;
+    position: fixed;
+    font-style:bold;
+    font-size: 20px;
 }

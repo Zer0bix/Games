@@ -1,14 +1,14 @@
-function load(data, recurse_num, recurse_value) { 
+function load(data, recurse_value) { 
     if (typeof(data) == "object") {
         for (const key in recurse_value) {
             if (typeof(data[key]) == "object" && data[key] != null) {
                 //Recursive call for nested objects, checks if not null as null items are classed as objects.
-                data[key] = load(data[key], 1+recurse_num, recurse_value[key]);
+                data[key] = load(data[key], recurse_value[key]);
                     
             }
             //Checks for nulls
             else if (isNaN(data[key])|| data[key] == null) {
-                console.log("Detected null (NaN) with name:", key, ":with value:", recurse_data[key], ":from:", data);
+                console.log("Detected null (NaN) with name:", key, ":with value:", recurse_value[key], ":from:", data);
                 data[key] = recurse_value[key];
                 console.log("replaced:", data[key], ":with:", recurse_value[key])
 
@@ -81,17 +81,18 @@ function localLoad() {
         let loadSaveStateString = localStorage.getItem('tree_game_save_data');
         let loadSaveState = JSON.parse(atob(loadSaveStateString));
         console.log("Game loaded from: ", loadSaveState);
-        game_save = load(loadSaveState, 0, game_base_values);
+        game_save = load(loadSaveState, game_base_values);
 
         //loading settings
         let loadSaveStateStringSettings = localStorage.getItem('tree_setting_save');
         let loadSaveStateSettings = JSON.parse(atob(loadSaveStateStringSettings));
         console.log("Settings loaded from: ", loadSaveStateSettings);
-        setting_save = settingload(loadSaveStateSettings, 0, game_base_values);
+        setting_save = settingload(loadSaveStateSettings, game_base_values);
     }
     catch (exception) {
         game_save = game_base_values;
         setting_save = setting_base_values;
+        console.log("No save detected, loading base values");
     }
 }
 
@@ -114,18 +115,9 @@ function wipe_check() {
     }
 }
 function true_wipe() {
-    // hide the warnings
-    dialog_box = document.getElementById("warning");
-    dialog_box.style.display = "none";
-    // resetting all variables
-    game_save = objectToObject(game_base_values, game_save);
-    setting_save = objectToObject(setting_base_values, setting_save);
-    wipe_times = 0;
-
-    document.getElementById("wipe_check_num").value = wipe_times;
-    // display the main interface.
-    document.getElementById("underlay_back").style.display = "block";
-    open_tab(0);
+    localStorage.removeItem('tree_game_save_data');
+    localStorage.removeItem('tree_setting_save');
+    location.reload();
 }
 function no_wipe() {
     dialog_box = document.getElementById("warning");

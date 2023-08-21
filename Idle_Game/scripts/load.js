@@ -3,7 +3,6 @@ function load_game() {
     if (load_progress == 4) {
         document.getElementById("loading_screen").style.display = "none";
         document.getElementById("page_content").style.display = "block";
-        setInterval(gain, 1000);
     }
 }
 

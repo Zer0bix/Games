@@ -10,6 +10,7 @@
 	<link rel="stylesheet" href="styles/wrapper.css" id="wrappercss">
 	<link rel="stylesheet" href="styles/modal.css" id="modalcss">
 	<link rel="stylesheet" href="styles/buildings.css" id="buildingcss">
+	<link rel="stylesheet" href="styles/display.css" id="displaycss">
 	
 	
 	<Title>THE web pages</title>
@@ -39,7 +40,7 @@
 			</div>
 			<br>
 			<br>
-			<button type="button" class="button_big" onclick="load_game();" >Click Me!</button>
+			<button type="button" class="button_big" onclick="load_game();">Play</button>
 		</center></center>
 	</divloading>
 	<divall id="page_content" style="display:none;">
@@ -54,14 +55,45 @@
 			<button id="Tab_1" onclick="open_tab(0);" type="button" class="tablinks tablinks2">Main</button>
 			<button id="Tab_2" onclick="open_tab(1); refresh_buildings();" type="button" class="tablinks">Buildings</button>
 			<button id="Tab_3" onclick="open_tab(2);" type="button" class="tablinks" value="potato">Upgrades</button>
-			<button id="Tab_4" onclick="open_tab(3);" type="button" class="tablinks" value="View Tree">Production</button>
+			<button id="Tab_4" onclick="open_tab(3);" type="button" class="tablinks" value="View Tree">Ascension</button>
 			<button id="Tab_5" onclick="open_tab(4);" type="button" class="tablinks" value="Settings">Options</button>
 		</divtabs>
-		<div id="tree_count">
-			<h1>
-			<img src="Images/Tree_1.png" id="tree_count_logo">
-			<div id="output" value="Display">Display</div>
-			</h1>
+		<div id="tree_count" class="wrapper right">
+			<!--Tree count display-->
+			<div class="display_value">
+				<img src="Images/Tree_1.png" id="tree_count_logo" class="icon_big">
+				<span id="output" value="Display" class="number">Display</span>
+				<span id="tree_per_sec" value="Display" class="number" style="color:green">+0/s</span>
+				
+			</div>
+			<!--Other displays, including land, stone, souls-->
+			<div class="wrapper display_value_wrap right">
+				<div id="land_count" class="display_value">
+					<img src="Images/Land_icon.png" id="land_icon" class="icon"></img>
+					<span class="number" id="land_count_num">0</span>
+				</div>
+				<br><br>
+				<div id="stone_count" class="display_value">
+					<img src="Images/stone_icon.png" id="stone_icon" class="icon"></img>
+					<span class="number" id="stone_count_num">0</span>
+					<span id="stone_per_sec" value="Display" class="number" style="color:green">+0/s</span>
+				</div>
+				<br><br>
+				<div id="souls_count" class="display_value">
+					<img src="Images/souls_icon.png" id="souls_icon" class="icon"></img>
+					<span class="number" id="souls_count_num">0</span>
+					<span id="souls_per_sec" value="Display" class="number" style="color:green">+0/s</span>
+				</div>
+				<br><br>
+				<div id="research_count" class="display_value">
+					<img src="Images/research_icon.png" id="research_icon" class="icon"></img>
+					<span class="number" id="research_count_num">0</span>
+					<span id="research_per_sec" value="Display" class="number" style="color:green">+0/s</span>
+				</div>
+				<br><br>
+			
+		</div>
+			
 		</div>
 		<br><br><br>
 		<divback id="underlay_back">
@@ -71,6 +103,7 @@
 						<!--The button to click-->
 						<button type="button" onclick="click_tree(); no_spam('click_tree')" class="button" id="click_tree"></button>
 						<divinfo>Click Power: <div id="click_power">1</div></divinfo>
+						<span id="click_bar" class="bar"></span>
 						<br>
 						<br>
 					</div>
@@ -87,14 +120,16 @@
 
 					<!--Buildings that can be built-->
 					<!--Click Building-->
-					<div class="wrapperb b_start" id="click_building" >
+					<button type="button" class="faint_button min_button" id="min_row_1" data-value="b_top_row">-</button>
+					<div class="wrapperb b_start b_top_row" id="click_building">
 						<span class="b_title">Click Building</span>
-						<br>
-						<span class="b_description">Increases the amount of trees chopped whenever you click</span>
-						<br><br><br>
 						<!--Display how many you currently have-->
-						<span id="count" class="owned_count">Owned: 0</span>
+						<span id="count" class="owned_count">0</span>
 						<br>
+						<!--Description of the building-->
+						<span class="b_description">Increases the amount of trees chopped whenever you click</span>
+						<!--Display the cost of the building-->
+						<br><br>
 						<div id="build_cost" class="cost_display_wrap">
 							<span>Materials</span>
 							<br>
@@ -104,7 +139,7 @@
 									<span class="tooltip_text">Tree</span>
 									<img src="Images/Tree_1.png" class="icon_0">Tree
 								</div>
-								<span id="b_click_cost_tree" class="build_cost">0</span>
+								<span class="build_cost">0</span>
 							</div>
 							<!--Cost display for stone-->
 							<div class="cost_display" data-value="click_costs">
@@ -112,55 +147,57 @@
 									<span class="tooltip_text">Stone</span> 
 									<img src="Images/stone_icon.png" class="icon_0">Stone
 								</div> 
-								<span id="b_click_cost_stone" class="build_cost">27</span>
+								<span class="build_cost">27</span>
 							</div>
 						
 						</div>
-						<button type="button" class="button" id="button" value="1">+1</button>
+						<button type="button" class="button b_button" id="button" value="1">+1</button>
 					</div>
 
 					<!--Production Building-->
-					<div class="wrapperb b_midleft" id="production_building">
+					<div class="wrapperb b_midleft b_top_row" id="production_building" >
 						<span class="b_title">Production Building</span>
-						<br>
-						<span class="b_description">Increases the number of trees you chop per second</span>
-						<br><br><br>
 						<!--Display how many you currently have-->
-						<span id="count" class="owned_count">Owned: 0</span>
+						<span id="count" class="owned_count">0</span>
 						<br>
+						<!--Description of the building-->
+						<span class="b_description">Increases the number of trees you chop per second</span>
+						<!--Display the cost of the building-->
+						<br><br>
 						<div id="build_cost" class="cost_display_wrap">
 							<span>Materials</span>
 							<br>
 							<!--Cost display for trees-->
-							<div class="cost_display" data-value="prod_costs">
+							<div class="cost_display" data-value="production_costs">
 								<div class="tooltip">
 									<span class="tooltip_text">Tree</span>
 									<img src="Images/Tree_1.png" class="icon_0">Tree
 								</div>
-								<span id="build_cost_tree" class="build_cost">0</span>
+								<span class="build_cost">0</span>
 							</div>
 							<!--Cost display for stone-->
-							<div class="cost_display" data-value="prod_costs">
+							<div class="cost_display" data-value="production_costs">
 								<div class="tooltip">
 									<span class="tooltip_text">Stone</span> 
 									<img src="Images/stone_icon.png" class="icon_0">Stone
 								</div> 
-								<span id="b_click_cost_tree" class="build_cost">27</span>
+								<span class="build_cost">27</span>
 							</div>
 						
-					</div>
-					<button type="button" class="button" id="button" value="1">+1</button>
+						</div>
+						<button type="button" class="button b_button" id="button" value="1">+1</button>
 					</div>
 
 					<!--Research Building-->
-					<div class="wrapperb b_midright" id="research_building">
+					<div class="wrapperb b_midright b_top_row" id="research_building" >
 						<span class="b_title">Research Building</span>
-						<br>
-						<span class="b_description">Allows you to start researching</span>
-						<br><br><br>
 						<!--Display how many you currently have-->
-						<span id="count" class="owned_count">Owned: 0</span>
+						<span id="count" class="owned_count">0</span>
 						<br>
+						<!--Description of the building-->
+						<span class="b_description">Allows you to start gaining research</span>
+						<!--Display the cost of the building-->
+						<br><br>
 						<div id="build_cost" class="cost_display_wrap">
 							<span>Materials</span>
 							<br>
@@ -170,7 +207,7 @@
 									<span class="tooltip_text">Tree</span>
 									<img src="Images/Tree_1.png" class="icon_0">Tree
 								</div>
-								<span id="build_cost_tree" class="build_cost">0</span>
+								<span class="build_cost">0</span>
 							</div>
 							<!--Cost display for stone-->
 							<div class="cost_display" data-value="research_costs">
@@ -178,66 +215,185 @@
 									<span class="tooltip_text">Stone</span> 
 									<img src="Images/stone_icon.png" class="icon_0">Stone
 								</div> 
-								<span id="b_click_cost_tree" class="build_cost">27</span>
+								<span class="build_cost">27</span>
 							</div>
 						
-					</div>
-					<button type="button" class="button" id="button" value="1">+1</button>
+						</div>
+						<button type="button" class="button b_button" id="button" value="1">+1</button>
 					</div>
 
-					<!--Reduce CostsBuilding-->
-					<div class="wrapperb b_end" id="reduce_building">
+					<!--Reduce Cost Building-->
+					<div class="wrapperb b_end b_top_row" id="reduce_building" >
 						<span class="b_title">Reduce Cost Building</span>
-						<br>
-						<span class="b_description">Reduces the cost of building and upgrading buildings</span>
-						<br><br><br>
 						<!--Display how many you currently have-->
-						<span id="count" class="owned_count">Owned: 0</span>
+						<span id="count" class="owned_count">0</span>
 						<br>
+						<!--Description of the building-->
+						<span class="b_description">Reduces the cost of building and upgrading buildings by 5% (per building)</span>
+						<!--Display the cost of the building-->
+						<br><br>
 						<div id="build_cost" class="cost_display_wrap">
 							<span>Materials</span>
 							<br>
 							<!--Cost display for trees-->
-							<div class="cost_display" data-value="costdown_costs">
+							<div class="cost_display" data-value="reduce_costs">
 								<div class="tooltip">
 									<span class="tooltip_text">Tree</span>
 									<img src="Images/Tree_1.png" class="icon_0">Tree
 								</div>
-								<span id="build_cost_tree" class="build_cost">0</span>
+								<span class="build_cost">0</span>
 							</div>
 							<!--Cost display for stone-->
-							<div class="cost_display" data-value="costdown_costs">
+							<div class="cost_display" data-value="reduce_costs">
 								<div class="tooltip">
 									<span class="tooltip_text">Stone</span> 
 									<img src="Images/stone_icon.png" class="icon_0">Stone
 								</div> 
-								<span id="b_click_cost_tree" class="build_cost">27</span>
+								<span class="build_cost">27</span>
 							</div>
 						
-					</div>
-					<button type="button" class="button" id="button" value="1">+1</button>
+						</div>
+						<button type="button" class="button b_button" id="button" value="1">+1</button>
 					</div>
 
-
-
-					<!--Variables displayed in the buildings tab, only those necessary for building-->
-					<div class="wrapper display_value_wrap">
-						<div id="land_count" class="display_value">
-							<img src="Images/Land_icon.png" id="land_icon" class="icon"></img>
-							<span class="number" id="land_count_num">0</span>
-						</div>
+					<div class="b_min_row"><span class="min_button" id="min_row_2"></span></div>
+					<!--Second row of buildings-->
+					<!--Soul Building-->
+					<div class="wrapperb b_start b_mid_row" id="soul_building" style="display:none;">
+						<span class="b_title">Soul Building</span>
+						<!--Display how many you currently have-->
+						<span id="count" class="owned_count">0</span>
+						<br>
+						<!--Description of the building-->
+						<span class="b_description">Enables the production of souls, useful in upgrading buildings</span>
+						<!--Display the cost of the building-->
 						<br><br>
-						<div id="buildings_count" class="display_value">
-							<img src="Images/Land_icon.png" id="land_icon" class="icon"></img>
-							<span class="number" id="land_count_num">0</span>
+						<div id="build_cost" class="cost_display_wrap">
+							<span>Materials</span>
+							<br>
+							<!--Cost display for trees-->
+							<div class="cost_display" data-value="soul_costs">
+								<div class="tooltip">
+									<span class="tooltip_text">Tree</span>
+									<img src="Images/Tree_1.png" class="icon_0">Tree
+								</div>
+								<span class="build_cost">0</span>
+							</div>
+							<!--Cost display for stone-->
+							<div class="cost_display" data-value="soul_costs">
+								<div class="tooltip">
+									<span class="tooltip_text">Stone</span> 
+									<img src="Images/stone_icon.png" class="icon_0">Stone
+								</div> 
+								<span class="build_cost">27</span>
+							</div>
+						
 						</div>
-						<br><br>
-						<div id="" class="display_value">
-							<img src="Images/Land_icon.png" id="land_icon" class="icon"></img>
-							<span class="number" id="land_count_num">0</span>
-						</div>
-						<br><br>
+						<button type="button" class="button b_button" id="button" value="1">+1</button>
 					</div>
+
+					<!--Stone Building-->
+					<div class="wrapperb b_midleft b_mid_row" id="stone_building" style="display:none;">
+						<span class="b_title">Stone Building</span>
+						<!--Display how many you currently have-->
+						<span id="count" class="owned_count">0</span>
+						<br>
+						<!--Description of the building-->
+						<span class="b_description">Produces stone automatically, useful in buying more and higher tier buildings.</span>
+						<!--Display the cost of the building-->
+						<br><br>
+						<div id="build_cost" class="cost_display_wrap">
+							<span>Materials</span>
+							<br>
+							<!--Cost display for trees-->
+							<div class="cost_display" data-value="stone_costs">
+								<div class="tooltip">
+									<span class="tooltip_text">Tree</span>
+									<img src="Images/Tree_1.png" class="icon_0">Tree
+								</div>
+								<span class="build_cost">0</span>
+							</div>
+							<!--Cost display for stone-->
+							<div class="cost_display" data-value="stone_costs">
+								<div class="tooltip">
+									<span class="tooltip_text">Stone</span> 
+									<img src="Images/stone_icon.png" class="icon_0">Stone
+								</div> 
+								<span class="build_cost">27</span>
+							</div>
+						
+						</div>
+						<button type="button" class="button b_button" id="button" value="1">+1</button>
+					</div>
+
+					<!--Shop Building-->
+					<div class="wrapperb b_midright b_mid_row" id="shop_building" style="display:none;">
+						<span class="b_title">Shop Building</span>
+						<!--Display how many you currently have-->
+						<span id="count" class="owned_count">0</span>
+						<br>
+						<!--Description of the building-->
+						<span class="b_description">Allows you to sell resources for gold, which can be used to buy upgrades and resources</span>
+						<!--Display the cost of the building-->
+						<br><br>
+						<div id="build_cost" class="cost_display_wrap">
+							<span>Materials</span>
+							<br>
+							<!--Cost display for trees-->
+							<div class="cost_display" data-value="shop_costs">
+								<div class="tooltip">
+									<span class="tooltip_text">Tree</span>
+									<img src="Images/Tree_1.png" class="icon_0">Tree
+								</div>
+								<span class="build_cost">0</span>
+							</div>
+							<!--Cost display for stone-->
+							<div class="cost_display" data-value="shop_costs">
+								<div class="tooltip">
+									<span class="tooltip_text">Stone</span> 
+									<img src="Images/stone_icon.png" class="icon_0">Stone
+								</div> 
+								<span class="build_cost">27</span>
+							</div>
+						
+						</div>
+						<button type="button" class="button b_button" id="button" value="1">+1</button>
+					</div>
+				
+					<!--Plantation Building-->
+					<div class="wrapperb b_end b_mid_row" id="plantation_building" style="display:none;">
+						<span class="b_title">Plantation Building</span>
+						<!--Display how many you currently have-->
+						<span id="count" class="owned_count">0</span>
+						<br>
+						<!--Description of the building-->
+						<span class="b_description">Allows you to start regrowing trees</span>
+						<!--Display the cost of the building-->
+						<br><br>
+						<div id="build_cost" class="cost_display_wrap">
+							<span>Materials</span>
+							<br>
+							<!--Cost display for trees-->
+							<div class="cost_display" data-value="plantation_costs">
+								<div class="tooltip">
+									<span class="tooltip_text">Tree</span>
+									<img src="Images/Tree_1.png" class="icon_0">Tree
+								</div>
+								<span class="build_cost">0</span>
+							</div>
+							<!--Cost display for stone-->
+							<div class="cost_display" data-value="plantation_costs">
+								<div class="tooltip">
+									<span class="tooltip_text">Stone</span> 
+									<img src="Images/stone_icon.png" class="icon_0">Stone
+								</div> 
+								<span class="build_cost">27</span>
+							</div>
+						
+						</div>
+						<button type="button" class="button b_button" id="button" value="1">+1</button>
+					</div>					
+
 				</divtab2>
 				<divtab3 id="tab_3" style="display:none" class="tabcontent">
 					<p>TO BE CONTINUED #3</p>

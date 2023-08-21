@@ -1,34 +1,3 @@
-.icon {
-    width: 16px;
-    height: 16px;
-    border-radius: 3px;
-    border-color: black;
-    border-style:outset;
-}
-
-.icon_0 {
-    width: 16px;
-    height: 16px;
-    border-radius: 3px;
-}
-
-.display_value_wrap {
-    position: fixed;
-    right: 5px;
-    top: 20%;
-    width: 80px;
-
-}
-
-.display_value {
-    padding: 5px;
-    background-color: rgba(250, 250, 250, 0.1);
-    border-color: rgba(250, 250, 250, 0.1);
-    border-radius: 5px;
-    border-style:solid;
-    right: 20px;
-}
-
 .b_title {
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif, bold;
     font-weight:bold;
@@ -54,7 +23,6 @@
     border-style: ridge;
     border-color: rgba(100, 255, 100, 0.5) rgba(50, 200, 50, 0.3);
     border-width:2px;
-
 }
 
 .cost_display_head {
@@ -72,30 +40,67 @@
 
 .owned_count {
     color: white;
-    width: 100%;
-    right: -65%;
+    right: 5%;
     position: absolute;
 }
 
 .b_midleft {
     position: fixed;
-    left: 23%;
-    max-width: 18%;
+    left: 24%;
+    max-width: 20%;
 }
 
 .b_midright {
     position: fixed;
-    left: 46%;
-    max-width: 18%;
+    left: 47%;
+    max-width: 20%;
 }
 
 .b_end {
     position: fixed;
     left: 70%;
-    max-width: 18%;
+    max-width: 20%;
 }
 
 .b_start {
+    left: 1%;
     position: fixed;
-    max-width: 18%;
+    max-width: 20%;
+}
+
+.b_td {
+    height: 100px;
+    top: 100px;
+}
+
+.b_top_row {
+    top: 120px;
+    height: 250px;
+    display: block;
+    visibility: block;
+}
+
+.b_mid_row {
+    top: 420px;
+    height: 250px;
+    position: fixed;
+    display: block;
+
+}
+
+.b_mid_row_min {
+    top: 120px;
+    height: 250px;
+    display: block;
+}
+
+.b_button {
+    position: absolute;
+    bottom: 3%;
+    right: 3%;
+}
+
+.b_button_minimized {
+    position: absolute;
+    right: 3%;
 }
