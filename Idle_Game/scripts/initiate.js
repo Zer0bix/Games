@@ -2,6 +2,9 @@
 
 version = "0.0.1";
 
+//Tutorial variables
+tutorial_needed = 0;
+
 //Loading variables needed in load.js, all gradually set to 1 as the game is loaded.
 load_check_0 = 0;
 load_check_1 = 0;
@@ -71,6 +74,7 @@ second_row_buildings = document.getElementsByClassName("b_mid_row");
 
 //Game data variables
 trees = 1;
+trees_per_sec = 0;
 manual_power = 1;
 trees_chopped = 0;
 wipe_times = 0;
@@ -95,7 +99,7 @@ lifetime_buildings_bought = 0;
 //game_base_values is the constant variable that tells you what the initial values are
 //game_save_name is how you operate each item in the Object like a list
 //Unfortunately Objects do not allow you to create an object like game_save_base = game_save, as it just becomes a new access point for the initial object instead of taking all the values of the object. This is why each object is defined 3 times.  
-game_save = Object({trees, manual_power, trees_chopped, tree_levels, lifetime_clicks, lifetime_trees_chopped, lifetime_buildings_bought, land, buildings_data, version, stone, souls, research});
+game_save = Object({trees, manual_power, trees_chopped, tree_levels, lifetime_clicks, lifetime_trees_chopped, lifetime_buildings_bought, land, buildings_data, version, stone, souls, research, trees_per_sec});
 const game_base_values = JSON.parse(JSON.stringify(game_save));
 const game_save_name = ["trees", 'manual_power', "trees_chopped", "tree_levels", "lifetime_clicks", "lifetime_trees_chopped", "lifetime_buildings_bought", "land", "buildings_data"];
 

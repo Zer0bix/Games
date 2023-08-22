@@ -14,6 +14,7 @@
 	
 	
 	<Title>THE web pages</title>
+		
 		<script type="text/javascript" src="scripts/refresh.js" id="refreshjs"></script>
 		<script type="text/javascript" src="scripts/modal.js" id="modaljs"></script>
 		<script type="text/javascript" src="scripts/random.js" id="randomjs"></script>
@@ -24,6 +25,7 @@
 		<script type="text/javascript" src="scripts/tabs.js" id="tabsjs"></script>
 		<script type="text/javascript" src="scripts/save.js" id="savejs"></script>
 		<script type="text/javascript" src="scripts/settings.js" id="settingsjs"></script>
+		<script type="text/javascript" src="scripts/tutorial.js" id="tutorialjs"></script>
 		<script type="text/javascript" src="scripts/main.js" id="mainjs"></script>
 		
 		
@@ -32,6 +34,11 @@
 
 <body id="body">
 
+
+	<divtooltip id="global_tooltip" class="tooltip" style="position: fixed; display:none;">
+		<span class="tooltip_text" id="global_tooltip_content" style="position: fixed;">empty</span>
+		<img src="url('Tree_1.pg')">
+	</divtooltip>
 	<divloading id="loading_screen" style="display:block;" class="wrapper3">
 		<center><center>
 			<h1 class="title" id="loading_game_text">Loading game</h1>
@@ -43,6 +50,17 @@
 			<button type="button" class="button_big" onclick="load_game();">Play</button>
 		</center></center>
 	</divloading>
+
+	<divtutorial id="tutorial" style="display:none;" class="wrapper">
+		<div id="tutorial_content">
+		<h1>Welcome to Wooden Empire!</h1>
+		<p>Wooden Empire is an incremental game about chopping trees.
+			Hover over most buttons or texts, and they will tell you their purpose.
+		</p>
+		<button type="button" class="button_text" onclick="tutorial_1();">Start game</button>
+	</div>
+	</divtutorial>
+
 	<divall id="page_content" style="display:none;">
 		<divwarning id="warning" style="display:none" class="wrapper">
 			<p>Are you sure you want to wipe save?</p>
@@ -51,6 +69,8 @@
 			<button id="erase_save_2" class="button_text" type="button" onclick="no_wipe();" >CANCEL</button>
 
 		</divwarning>
+
+		
 		<divtabs id="divider_tabs" class="wrapper2" style="display:block">
 			<button id="Tab_1" onclick="open_tab(0);" type="button" class="tablinks tablinks2">Main</button>
 			<button id="Tab_2" onclick="open_tab(1); refresh_buildings();" type="button" class="tablinks">Buildings</button>
@@ -61,34 +81,34 @@
 		<div id="tree_count" class="wrapper right">
 			<!--Tree count display-->
 			<div class="display_value">
-				<img src="Images/Tree_1.png" id="tree_count_logo" class="icon_big">
-				<span id="output" value="Display" class="number">Display</span>
-				<span id="tree_per_sec" value="Display" class="number" style="color:green">+0/s</span>
+				<img src="Images/Tree_1.png" id="tree_count_logo" class="icon_big" data_tooltip_display="Trees">
+				<span id="output" value="Display" class="number count" data-value="trees" data_tooltip_display="Trees">Display</span>
+				<span id="tree_per_sec" value="Display" class="number count" style="color:green" data-value="trees_per_sec" data-value-2="per_sec" data_tooltip_display="Trees per second">+0/s</span>
 				
 			</div>
 			<!--Other displays, including land, stone, souls-->
 			<div class="wrapper display_value_wrap right">
 				<div id="land_count" class="display_value">
 					<img src="Images/Land_icon.png" id="land_icon" class="icon"></img>
-					<span class="number" id="land_count_num">0</span>
+					<span class="number count" id="land_count_num" data-value="land">0</span>
 				</div>
 				<br><br>
 				<div id="stone_count" class="display_value">
 					<img src="Images/stone_icon.png" id="stone_icon" class="icon"></img>
-					<span class="number" id="stone_count_num">0</span>
-					<span id="stone_per_sec" value="Display" class="number" style="color:green">+0/s</span>
+					<span class="number count" id="stone_count_num" data-value="stone">0</span>
+					<span id="stone_per_sec" value="Display" class="number b_count" style="color:green" data-value="stone" data-value-2="per_sec">0</span>
 				</div>
 				<br><br>
 				<div id="souls_count" class="display_value">
 					<img src="Images/souls_icon.png" id="souls_icon" class="icon"></img>
-					<span class="number" id="souls_count_num">0</span>
-					<span id="souls_per_sec" value="Display" class="number" style="color:green">+0/s</span>
+					<span class="number count" id="souls_count_num" data-value="souls">0</span>
+					<span id="souls_per_sec" value="Display" class="number b_count" style="color:green" data-value="soul" data-value-2="per_sec">+0/s</span>
 				</div>
 				<br><br>
 				<div id="research_count" class="display_value">
 					<img src="Images/research_icon.png" id="research_icon" class="icon"></img>
-					<span class="number" id="research_count_num">0</span>
-					<span id="research_per_sec" value="Display" class="number" style="color:green">+0/s</span>
+					<span class="number count" id="research_count_num" data-value="research">0</span>
+					<span id="research_per_sec" value="Display" class="number b_count" style="color:green" data-value="research" data-value-2="per_sec">+0/s</span>
 				</div>
 				<br><br>
 			

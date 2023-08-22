@@ -1,8 +1,13 @@
 
 function load_game() {
     if (load_progress == 4) {
-        document.getElementById("loading_screen").style.display = "none";
-        document.getElementById("page_content").style.display = "block";
+        if (tutorial_needed == 1) {
+            tutorial();
+        }
+        else {
+            document.getElementById("loading_screen").style.display = "none";
+            document.getElementById("page_content").style.display = "block";
+        }
     }
 }
 
@@ -20,12 +25,12 @@ function check_load() {
         }
         if (load_progress == 4) {
             try {
-            if (load_interval_cleared == 1) {
-                clearInterval(check_load_progress);
-                load_interval_cleared = 0;
-                document.getElementById("loading_screen_icon_cover").style.display = "none";
-                document.getElementById("loading_game_text").innerHTML = "Loaded!";
-            }
+                if (load_interval_cleared == 1) {
+                    clearInterval(check_load_progress);
+                    load_interval_cleared = 0;
+                    document.getElementById("loading_screen_icon_cover").style.display = "none";
+                    document.getElementById("loading_game_text").innerHTML = "Wooden Empire!";
+                }
             }
             catch (exception) {console.log("couldn't load")}
 

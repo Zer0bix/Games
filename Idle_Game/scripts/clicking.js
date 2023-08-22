@@ -2,10 +2,8 @@
 
 function gain(rate) {
     //Trees
-    game_save.trees += game_save.manual_power/rate;
-    game_save.trees_chopped += game_save.manual_power/rate;
-    game_save.trees += game_save.buildings_data.b_production_costs.effect/rate;
-    game_save.trees_chopped += game_save.buildings_data.b_production_costs.effect/rate;
+    game_save.trees += game_save.trees_per_sec/rate
+    game_save.trees_chopped += game_save.trees_per_sec/rate
 
     //Stone
     game_save.stone += game_save.buildings_data.b_stone_costs.effect/rate + 0.1*clicks_per_sec/rate;

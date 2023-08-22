@@ -1,22 +1,19 @@
 function buy_1(element) {
-    refresh_buildings();
     let ele_1 = element.target
     let parent_ele = ele_1.parentElement;
     let tree_cost = parent_ele.children.build_cost.children[2];
     let stone_cost = parent_ele.children.build_cost.children[3];
     let tree_key = "b_" + tree_cost.getAttribute('data-value');
-    if (game_save.trees >= game_save.buildings_data[tree_key].trees2 && game_save.land >= 1 && game_save.stone >= game_save.buildings_data[tree_key].stone) {
+    if (game_save.trees >= game_save.buildings_data[tree_key].trees2) {
         console.log(game_save.trees, "is greater than", game_save.buildings_data[tree_key].trees2);
         game_save.buildings_data[tree_key].owned += 1;
         //game_save.trees -= game_save.buildings_data[tree_key].tree;
+        alert_box("uhh yeah not implemented yet. This is the dev stage after all! It's next on my agenda (well first I'll add stone but then that.)")
 
 
     }
     else {
-        if (game_save.land < 1) {
-            alert_box("You need land to build buildings! (try building the tree!)");
-        }
-        alert_box("You cannot afford that building...");
+        console.log(game_save.trees, "is smaller than", game_save.buildings_data[tree_key].trees2);
         console.log(tree_key);
     }
     refresh_buildings();
@@ -49,14 +46,14 @@ function refresh_buildings() {
         let cost_key = "b_" + tree_cost.getAttribute('data-value');
         
         //Set the costs and displays
-        game_save.buildings_data[cost_key].mult = (buildings_multi * (1.5**game_save.buildings_data[cost_key].owned));
+        game_save.buildings_data[cost_key].mult = ((1.1**game_save.buildings_data.b_num_total) * (1.5**game_save.buildings_data[cost_key].owned));
 
         
         //Work out the values
         //try {
         let tree = Math.floor(game_save.buildings_data[cost_key].mult * buildings_data_base[cost_key].trees2);
         game_save.buildings_data[cost_key].trees2 = tree;
-        game_save.buildings_data[cost_key].stone = Math.floor((Math.sqrt(game_save.buildings_data[cost_key].mult)) * buildings_data_base[cost_key].stone);
+        game_save.buildings_data[cost_key].stone = Math.floor(game_save.buildings_data[cost_key].mult * buildings_data_base[cost_key].stone);
         //}
         //catch(exception) {
 //            console.warn("Couldn't access values of game_save.buildings_data[cost_key] in line 56-57 of buildings.js");
@@ -66,10 +63,9 @@ function refresh_buildings() {
         stone_cost.children[1].innerHTML = game_save.buildings_data[cost_key].stone;
 
         //Refresh the owned displays
-        count_tree.innerHTML = game_save.buildings_data[cost_key].owned;
+        count_tree.innerHTML = "Owned: " + game_save.buildings_data[cost_key].owned;
         
         //Check if you can afford each item, and then add the respective class (can_upgrade or cant_upgrade) to the element.
-        //Tree
         cant_buy_building = 0;
         if (game_save.trees >= game_save.buildings_data[cost_key].trees2) {
             tree_cost.children[1].classList.add("can_upgrade");
@@ -78,16 +74,6 @@ function refresh_buildings() {
         else if (game_save.trees < game_save.buildings_data[cost_key].trees2) {
             tree_cost.children[1].classList.remove("can_upgrade");
             tree_cost.children[1].classList.add("cant_upgrade");
-            cant_buy_building = 1;
-        }
-        //Stone
-        if (game_save.stone >= game_save.buildings_data[cost_key].stone) {
-            stone_cost.children[1].classList.add("can_upgrade");
-            stone_cost.children[1].classList.remove("cant_upgrade");
-        }
-        else if (game_save.stone < game_save.buildings_data[cost_key].stone) {
-            stone_cost.children[1].classList.remove("can_upgrade");
-            stone_cost.children[1].classList.add("cant_upgrade");
             cant_buy_building = 1;
         }
 
@@ -101,50 +87,6 @@ function refresh_buildings() {
         else if (cant_buy_building == 0) {
             buy_button.classList.add("can_upgrade");
             buy_button.classList.remove("cant_upgrade");
-        }
-    }
-
-    //See if the bottom row of buildings can be display, and display them if so. Otherwise, see if they shouldn't be displayed, and then hide them.
-    if (high_tier_buildings_displayed == 0 && game_save['tree_levels'] >= 4) {
-        high_tier_buildings_displayed = 1;
-        for (i=0;i<4;i++) {
-            second_row_buildings[i].style.display = "block";
-        }
-    }
-    else if (game_save['tree_levels'] < 4) {
-        high_tier_buildings_displayed = 0;
-        for (i=0;i<4;i++) {
-            second_row_buildings[i].style.display = "none";
-        }
-    }
-}
-
-function minimize_buildings(element) {
-    //Uses list to hide, display and move the building elements, effectively minimizing the top row.
-    let building_min = ['click', 'production', 'research', 'reduce'];
-    let building_up = ['soul', 'stone', 'shop', 'plantation'];
-    for (const key in building_min) {
-        if (building_min.hasOwnProperty(key)) {
-            let building = document.getElementById(building_min[key] + "_building");
-            if (building.style.display == "block") {
-                building.style.display = "none";
-            }
-            else if (building.style.display == "none") {
-                building.style.display = "block";
-            }
-        }
-    }
-    for (const key in building_up) {
-        if (building_up.hasOwnProperty(key)) {
-            let building = document.getElementById(building_up[key] + "_building");
-            if (building.classList.contains("b_mid_row")) {
-                building.classList.remove("b_mid_row");
-                building.classList.add("b_mid_row_min");
-            }
-            else if(building.classList.contains("b_mid_row_min")) {
-                building.classList.add("b_mid_row");
-                building.classList.remove("b_mid_row_min");
-            }
         }
     }
 }

@@ -93,6 +93,7 @@ function localLoad() {
         game_save = game_base_values;
         setting_save = setting_base_values;
         console.log("No save detected, loading base values");
+        tutorial_needed = 1;
     }
 }
 

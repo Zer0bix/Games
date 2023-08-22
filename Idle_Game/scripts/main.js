@@ -30,6 +30,11 @@ window.onload = function() {
         ele.onclick = buy_1;
     }
 
+    let numbers = document.getElementsByClassName("number");
+    for (i=0; i<numbers.length; i++) {
+        numbers[i].onclick = tooltip;
+    }
+
     //Building minimize handlers
     let mins = document.getElementsByClassName("min_button");
     for (i=0; i<mins.length; i++) {
@@ -94,21 +99,37 @@ function refresh100() {
         auto_save_int_true = 0;
         console.log("auto saving off");
     }
-    document.getElementById("output").innerHTML = Math.floor(game_save.trees);
-    
-    document.getElementById("stone_count_num").innerHTML = Math.floor(game_save.stone);
-    document.getElementById("souls_count_num").innerHTML = Math.floor(game_save.souls);
-    document.getElementById("research_count_num").innerHTML = Math.floor(game_save.research);
-    document.getElementById("click_power").innerHTML = Math.floor(game_save.manual_power);
-    document.getElementById("tree_level_display").innerHTML = Math.floor(game_save.tree_levels);
-    
-    //Per sec displays
-    document.getElementById("tree_per_sec").innerHTML = "+" + Math.floor(game_save.manual_power + game_save.buildings_data.b_production_costs.effect) + "/s";
 
+    //Refresh all the variables displayed
+    let vars_game = document.getElementsByClassName("count");
+    let vars_doc = document.getElementsByClassName("b_count");
+    for (const key in vars_game) {
+        if (vars_game.hasOwnProperty(key)) {
+            let location = vars_game[key].getAttribute("data-value");
+            if (vars_game[key].getAttribute("data-value-2") == "per_sec") {
+                vars_game[key].innerHTML = "+" + Math.floor(game_save[location]) + "/s"; 
+            }
+            else {
+                vars_game[key].innerHTML = Math.floor(game_save[location]);
+            }
+        }
+    }
+    for (const key in vars_doc) {
+        if (vars_doc.hasOwnProperty(key)) {
+            let location = "b_" + vars_doc[key].getAttribute("data-value") + "_costs";
+            if (vars_doc[key].getAttribute("data-value-2") == "per_sec") {
+                vars_doc[key].innerHTML = "+" + Math.floor(game_save.buildings_data[location].effect) + "/s";
+            }
+            else {
+                vars_doc[key].innerHTML = Math.floor(game_save.buildings_data[location].effect);
+            }
+        }
+    }
+    //Display the click power (below the click button)
+    document.getElementById("click_power").innerHTML = Math.floor(game_save.manual_power);
 
     //Display all the various variables
     document.getElementById('tree_upg_cost_display').innerHTML = Math.floor(upgrade_tree_price); //Upgrade tree cost display
-    document.getElementById('land_count_num').innerHTML = Math.floor(game_save.land); //land count in Buildings tab
 
 
     //Check if you can upgrade the tree, and if so, set the class to can upgrade. Also makes sure the code can run only once.
@@ -156,7 +177,10 @@ function refresh10000() {
 function game_refresh() {
     //Set the manual clicking power for trees
     game_save.manual_power = (Math.floor(Math.sqrt(clicks_per_sec))) * (1 + game_save.tree_levels + game_save.buildings_data.b_click_costs.effect);
-    
+    //Set the trees per second
+        game_save.trees_per_sec = game_save.manual_power + game_save.buildings_data.b_production_costs.effect;
+
+
     //Set the price of upgrading the tree
     if (game_save.tree_levels < 10) {
         upgrade_tree_price = tree_upgrade_cost[game_save.tree_levels];
@@ -197,4 +221,16 @@ function initial_load() {
     game_refresh();
     refresh100();
     refresh10000();
+};
+
+
+function tooltip(element) {
+    let ele = element.target;
+    if (ele.getAttribute("data_tooltip_display") !== "") {
+        let t_wrap = document.getElementById("global_tooltip");
+        let t_content = document.getElementById("global_tooltip_content");
+        t_content.innerHTML = ele.getAttribute("data_tooltip_display");
+        t_wrap.style.display = "block";
+        console.log(Event.clientX);
+    }
 }
