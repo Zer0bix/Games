@@ -14,7 +14,6 @@
 	
 	
 	<Title>THE web pages</title>
-		
 		<script type="text/javascript" src="scripts/refresh.js" id="refreshjs"></script>
 		<script type="text/javascript" src="scripts/modal.js" id="modaljs"></script>
 		<script type="text/javascript" src="scripts/random.js" id="randomjs"></script>
@@ -25,7 +24,6 @@
 		<script type="text/javascript" src="scripts/tabs.js" id="tabsjs"></script>
 		<script type="text/javascript" src="scripts/save.js" id="savejs"></script>
 		<script type="text/javascript" src="scripts/settings.js" id="settingsjs"></script>
-		<script type="text/javascript" src="scripts/tutorial.js" id="tutorialjs"></script>
 		<script type="text/javascript" src="scripts/main.js" id="mainjs"></script>
 		
 		
@@ -34,8 +32,6 @@
 
 <body id="body">
 
-
-	
 	<divloading id="loading_screen" style="display:block;" class="wrapper3">
 		<center><center>
 			<h1 class="title" id="loading_game_text">Loading game</h1>
@@ -47,17 +43,6 @@
 			<button type="button" class="button_big" onclick="load_game();">Play</button>
 		</center></center>
 	</divloading>
-
-	<divtutorial id="tutorial" style="display:none;" class="wrapper">
-		<div id="tutorial_content">
-		<h1>Welcome to Wooden Empire!</h1>
-		<p>Wooden Empire is an incremental game about chopping trees.
-			Hover over most buttons or texts, and they will tell you their purpose. (this can be disabled in Options => Settings => Toggle Tooltips)
-		</p>
-		<button type="button" class="button_text" onclick="tutorial_1();">Start game</button>
-	</div>
-	</divtutorial>
-
 	<divall id="page_content" style="display:none;">
 		<divwarning id="warning" style="display:none" class="wrapper">
 			<p>Are you sure you want to wipe save?</p>
@@ -66,8 +51,6 @@
 			<button id="erase_save_2" class="button_text" type="button" onclick="no_wipe();" >CANCEL</button>
 
 		</divwarning>
-
-		
 		<divtabs id="divider_tabs" class="wrapper2" style="display:block">
 			<button id="Tab_1" onclick="open_tab(0);" type="button" class="tablinks tablinks2">Main</button>
 			<button id="Tab_2" onclick="open_tab(1); refresh_buildings();" type="button" class="tablinks">Buildings</button>
@@ -78,9 +61,9 @@
 		<div id="tree_count" class="wrapper right">
 			<!--Tree count display-->
 			<div class="display_value">
-				<img src="Images/Tree_1.png" id="tree_count_logo" class="icon_big" data_tooltip_display="Trees">
-				<span id="output" value="Display" class="number count" data-value="trees" data_tooltip_display="Trees">Display</span>
-				<span id="tree_per_sec" value="Display" class="number count" style="color:green" data-value="trees_per_sec" data-value-2="per_sec" data_tooltip_display="Tree gain rate">+0/s</span>
+				<img src="Images/Tree_1.png" id="tree_count_logo" class="icon_big">
+				<span id="output" value="Display" class="number count" data-value="trees">Display</span>
+				<span id="tree_per_sec" value="Display" class="number count" style="color:green" data-value="trees_per_sec">+0/s</span>
 				
 			</div>
 			<!--Other displays, including land, stone, souls-->
@@ -92,20 +75,20 @@
 				<br><br>
 				<div id="stone_count" class="display_value">
 					<img src="Images/stone_icon.png" id="stone_icon" class="icon"></img>
-					<span class="number count" id="stone_count_num" data-value="stone" data_tooltip_display="Stone">0</span>
-					<span id="stone_per_sec" value="Display" class="number b_count" style="color:green" data-value="stone" data-value-2="per_sec" data_tooltip_display="Stone gain rate">0</span>
+					<span class="number count" id="stone_count_num" data-value="stone">0</span>
+					<span id="stone_per_sec" value="Display" class="number b_count" style="color:green" data-value="stone">+0/s</span>
 				</div>
 				<br><br>
 				<div id="souls_count" class="display_value">
 					<img src="Images/souls_icon.png" id="souls_icon" class="icon"></img>
-					<span class="number count" id="souls_count_num" data-value="souls" data_tooltip_display="Souls">0</span>
-					<span id="souls_per_sec" value="Display" class="number b_count" style="color:green" data-value="soul" data-value-2="per_sec" data_tooltip_display="Souls gain rate">+0/s</span>
+					<span class="number count" id="souls_count_num" data-value="souls">0</span>
+					<span id="souls_per_sec" value="Display" class="number b_count" style="color:green" data-value="soul">+0/s</span>
 				</div>
 				<br><br>
 				<div id="research_count" class="display_value">
 					<img src="Images/research_icon.png" id="research_icon" class="icon"></img>
-					<span class="number count" id="research_count_num" data-value="research" data_tooltip_display="Research">0</span>
-					<span id="research_per_sec" value="Display" class="number b_count" style="color:green" data-value="research" data-value-2="per_sec" data_tooltip_display="Research gain rate">+0/s</span>
+					<span class="number count" id="research_count_num" data-value="research">0</span>
+					<span id="research_per_sec" value="Display" class="number b_count" style="color:green" data-value="research">+0/s</span>
 				</div>
 				<br><br>
 			
@@ -449,7 +432,7 @@
 					<div class="sTabcontent_4" id='sTab_2'>
 						<h2>SETTINGS</h1>
 						<p>Toggle Background Change</p>
-						<button type="button" id="change_background_button" onclick="toggle_setting('change_background', 'change_background_button');" class="button3"></button>
+						<button type="button" id="change_background_toggle" onclick="toggleBackgroundChange();" class="button3"></button>
 
 						<p>Auto Save Duration</p>
 						<table>
@@ -468,8 +451,6 @@
 								</td>
 							</tr>
 						</table>
-						<p>Toggle Tooltips</p>
-						<button type="button" id="toggle_tooltips_button" onclick="toggle_setting('tooltips_enabled', 'toggle_tooltips_button');" class="button3"></button>
 					</div>
 					<!--Stats-->
 					<div class="sTabcontent_4" id="sTab_3">
@@ -486,21 +467,16 @@
 		</divback>
 	</divall>
 
-	<!-- The Modal (alert) in the bottom right corner-->
-	<div id="alert_div" class="alert_div" style="display:none;">
+		    <!-- The Modal (alert) in the bottom right corner-->
+			<div id="alert_div" class="alert_div" style="display:none;">
 
-		<!-- Modal content -->
-		<div class="alert_content" id="alert_content">
-			<p id="alert_content_text">alert_text</p>
-		</div>
+				<!-- Modal content -->
+				<div class="alert_content" id="alert_content">
+					<p id="alert_content_text">alert_text</p>
+				</div>
+			
+				</div>
 	
-		</div>
-
-		<!--Tooltip that shows up whenever hovering on most things-->
-		<divtooltip id="global_tooltip" style="position: fixed; display:none;">
-			<span id="global_tooltip_content" class="wrapper_small" style="position: fixed;">empty
-			</span>
-		</divtooltip>
 <!--NO STEALING-->
 </body>
 

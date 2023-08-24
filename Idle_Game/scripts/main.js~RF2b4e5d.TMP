@@ -30,13 +30,6 @@ window.onload = function() {
         ele.onclick = buy_1;
     }
 
-    //Handler for tooltip
-    let numbers = document.getElementsByClassName("number");
-    for (i=0; i<numbers.length; i++) {
-        numbers[i].onmouseover = tooltip_start;
-        numbers[i].onmouseout = tooltip_end;
-    }
-
     //Building minimize handlers
     let mins = document.getElementsByClassName("min_button");
     for (i=0; i<mins.length; i++) {
@@ -77,6 +70,17 @@ function background_change() {
 }
 
 function refresh100() {
+    try {
+        if (setting_save['change_background'] == 1) {
+            
+            background_change();
+        }
+        else {
+            //changeBackground("change_background_toggle", "red");
+            document.body.style.background = "url('Images/pattern_background.png')";
+        }
+    }
+    catch(firstinstance) {} //The change_background code fails on the first instance, and so this catch command prevents the code from breaking here.
     
     if (auto_save >= 14) {
         if (auto_save_int_true == 1) {}
@@ -97,33 +101,30 @@ function refresh100() {
     for (const key in vars_game) {
         if (vars_game.hasOwnProperty(key)) {
             let location = vars_game[key].getAttribute("data-value");
-            if (vars_game[key].getAttribute("data-value-2") == "per_sec") {
-                vars_game[key].innerHTML = "+" + Math.floor(game_save[location]) + "/s"; 
-            }
-            else {
-                vars_game[key].innerHTML = Math.floor(game_save[location]);
-            }
+            vars_game[key].innerHTML = game_save[location];
         }
     }
     for (const key in vars_doc) {
         if (vars_doc.hasOwnProperty(key)) {
             let location = "b_" + vars_doc[key].getAttribute("data-value") + "_costs";
-            if (vars_doc[key].getAttribute("data-value-2") == "per_sec") {
-                vars_doc[key].innerHTML = "+" + Math.floor(game_save.buildings_data[location].effect) + "/s";
-            }
-            else {
-                vars_doc[key].innerHTML = Math.floor(game_save.buildings_data[location].effect);
-            }
+            vars_game[key].innerHTML = game_save.buildings_data[location].effect;
         }
     }
-    //Display the click power (below the click button)
+    document.getElementById("output").innerHTML = Math.floor(game_save.trees);
+    
+    document.getElementById("stone_count_num").innerHTML = Math.floor(game_save.stone);
+    document.getElementById("souls_count_num").innerHTML = Math.floor(game_save.souls);
+    document.getElementById("research_count_num").innerHTML = Math.floor(game_save.research);
     document.getElementById("click_power").innerHTML = Math.floor(game_save.manual_power);
-
-    //Display tree levels
     document.getElementById("tree_level_display").innerHTML = Math.floor(game_save.tree_levels);
+    
+    //Per sec displays
+    document.getElementById("tree_per_sec").innerHTML = "+" + Math.floor(game_save.manual_power + game_save.buildings_data.b_production_costs.effect) + "/s";
+
 
     //Display all the various variables
     document.getElementById('tree_upg_cost_display').innerHTML = Math.floor(upgrade_tree_price); //Upgrade tree cost display
+    document.getElementById('land_count_num').innerHTML = Math.floor(game_save.land); //land count in Buildings tab
 
 
     //Check if you can upgrade the tree, and if so, set the class to can upgrade. Also makes sure the code can run only once.
@@ -140,24 +141,13 @@ function refresh100() {
 }
 
 function refresh10000() {
-    //Enable or disable the background_change, which gives the tree picture backgrounds. 
-    try {
-        if (setting_save['change_background'] == 1) {
-            
-            background_change();
-        }
-        else {
-            //changeBackground("change_background_toggle", "red");
-            document.body.style.background = "url('Images/pattern_background.png')";
-        }
-    }
-    catch(firstinstance) {} //The change_background code fails on the first instance, and so this catch command prevents the code from breaking here.
+
     //Set the colours of setting buttons to either on/off, depending on the value stored in the settings
     if (setting_save['change_backgroud'] == 1) {
-        changeBackground("change_background_button", "green");
+        changeBackground("change_background_toggle", "green");
     }
     else {
-        changeBackground("change_background_button", "red");
+        changeBackground("change_background_toggle", "red");
     }
 
     if (setting_save['auto_save'] != setting_base_values['auto_save']) {
@@ -183,7 +173,7 @@ function game_refresh() {
     //Set the manual clicking power for trees
     game_save.manual_power = (Math.floor(Math.sqrt(clicks_per_sec))) * (1 + game_save.tree_levels + game_save.buildings_data.b_click_costs.effect);
     //Set the trees per second
-        game_save.trees_per_sec = game_save.manual_power + game_save.buildings_data.b_production_costs.effect;
+    trees_per_sec = game_save.manual_power + game_save.buildings_data.b_production_costs.effect;
 
 
     //Set the price of upgrading the tree
@@ -226,6 +216,4 @@ function initial_load() {
     game_refresh();
     refresh100();
     refresh10000();
-};
-
-
+}

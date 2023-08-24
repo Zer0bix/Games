@@ -6,24 +6,13 @@ function changeBackground(id, colour) {
     if (colour == "red") {
         id_1.classList.add("button2");
     }
-    if (colour == "green") {
+    else if (colour == "green") {
         id_1.classList.add("button3");
     }
-    if (colour == "grey") {
+    else if (colour == "grey") {
         id_1.classList.add("button");
     }
-}
-
-function toggleBackgroundChange() {
-    if (setting_save['change_background'] == 1) {
-        setting_save['change_background'] = 0;
-        changeBackground("change_background_toggle", "red");
-    }
-
-    else {
-        setting_save['change_background'] = 1;
-        changeBackground("change_background_toggle", "green");
-    }
+    console.log(id, colour);
 }
 
 function toggleAutoSave(id, val) {
@@ -31,4 +20,15 @@ function toggleAutoSave(id, val) {
     changeBackground(id_off, "red");
     setting_save['auto_save'] = val;
     changeBackground(id, "green");
+}
+
+function toggle_setting(setting_name, setting_id) {
+    if (setting_save[setting_name] == 1) {
+        setting_save[setting_name] = 0;
+        changeBackground(setting_id, "red");
+    }
+    else {
+        setting_save[setting_name] = 1;
+        changeBackground(setting_id, "green");
+    }
 }
