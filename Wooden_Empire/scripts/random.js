@@ -50,7 +50,7 @@ function tooltip(element) {
     catch(firstinstance) {}
     let ele = element.target;
     if (setting_save.tooltips_enabled == 1 ) {
-        if (ele.getAttribute("data_tooltip_display") !== "" || ele.getAttribute("data_tooltip_display") !== undefined ) {
+        if (ele.getAttribute("data_tooltip_display") !== "" && ele.getAttribute("data_tooltip_display") !== undefined ) {
             let t_wrap = document.getElementById("global_tooltip");
             let t_content = document.getElementById("global_tooltip_content");
             t_content.innerHTML = ele.getAttribute("data_tooltip_display");

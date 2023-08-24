@@ -1,8 +1,6 @@
 body {
-    background-size:100%;
     background-image:url("../Images/pattern_background.png");
-    opacity: 90%;
-    background-color: black;
+    margin: 0;
 }
 
 /* Create an active/current tablink class */
