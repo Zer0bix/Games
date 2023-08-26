@@ -31,23 +31,9 @@ window.onload = function() {
     }
 
     //Handler for tooltip
-    let numbers = document.getElementsByClassName("number");
-    for (i=0; i<numbers.length; i++) {
-        numbers[i].onmouseover = tooltip_start;
-        numbers[i].onmouseout = tooltip_end;
-    }
-
-    //Building minimize handlers
-    let mins = document.getElementsByClassName("min_button");
-    for (i=0; i<mins.length; i++) {
-        let ele = mins[i];
-        ele.onclick = minimize_buildings;
-
-    }
-    //Building minimize needs this:
-    let building_min = ['click', 'production', 'research', 'reduce'];
-    for (i=0;i<4;i++) {
-        document.getElementById(building_min[i] + "_building").style.display="block";
+    let tooltips = document.getElementsByClassName("display_tooltip");
+    for (i=0; i<tooltips.length; i++) {
+        tooltips[i].onmouseover = tooltip_start;
     }
 
     load_check_3 = 1;
@@ -171,9 +157,9 @@ function refresh10000() {
     refresh_buildings();
 
     //Display the stats in the stats tab
-    document.getElementById('lifetime_clicks').innerHTML = game_save.lifetime_clicks;
-    document.getElementById('lifetime_trees_chopped').innerHTML = game_save.lifetime_trees_chopped + game_save.trees_chopped;
-    document.getElementById('lifetime_buildings_bought').innerHTML = game_save.lifetime_buildings_bought + game_save.buildings_data.b_num_total;
+    document.getElementById('lifetime_clicks').innerHTML = Math.floor(game_save.lifetime_clicks);
+    document.getElementById('lifetime_trees_chopped').innerHTML = Math.floor(game_save.lifetime_trees_chopped + game_save.trees_chopped);
+    document.getElementById('lifetime_buildings_bought').innerHTML = Math.floor(game_save.lifetime_buildings_bought + game_save.buildings_data.b_num_total);
     
 
 }
@@ -181,7 +167,7 @@ function refresh10000() {
 //Sets all the variables for gain and similar to the formulae required
 function game_refresh() {
     //Set the manual clicking power for trees
-    game_save.manual_power = (Math.floor(Math.sqrt(clicks_per_sec))) * (1 + game_save.tree_levels + game_save.buildings_data.b_click_costs.effect);
+    game_save.manual_power = Math.floor((Math.sqrt(clicks_per_sec)) * (1 + game_save.tree_levels + game_save.buildings_data.b_click_costs.effect));
     //Set the trees per second
         game_save.trees_per_sec = game_save.manual_power + game_save.buildings_data.b_production_costs.effect;
 
@@ -199,7 +185,7 @@ function game_refresh() {
 
     //Set the effect for each building
     let build_click = game_save.buildings_data.b_click_costs
-    build_click.effect = 1 + build_click.owned*(build_click.research)*0.5
+    build_click.effect = 1 + build_click.owned*build_click.research*2
 
     let build_prod = game_save.buildings_data.b_production_costs
     build_prod.effect = 1 + build_prod.owned*build_prod.research*5

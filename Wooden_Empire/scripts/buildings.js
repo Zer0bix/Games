@@ -8,7 +8,8 @@ function buy_1(element) {
     if (game_save.trees >= game_save.buildings_data[tree_key].trees2 && game_save.land >= 1 && game_save.stone >= game_save.buildings_data[tree_key].stone) {
         console.log(game_save.trees, "is greater than", game_save.buildings_data[tree_key].trees2);
         game_save.buildings_data[tree_key].owned += 1;
-        //game_save.trees -= game_save.buildings_data[tree_key].tree;
+        game_save.trees -= game_save.buildings_data[tree_key].trees2;
+        game_save.stone -= game_save.buildings_data[tree_key].stone;
 
 
     }
@@ -16,8 +17,9 @@ function buy_1(element) {
         if (game_save.land < 1) {
             alert_box("You need land to build buildings! (try building the tree!)");
         }
-        alert_box("You cannot afford that building...");
-        console.log(tree_key);
+        else {
+            alert_box("You cannot afford that building...");
+        }
     }
     refresh_buildings();
 }
@@ -117,34 +119,21 @@ function refresh_buildings() {
             second_row_buildings[i].style.display = "none";
         }
     }
+
+    //Display destroy building button if unlocked
+    destroy_building_list = document.getElementsByClassName("b_button_destroy");
+    if (destroy_building_buttons_displayed == 0 && game_save.research_data.r_destroy.owned > 0) {
+        destroy_building_buttons_displayed = 1;
+        for (i=0;i<8;i++) {
+            destroy_building_list[i].style.display = "block";
+        }
+        
+    }
+    else if (game_save.research_data.r_destroy.owned = 0) {
+        destroy_building_buttons_displayed = 0;
+        for (i=0;i<8;i++) {
+            destroy_building_list[i].style.display = "none";
+        }
+    }
 }
 
-function minimize_buildings(element) {
-    //Uses list to hide, display and move the building elements, effectively minimizing the top row.
-    let building_min = ['click', 'production', 'research', 'reduce'];
-    let building_up = ['soul', 'stone', 'shop', 'plantation'];
-    for (const key in building_min) {
-        if (building_min.hasOwnProperty(key)) {
-            let building = document.getElementById(building_min[key] + "_building");
-            if (building.style.display == "block") {
-                building.style.display = "none";
-            }
-            else if (building.style.display == "none") {
-                building.style.display = "block";
-            }
-        }
-    }
-    for (const key in building_up) {
-        if (building_up.hasOwnProperty(key)) {
-            let building = document.getElementById(building_up[key] + "_building");
-            if (building.classList.contains("b_mid_row")) {
-                building.classList.remove("b_mid_row");
-                building.classList.add("b_mid_row_min");
-            }
-            else if(building.classList.contains("b_mid_row_min")) {
-                building.classList.add("b_mid_row");
-                building.classList.remove("b_mid_row_min");
-            }
-        }
-    }
-}

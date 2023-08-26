@@ -3,24 +3,15 @@ body {
     margin: 0;
 }
 
-/* Create an active/current tablink class */
-.tab button.active {
-    background-color: #ccc;
-  }
-
 
 p {
     color: white;
     font-family:'Courier New', Courier, monospace;
 }
+
 a {
-    background-color: #e5786e;
-    background-image: url('Images/Tree_1.png');
-    color: rgb(67, 225, 80);
-    padding: 16px 16px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
+    max-width: 100%;
+    max-height: 100%;
 }
 
 .import_box, .export_box {
@@ -47,40 +38,12 @@ a {
     background-color: rgba(255, 0, 0, 0.8);
     margin-left: 100px
 }
-/* Tooltip container */
-.tooltip {
-  position: relative;
-  display: inline-block;
-}
 
-/* Tooltip text */
-.tooltip .tooltip_text {
-  display: none;
-  width: 36px;
-  background-color: white;
-  color: black;
-  text-align: center;
-  padding: 5px 0;
-  border-radius: 6px;
-  bottom: 100%;
-  left: 50%;
-  margin-left: -18px; /* Use half of the width (120/2 = 60), to center the tooltip */
- 
-  /* Position the tooltip text - see examples below! */
-  position: absolute;
-  z-index: 3;
-}
-
-/* Show the tooltip text when you mouse over the tooltip container */
-.tooltip:hover .tooltip_text {
-  display: block;
-}
 
 .right {
     position: fixed;
     right: 5px;
     width: 80px;
-
 }
 
 .min_button {
@@ -89,4 +52,16 @@ a {
     position: fixed;
     font-style:bold;
     font-size: 20px;
+}
+
+#page_content {
+    display:none;
+    padding-top: 60px;
+    margin-left: 5px;
+}
+
+.tab_title {
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size:20px;
+
 }

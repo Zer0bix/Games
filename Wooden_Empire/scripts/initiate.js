@@ -49,7 +49,7 @@ function build_object(trees2, stone, upgrade) {
 //}
 
 
-//Creates objects for each building detailing base costs of each resource.
+//Creates objects for each building detailing data about that building
 b_empty = build_object(0, 0, 0);
 b_click_costs = build_object(10, 5, 0);
 b_production_costs = build_object(100, 10, 0);
@@ -68,8 +68,30 @@ buildings_data_base = JSON.parse(JSON.stringify(clone_object(buildings_data)));
 //Other buildings variables
 cant_buy_building = 0;
 high_tier_buildings_displayed = 0;
+destroy_building_buttons_displayed = 0;
 second_row_buildings = document.getElementsByClassName("b_mid_row");
 
+//Research Variables
+function research_object(cost, unlock) {
+    let owned = 0;
+    let display = 1;
+    let obj = Object({cost, owned, unlock, display});
+    return obj
+}
+//unlock is set to 1 when the required threshold (whether it be tree level or some other variable) is reached, and this enables the research to be bought.
+//display is set to 0 when the research is bought and cannot be bought again.
+
+//Creates objects for each research detailing data about that research item
+r_destroy = research_object(10, 1);
+
+
+//Research efficiencies - Increase the production / reduce the cost of a thing
+r_upgrade_eff = research_object(1000, 0);
+r_prod_eff = research_object(1000, 0);
+
+//Define the object that will go into game_save, and define it's base
+research_data = Object({r_destroy, r_upgrade_eff, r_prod_eff});
+research_data_base = JSON.parse(JSON.stringify(clone_object(research_data)));
 
 
 //Game data variables
@@ -99,10 +121,9 @@ lifetime_buildings_bought = 0;
 //game_save is the save of the game
 //game_base_values is the constant variable that tells you what the initial values are
 //game_save_name is how you operate each item in the Object like a list
-//Unfortunately Objects do not allow you to create an object like game_save_base = game_save, as it just becomes a new access point for the initial object instead of taking all the values of the object. This is why each object is defined 3 times.  
-game_save = Object({trees, manual_power, trees_chopped, tree_levels, lifetime_clicks, lifetime_trees_chopped, lifetime_buildings_bought, land, buildings_data, version, stone, souls, research, trees_per_sec});
+game_save = Object({trees, manual_power, trees_chopped, tree_levels, lifetime_clicks, lifetime_trees_chopped, lifetime_buildings_bought, land, buildings_data, version, stone, souls, research, trees_per_sec, research_data});
 const game_base_values = JSON.parse(JSON.stringify(game_save));
-const game_save_name = ["trees", 'manual_power', "trees_chopped", "tree_levels", "lifetime_clicks", "lifetime_trees_chopped", "lifetime_buildings_bought", "land", "buildings_data"];
+const game_save_name = ["trees", 'manual_power', "trees_chopped", "tree_levels", "lifetime_clicks", "lifetime_trees_chopped", "lifetime_buildings_bought", "land", "buildings_data", "research_data"];
 
 //JSON objects for settings, same uses as above, but stores all the settings that will need to be saved.
 setting_save = Object({change_background, auto_save, tooltips_enabled});

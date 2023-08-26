@@ -12,10 +12,6 @@
     border-radius: 3px;
 }
 
-.display_value_wrap {
-    top: 20%;
-}
-
 .display_value {
     padding: 5px;
     background-color: rgba(250, 250, 250, 0.1);
@@ -45,4 +41,10 @@
     border-width: 2px;
     border-style: ridge;
     border-radius: 5px;
+}
+
+.b_top_row, .b_mid_row {
+    height: 250px;
+    max-width: 200px;
+    display: inline-block;
 }

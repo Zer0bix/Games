@@ -3,7 +3,7 @@
     padding-right: 10px;
     padding-bottom: 10px;
     padding-left: 10px;
-    padding-top: 10px;
+    padding-top: 5px;
 	background-color: rgba(0,0,0,0.7);
 	border-radius: 15px;
 }
@@ -50,7 +50,6 @@
 }
 
 .wrapperb {
-    width: 200%;
     padding-right: 10px;
     padding-bottom: 10px;
     padding-left: 10px;
@@ -71,9 +70,28 @@
     content: " ";
     position: absolute;
     top: 100%; /* At the bottom of the tooltip */
-    left: 50%;
+    left: 20px;
     margin-left: -7px;
     border-width: 7px;
     border-style: solid;
     border-color: green transparent transparent transparent;
+  }
+
+  .wrapper_small_down {
+    background-color: rgb(100, 100, 100);
+    border-radius: 6px;
+    color: rgba(0, 255, 0, 1);
+    border-color: green;
+    border-style: ridge;
+    padding: 2px;
+}
+.wrapper_small_down::after {
+    content: " ";
+    position: absolute;
+    bottom: 100%;  /* At the top of the tooltip */
+    left: 20px;
+    margin-left: -7px;
+    border-width: 7px;
+    border-style: solid;
+    border-color: transparent transparent green transparent;
   }

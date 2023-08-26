@@ -34,7 +34,6 @@
 
 <body id="body">
 	<header>
-		<a href="../index.html"><img src="Images/Tree_outline_white.png" id="page_icon" data_tooltip_display="Back to homepage" class="display_tooltip cursor_hand" tooltip_direct="down"></img></a>
 		<span id="page_name" data_tooltip_display="Game Name" class="display_tooltip", tooltip_direct="down">Wooden Empire</span>
 	</header>
 
@@ -75,20 +74,19 @@
 			<button id="Tab_1" onclick="open_tab(0);" type="button" class="tablinks tablinks2">Main</button>
 			<button id="Tab_2" onclick="open_tab(1); refresh_buildings();" type="button" class="tablinks">Buildings</button>
 			<button id="Tab_3" onclick="open_tab(2);" type="button" class="tablinks" value="potato">Upgrades</button>
-			<button id="Tab_4" onclick="open_tab(3);" type="button" class="tablinks" value="View Tree">Research</button>
+			<button id="Tab_4" onclick="open_tab(3);" type="button" class="tablinks" value="View Tree">Ascension</button>
 			<button id="Tab_5" onclick="open_tab(4);" type="button" class="tablinks" value="Settings">Options</button>
 		</divtabs>
-			
-			<!--Displays for all item counts-->
-			<div class="wrapper display_value_wrap right">
-				<!--Tree count display-->
+		<div id="tree_count" class="wrapper right">
+			<!--Tree count display-->
 			<div class="display_value">
 				<img src="Images/Tree_1.png" id="tree_count_logo" class="icon_big" data_tooltip_display="Trees">
 				<span id="output" value="Display" class="number count" data-value="trees" data_tooltip_display="Trees">Display</span>
 				<span id="tree_per_sec" value="Display" class="number count display_tooltip" style="color:green" data-value="trees_per_sec" data-value-2="per_sec" data_tooltip_display="Tree gain rate">+0/s</span>
 				
 			</div>
-			<br><br>
+			<!--Other displays, including land, stone, souls-->
+			<div class="wrapper display_value_wrap right">
 				<div id="land_count" class="display_value">
 					<img src="Images/Land_icon.png" id="land_icon" class="icon display_tooltip" data_tooltip_display="Land"></img>
 					<span class="number count display_tooltip" id="land_count_num display_tooltip" data-value="land" data_tooltip_display="Land">0</span>
@@ -113,6 +111,7 @@
 				</div>
 				<br><br>
 			
+		</div>
 			
 		</div>
 		<br><br><br>
@@ -121,33 +120,33 @@
 				<divtab1 id="tab_1" style="display:block" class="tabcontent">
 					<div class="wrapper">
 						<!--The button to click-->
-						<button type="button" onclick="click_tree(); no_spam('click_tree')" class="button display_tooltip" data_tooltip_display="Click to increase production" id="click_tree"></button>
-						<div id="click_power" class="display_tooltip number" data_tooltip_display="Production increase due to clicking">1</div>
-						<div id="click_bar" class="bar border display_tooltip" data_tooltip_display="Bar length increases as clicking rate increases"></div>
+						<button type="button" onclick="click_tree(); no_spam('click_tree')" class="button" id="click_tree"></button>
+						<divinfo>Click Power: <div id="click_power">1</div></divinfo>
+						<div id="click_bar" class="bar border"></div>
 						<br>
 						<br>
 					</div>
 					<br><br>
 					<div class="wrapper" id="upgrade_tree" class="div">
 						<h3>Build Tree</h3>
-						<button type="button" onclick="upgrade_tree();" class="button cant_upgrade display_tooltip" data_tooltip_display="Purchase to increase the height of the tree" id="upg_tree_butt">+1</button>
-						<span id="tree_level_display" class="number display_tooltip" data_tooltip_display="Current tree level">0</span><span class="number">/9</span>
+						<button type="button" onclick="upgrade_tree();" class="button cant_upgrade" id="upg_tree_butt">+1</button>
+						<span id="tree_level_display" class="number">0</span><span class="number">/9</span>
 						<br>
-						<span id="tree_upg_cost_display" class="number cant_upgrade display_tooltip" data_tooltip_display="Cost of building more levels of the tree">0</span>
+						<span id="tree_upg_cost_display" class="number cant_upgrade">0</span>
 					</div>
 				</divtab1>
 				<divtab2 id="tab_2" style="display:none" class="tabcontent">
 
 					<!--Buildings that can be built-->
 					<!--Click Building-->
-					<div class="b_all">
+					<button type="button" class="faint_button min_button" id="min_row_1" data-value="b_top_row">-</button>
 					<div class="wrapperb b_start b_top_row" id="click_building">
 						<span class="b_title">Click Building</span>
 						<!--Display how many you currently have-->
 						<span id="count" class="owned_count">0</span>
 						<br>
 						<!--Description of the building-->
-						<span class="b_description">Increases the effect of clicking on tree production</span>
+						<span class="b_description">Increases the amount of trees chopped whenever you click</span>
 						<!--Display the cost of the building-->
 						<br><br>
 						<div id="build_cost" class="cost_display_wrap">
@@ -155,18 +154,23 @@
 							<br>
 							<!--Cost display for trees-->
 							<div class="cost_display" data-value="click_costs">
+								<div class="tooltip">
+									<span class="tooltip_text">Tree</span>
 									<img src="Images/Tree_1.png" class="icon_0">Tree
+								</div>
 								<span class="build_cost">0</span>
 							</div>
 							<!--Cost display for stone-->
 							<div class="cost_display" data-value="click_costs">
+								<div class="tooltip">
+									<span class="tooltip_text">Stone</span> 
 									<img src="Images/stone_icon.png" class="icon_0">Stone
+								</div> 
 								<span class="build_cost">27</span>
 							</div>
 						
 						</div>
 						<button type="button" class="button b_button" id="button" value="1">+1</button>
-						<button type="button" style="display:none;" class="button b_button_destroy cant_upgrade display_tooltip" data_tooltip_display="Destroys 1 building. YOU WILL NOT GET BACK RESOURCES!"  id="button" value="-1">-1</button>
 					</div>
 
 					<!--Production Building-->
@@ -184,19 +188,23 @@
 							<br>
 							<!--Cost display for trees-->
 							<div class="cost_display" data-value="production_costs">
-
+								<div class="tooltip">
+									<span class="tooltip_text">Tree</span>
 									<img src="Images/Tree_1.png" class="icon_0">Tree
+								</div>
 								<span class="build_cost">0</span>
 							</div>
 							<!--Cost display for stone-->
 							<div class="cost_display" data-value="production_costs">
- 
-									<img src="Images/stone_icon.png" class="icon_0">Stone 
+								<div class="tooltip">
+									<span class="tooltip_text">Stone</span> 
+									<img src="Images/stone_icon.png" class="icon_0">Stone
+								</div> 
 								<span class="build_cost">27</span>
 							</div>
 						
 						</div>
-						<button type="button" class="button b_button" id="button" value="1"><button type="button" style="display:none;" class="button b_button_destroy cant_upgrade display_tooltip" data_tooltip_display="Destroys 1 building. YOU WILL NOT GET BACK RESOURCES!"  id="button" value="-1">-1</button>
+						<button type="button" class="button b_button" id="button" value="1">+1</button>
 					</div>
 
 					<!--Research Building-->
@@ -214,19 +222,23 @@
 							<br>
 							<!--Cost display for trees-->
 							<div class="cost_display" data-value="research_costs">
-
+								<div class="tooltip">
+									<span class="tooltip_text">Tree</span>
 									<img src="Images/Tree_1.png" class="icon_0">Tree
+								</div>
 								<span class="build_cost">0</span>
 							</div>
 							<!--Cost display for stone-->
 							<div class="cost_display" data-value="research_costs">
- 
+								<div class="tooltip">
+									<span class="tooltip_text">Stone</span> 
 									<img src="Images/stone_icon.png" class="icon_0">Stone
+								</div> 
 								<span class="build_cost">27</span>
 							</div>
 						
 						</div>
-						<button type="button" class="button b_button" id="button" value="1"><button type="button" style="display:none;" class="button b_button_destroy cant_upgrade display_tooltip" data_tooltip_display="Destroys 1 building. YOU WILL NOT GET BACK RESOURCES!"  id="button" value="-1">-1</button>
+						<button type="button" class="button b_button" id="button" value="1">+1</button>
 					</div>
 
 					<!--Reduce Cost Building-->
@@ -244,19 +256,23 @@
 							<br>
 							<!--Cost display for trees-->
 							<div class="cost_display" data-value="reduce_costs">
-
+								<div class="tooltip">
+									<span class="tooltip_text">Tree</span>
 									<img src="Images/Tree_1.png" class="icon_0">Tree
+								</div>
 								<span class="build_cost">0</span>
 							</div>
 							<!--Cost display for stone-->
 							<div class="cost_display" data-value="reduce_costs">
- 
+								<div class="tooltip">
+									<span class="tooltip_text">Stone</span> 
 									<img src="Images/stone_icon.png" class="icon_0">Stone
+								</div> 
 								<span class="build_cost">27</span>
 							</div>
 						
 						</div>
-						<button type="button" class="button b_button" id="button" value="1"><button type="button" style="display:none;" class="button b_button_destroy cant_upgrade display_tooltip" data_tooltip_display="Destroys 1 building. YOU WILL NOT GET BACK RESOURCES!"  id="button" value="-1">-1</button>
+						<button type="button" class="button b_button" id="button" value="1">+1</button>
 					</div>
 
 					<div class="b_min_row"><span class="min_button" id="min_row_2"></span></div>
@@ -276,19 +292,23 @@
 							<br>
 							<!--Cost display for trees-->
 							<div class="cost_display" data-value="soul_costs">
-
+								<div class="tooltip">
+									<span class="tooltip_text">Tree</span>
 									<img src="Images/Tree_1.png" class="icon_0">Tree
+								</div>
 								<span class="build_cost">0</span>
 							</div>
 							<!--Cost display for stone-->
 							<div class="cost_display" data-value="soul_costs">
- 
+								<div class="tooltip">
+									<span class="tooltip_text">Stone</span> 
 									<img src="Images/stone_icon.png" class="icon_0">Stone
+								</div> 
 								<span class="build_cost">27</span>
 							</div>
 						
 						</div>
-						<button type="button" class="button b_button" id="button" value="1"><button type="button" style="display:none;" class="button b_button_destroy cant_upgrade display_tooltip" data_tooltip_display="Destroys 1 building. YOU WILL NOT GET BACK RESOURCES!"  id="button" value="-1">-1</button>
+						<button type="button" class="button b_button" id="button" value="1">+1</button>
 					</div>
 
 					<!--Stone Building-->
@@ -306,19 +326,23 @@
 							<br>
 							<!--Cost display for trees-->
 							<div class="cost_display" data-value="stone_costs">
-
+								<div class="tooltip">
+									<span class="tooltip_text">Tree</span>
 									<img src="Images/Tree_1.png" class="icon_0">Tree
+								</div>
 								<span class="build_cost">0</span>
 							</div>
 							<!--Cost display for stone-->
 							<div class="cost_display" data-value="stone_costs">
- 
+								<div class="tooltip">
+									<span class="tooltip_text">Stone</span> 
 									<img src="Images/stone_icon.png" class="icon_0">Stone
+								</div> 
 								<span class="build_cost">27</span>
 							</div>
 						
 						</div>
-						<button type="button" class="button b_button" id="button" value="1"><button type="button" style="display:none;" class="button b_button_destroy cant_upgrade display_tooltip" data_tooltip_display="Destroys 1 building. YOU WILL NOT GET BACK RESOURCES!"  id="button" value="-1">-1</button>
+						<button type="button" class="button b_button" id="button" value="1">+1</button>
 					</div>
 
 					<!--Shop Building-->
@@ -328,7 +352,7 @@
 						<span id="count" class="owned_count">0</span>
 						<br>
 						<!--Description of the building-->
-						<span class="b_description">Building this is a waste of materials. It is purely cosmetic.</span>
+						<span class="b_description">Allows you to sell resources for gold, which can be used to buy upgrades and resources</span>
 						<!--Display the cost of the building-->
 						<br><br>
 						<div id="build_cost" class="cost_display_wrap">
@@ -336,19 +360,23 @@
 							<br>
 							<!--Cost display for trees-->
 							<div class="cost_display" data-value="shop_costs">
-
+								<div class="tooltip">
+									<span class="tooltip_text">Tree</span>
 									<img src="Images/Tree_1.png" class="icon_0">Tree
+								</div>
 								<span class="build_cost">0</span>
 							</div>
 							<!--Cost display for stone-->
 							<div class="cost_display" data-value="shop_costs">
- 
+								<div class="tooltip">
+									<span class="tooltip_text">Stone</span> 
 									<img src="Images/stone_icon.png" class="icon_0">Stone
+								</div> 
 								<span class="build_cost">27</span>
 							</div>
 						
 						</div>
-						<button type="button" class="button b_button" id="button" value="1"><button type="button" style="display:none;" class="button b_button_destroy cant_upgrade display_tooltip" data_tooltip_display="Destroys 1 building. YOU WILL NOT GET BACK RESOURCES!"  id="button" value="-1">-1</button>
+						<button type="button" class="button b_button" id="button" value="1">+1</button>
 					</div>
 				
 					<!--Plantation Building-->
@@ -366,33 +394,31 @@
 							<br>
 							<!--Cost display for trees-->
 							<div class="cost_display" data-value="plantation_costs">
-
+								<div class="tooltip">
+									<span class="tooltip_text">Tree</span>
 									<img src="Images/Tree_1.png" class="icon_0">Tree
+								</div>
 								<span class="build_cost">0</span>
 							</div>
 							<!--Cost display for stone-->
 							<div class="cost_display" data-value="plantation_costs">
- 
+								<div class="tooltip">
+									<span class="tooltip_text">Stone</span> 
 									<img src="Images/stone_icon.png" class="icon_0">Stone
+								</div> 
 								<span class="build_cost">27</span>
 							</div>
 						
 						</div>
-						<button type="button" class="button b_button" id="button" value="1"><button type="button" style="display:none;" class="button b_button_destroy cant_upgrade display_tooltip" data_tooltip_display="Destroys 1 building. YOU WILL NOT GET BACK RESOURCES!"  id="button" value="-1">-1</button>
-					</div>
+						<button type="button" class="button b_button" id="button" value="1">+1</button>
 					</div>					
+
 				</divtab2>
 				<divtab3 id="tab_3" style="display:none" class="tabcontent">
 					<p>TO BE CONTINUED #3</p>
 				</divtab3>
 				<divtab4 id="tab_4" style="display:none" class="tabcontent">
-					<div class="wrapper">
-						<span class="tab_title">Research</span>
-						<br>
-						<span class="description">Research can be used to learn new things and upgrade existing things. </span>
-						<br>
-						<span class="description">More research is progressively unlocked as the game progresses.</span>
-					</div>
+					<p>TO BE CONTINUED #4</p>
 				</divtab4>
 				<divtab5 id="tab_5" style="display:none" class="tabcontent">
 					<div class="wrapper2 stabs_div" id="settings_tabs">
@@ -475,11 +501,6 @@
 		<!--Tooltip that shows up whenever hovering on most things-->
 		<divtooltip id="global_tooltip" style="display:none; position: fixed;">
 			<span id="global_tooltip_content" class="wrapper_small" style="position: fixed;">empty
-			</span>
-		</divtooltip>
-		<!--Tooltip for downards-->
-		<divtooltip id="global_tooltip_down" style="display:none; position: fixed;">
-			<span id="global_tooltip_content_down" class="wrapper_small_down" style="position: fixed;">empty_down
 			</span>
 		</divtooltip>
 <!--NO STEALING-->
