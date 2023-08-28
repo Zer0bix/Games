@@ -1,0 +1,41 @@
+* {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+body {
+    background-image:url("Wooden_Empire/Images/pattern_background.png");
+    margin: 0;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+input {
+    background-image: linear-gradient(red, yellow);
+    height: 36;
+    width:100;
+    border-radius: 10px;
+    
+}
+
+Table, tr, th {
+    border-bottom:1px solid rgba(255, 0, 255, 0.9);
+    border-top:1px solid rgba(255, 0, 255, 0.9);
+    border-left:1px solid rgba(255, 0, 255, 0.9);
+    border-right:1px solid rgba(255, 0, 255, 0.9);
+    width: 50%;
+}
+
+.icon_large {
+    width: 48px;
+    height: 48px;
+
+}
+
+.wrapper {
+    background-color:rgba(100, 100, 100, 0.7);
+    border-radius: 5px;
+    border-color: rgba(125, 125, 125, 0.8);
+    border-style:solid;
+    width: 10%;
+    height: 10%;
+    
+}

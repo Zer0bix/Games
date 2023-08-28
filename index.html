@@ -1,96 +1,18 @@
 <HTML>
     <head>
-        <link rel="stylesheet" href="hubpage.css">
-        <Title>     dem web pages</title>
+        <link rel="stylesheet" href="homepage.css" id="maincss">
+        <link rel="stylesheet" href="Wooden_Empire/styles/idle_global.css" id="globalcss">
+        <Title>Zer0bi Games</title>
         
-        <script>
-            var trees = 1;
-            var tree = 1;
-            var price = 1;
-            var ex_tree = tree;
-            var ex_price = price;
-            function gain() {
-                
-            }
-            window.onload = function() {
-                document.getElementById("output").innerHTML = trees;
-                setInterval(gain, 1000)
-        
-            }
-            function click_tree() {
-                trees += tree
-                document.getElementById("output").innerHTML = trees;
-            }
-            function upgrade_click() {
-                if(trees>price-1) {
-                    trees -= price
-                    ex_tree = ex_tree+ex_price/100
-                    ex_price = ex_price*1.2
-                    tree = Math.round(ex_tree)
-                    price = Math.round(ex_price)
-    
-                    document.getElementById("upgbut").innerHTML = price;
-                    document.getElementById("big_tree").innerHTML = ex_tree;
-                }
-            }
-            document.getElementById("upgbut").innerHTML = price;
-        </script>
     </head>
     
     <body>
+
+        <header>
+            <a href="index.html"><img src="Images/Zer0bi_games_logo.png" id="page_icon" data_tooltip_display="Back to homepage" class="display_tooltip cursor_hand icon_large" tooltip_direct="down"></img></a>
+            <span id="page_name" data_tooltip_display="Game Name" class="display_tooltip", tooltip_direct="down">Zer0bi Games</span>
+        </header>
+        <br><br><br>
         
-        <Marquee><center><h1><a href="chrome://newtab">
-        <div1><b>
-        Back
-        </div1></b>
-        </center></h1></a></Marquee>
-        
-        <input type="button" onClick="click_tree();" 
-        ><divclick id="big_tree">Click Tree<br></divclick>
-        <br>
-        <input type="button" onClick="upgrade_click();" 
-        ><divupg id="upgbut">upgrade clicker (trees)<br></divupg>	
-        
-    </input>
-        
-        <divt>
-        <Table id="Table28" >
-            <tr>
-                <th></th>
-                <th>Answer</th>
-            </tr>
-            <tr>
-                <td>Tree Game <a rel="noopener noreferrer" href="Wooden_Empire/Index.html"></a></td>
-                <td>Bonjour</td>
-            </tr>
-            <tr>
-                <td>How Are You?</td>
-                <td>I'm pretty good.</td>
-            </tr>
-            <tr>
-                    
-        </table>
-        </divt>
-            <p id="output" value="Display"></p>
-        <div2>
-        <br>
-        </div2>
-        <div3>
-        <iframe type="video/webm" src="creeper.mp4" width="220" height="125" allowfullscreen></iframe>
-        </div3>
-        <div4>
-            <br>
-        </div4>
-        <div5>
-            <a href="https://stackoverflow.com/questions/47638046/how-to-make-a-button-show-a-table-onclick" target="_blank" rel="noopener noreferrer">
-                <img src="Image_created_with_a_mobile_phone.png" 10%></a>
-        </div5>
-        
-    </body>
-    <foot>
-        <strong><i>
-        hello
-        </strong></i>
-    </foot>
-    
+        <div class="wrapper" id="title">Hello</div>
     </html>
