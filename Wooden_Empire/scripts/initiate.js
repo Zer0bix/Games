@@ -82,7 +82,7 @@ function research_object(cost, unlock) {
 //display is set to 0 when the research is bought and cannot be bought again.
 
 //Creates objects for each research detailing data about that research item
-r_destroy = research_object(10, 1);
+r_dynamite = research_object(10, 1);
 
 
 //Research efficiencies - Increase the production / reduce the cost of a thing
@@ -90,7 +90,7 @@ r_upgrade_eff = research_object(1000, 0);
 r_prod_eff = research_object(1000, 0);
 
 //Define the object that will go into game_save, and define it's base
-research_data = Object({r_destroy, r_upgrade_eff, r_prod_eff});
+research_data = Object({r_dynamite, r_upgrade_eff, r_prod_eff});
 research_data_base = JSON.parse(JSON.stringify(clone_object(research_data)));
 
 

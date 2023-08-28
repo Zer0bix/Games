@@ -34,23 +34,28 @@ function clone_object(a) {
 }
 
 
+
+//Tooltip functions
 function tooltip_end(element) {
     clearTimeout(tooltip_timer);
-    hide_tooltip = setTimeout(tooltip_hide, 250, element);
+    document.getElementById("global_tooltip_content").style.animationName = "animatefadeout";
+    document.getElementById("global_tooltip_content_down").style.animationName = "animatefadeout";
+    hide_tooltip = setTimeout(tooltip_hide, 500, element);
     window.removeEventListener('mousemove', tooltip_end);
 }
 
 function tooltip_hide(element) {
+
     ele = element.target;
 
     document.getElementById("global_tooltip").style.display = "none";
     document.getElementById("global_tooltip_down").style.display = "none";
 }
 function tooltip_start(element) {
-    tooltip_timer = setTimeout(tooltip, 500, element);
+    tooltip_timer = setTimeout(tooltip, 0, element);
 }
 function tooltip(element) {
-    window.addEventListener('mousemove', tooltip_end, false);
+    console.log(document.getElementById("global_tooltip"));
     try {clearTimeout(hide_tooltip);}
     catch(firstinstance) {}
     let ele = element.target;
@@ -77,4 +82,12 @@ function tooltip(element) {
             }
         }
     }
+    document.getElementById("global_tooltip_content").style.animationName = "animatefadein";
+    document.getElementById("global_tooltip_content_down").style.animationName = "animatefadeout";
+
+    setTimeout(tooltip_track_move, 500);
+    
+}
+function tooltip_track_move() {
+    window.addEventListener('mousemove', tooltip_end, false);
 }

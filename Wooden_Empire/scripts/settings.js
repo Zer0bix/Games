@@ -12,7 +12,6 @@ function changeBackground(id, colour) {
     else if (colour == "grey") {
         id_1.classList.add("button");
     }
-    console.log(id, colour);
 }
 
 function toggleAutoSave(id, val) {

@@ -119,6 +119,9 @@ function refresh100() {
     if (document.getElementById('tab_2').style.display == "block") {
         refresh_buildings();
     }
+    if (document.getElementById('tab_4').style.display == "block") {
+        refresh_research();
+    }
     load_check_1 = 1;
 
     //Display the length of the bar for the clicking excersize.
@@ -185,7 +188,7 @@ function game_refresh() {
 
     //Set the effect for each building
     let build_click = game_save.buildings_data.b_click_costs
-    build_click.effect = 1 + build_click.owned*build_click.research*2
+    build_click.effect = 1 + build_click.owned*(build_click.research+1)*2 //build_click.research will probably be replaced by build_click.upgrade or something, as I have changed my mind about research. Make sure to remove this comment as well!
 
     let build_prod = game_save.buildings_data.b_production_costs
     build_prod.effect = 1 + build_prod.owned*build_prod.research*5
@@ -212,6 +215,7 @@ function initial_load() {
     game_refresh();
     refresh100();
     refresh10000();
+    refresh_research();
 };
 
 

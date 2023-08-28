@@ -2,15 +2,15 @@
 
 <HTML>
 <head>
-	<script type="text/javascript" src="scripts/main.js"></script>
-	<link rel="stylesheet" href="styles/idle_global.css" id="globalcss">
-	<link rel="stylesheet" href="styles/idlegame.css" id="idlegamecss">
-	<link rel="stylesheet" href="styles/buttons.css" id="buttoncss">
-	<link rel="stylesheet" href="styles/loading_icon.css" id="loading_iconcss">
-	<link rel="stylesheet" href="styles/wrapper.css" id="wrappercss">
-	<link rel="stylesheet" href="styles/modal.css" id="modalcss">
-	<link rel="stylesheet" href="styles/buildings.css" id="buildingcss">
-	<link rel="stylesheet" href="styles/display.css" id="displaycss">
+	<link rel="stylesheet" href="styles/idle_global.css" id="global_css">
+	<link rel="stylesheet" href="styles/idlegame.css" id="idlegame_css">
+	<link rel="stylesheet" href="styles/buttons.css" id="button_css">
+	<link rel="stylesheet" href="styles/loading_icon.css" id="loading_icon_css">
+	<link rel="stylesheet" href="styles/wrapper.css" id="wrapper_css">
+	<link rel="stylesheet" href="styles/modal.css" id="modal_css">
+	<link rel="stylesheet" href="styles/buildings.css" id="building_css">
+	<link rel="stylesheet" href="styles/display.css" id="display_css">
+	<link rel="stylesheet" href="styles/research.css" id="research_css">
 	
 	
 	<Title>THE web pages</title>
@@ -22,6 +22,7 @@
 		<script type="text/javascript" src="scripts/load.js" id="loadjs"></script>
 		<script type="text/javascript" src="scripts/clicking.js" id="clickingjs"></script>
 		<script type="text/javascript" src="scripts/buildings.js" id="buidlingsjs"></script>
+		<script type="text/javascript" src="scripts/research.js" id="researchjs"></script>
 		<script type="text/javascript" src="scripts/tabs.js" id="tabsjs"></script>
 		<script type="text/javascript" src="scripts/save.js" id="savejs"></script>
 		<script type="text/javascript" src="scripts/settings.js" id="settingsjs"></script>
@@ -83,7 +84,7 @@
 			<div class="wrapper display_value_wrap right">
 				<!--Tree count display-->
 			<div class="display_value">
-				<img src="Images/Tree_1.png" id="tree_count_logo" class="icon_big" data_tooltip_display="Trees">
+				<img src="Images/Tree_1.png" id="tree_count_logo" class="icon" data_tooltip_display="Trees">
 				<span id="output" value="Display" class="number count" data-value="trees" data_tooltip_display="Trees">Display</span>
 				<span id="tree_per_sec" value="Display" class="number count display_tooltip" style="color:green" data-value="trees_per_sec" data-value-2="per_sec" data_tooltip_display="Tree gain rate">+0/s</span>
 				
@@ -95,13 +96,13 @@
 				</div>
 				<br><br>
 				<div id="stone_count" class="display_value">
-					<img src="Images/stone_icon.png" id="stone_icon" class="icon display_tooltip" data_tooltip_display="Research"></img>
+					<img src="Images/stone_icon.png" id="stone_icon" class="icon display_tooltip" data_tooltip_display="Stone"></img>
 					<span class="number count display_tooltip" id="stone_count_num" data-value="stone" data_tooltip_display="Stone">0</span>
 					<span id="stone_per_sec" value="Display" class="number b_count display_tooltip" style="color:green" data-value="stone" data-value-2="per_sec" data_tooltip_display="Stone gain rate">0</span>
 				</div>
 				<br><br>
 				<div id="souls_count" class="display_value">
-					<img src="Images/souls_icon.png" id="souls_icon" class="icon display_tooltip" data_tooltip_display="Research"></img>
+					<img src="Images/souls_icon.png" id="souls_icon" class="icon display_tooltip" data_tooltip_display="Souls"></img>
 					<span class="number count display_tooltip" id="souls_count_num" data-value="souls" data_tooltip_display="Souls">0</span>
 					<span id="souls_per_sec" value="Display" class="number b_count display_tooltip" style="color:green" data-value="soul" data-value-2="per_sec" data_tooltip_display="Souls gain rate">+0/s</span>
 				</div>
@@ -137,7 +138,14 @@
 					</div>
 				</divtab1>
 				<divtab2 id="tab_2" style="display:none" class="tabcontent">
-
+					<!--Buildings header-->
+					<div style="margin-left: 10px;">
+						<img class="tab_icon" src="Images/building.png"></img><span class="tab_title">Buildings</span>
+						<br>
+						<span class="description">Buildings are used as the primary way to obtain resources.</span>
+						<br>
+						<span class="description">More buildings are progressively unlocked as the game progresses.</span>
+					</div>
 					<!--Buildings that can be built-->
 					<!--Click Building-->
 					<div class="b_all">
@@ -386,12 +394,28 @@
 					<p>TO BE CONTINUED #3</p>
 				</divtab3>
 				<divtab4 id="tab_4" style="display:none" class="tabcontent">
-					<div class="wrapper">
+					<div>
 						<span class="tab_title">Research</span>
 						<br>
 						<span class="description">Research can be used to learn new things and upgrade existing things. </span>
 						<br>
 						<span class="description">More research is progressively unlocked as the game progresses.</span>
+						<br><br>
+					</div>
+					<div class="r_wrapper">
+						<img class="r_icon r_border">
+						<span class="r_title" id="r_dynamite">Dynamite</span>
+						<div class="r_content" id="r_dynamite_content" data-display-path="dynamite">
+							<br>
+							<span class="r_description">Researching dynamite gives you the ability to destroy buildings, freeing up the land it occupied.</span>
+							<br>
+							<span class="r_description">WARNING: Destroying a building will NOT give back the resources used to build it.</span>
+							<br>
+							<img class="r_icon" src="Images/research_icon.png"></img>
+							<span class="r_cost" id="r_dynamite_cost">0</span>
+							
+							<button class="r_button">Research</button>
+						</div>
 					</div>
 				</divtab4>
 				<divtab5 id="tab_5" style="display:none" class="tabcontent">

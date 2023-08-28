@@ -22,7 +22,7 @@
 
 /* Add entrance and leaving Animations for Alert */
 @keyframes animatetop {
-from {left: 100%; opacity: 1; background-color:aqua}
+from {left: 100%; opacity: 0; background-color:aqua}
 to {left: 0%; opacity: 1; background-color:black;}
 }
 

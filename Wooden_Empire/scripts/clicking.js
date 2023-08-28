@@ -6,7 +6,7 @@ function gain(rate) {
     game_save.trees_chopped += game_save.trees_per_sec/rate
 
     //Stone
-    game_save.stone += game_save.buildings_data.b_stone_costs.effect/rate + 0.1*clicks_per_sec/rate;
+    game_save.stone += game_save.buildings_data.b_stone_costs.effect/rate + (0.1*clicks_per_sec*game_save.tree_levels)/rate;
     
     //Souls
     game_save.souls += game_save.buildings_data.b_soul_costs.effect/rate;

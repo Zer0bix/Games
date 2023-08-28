@@ -6,7 +6,7 @@ window.onload = function() {
   alert_content_text = document.getElementById("alert_content_text");
 }
 
-// When the user clicks on the button, open the alert
+//When the function is called, check if the alert is already displayed. If not, display it with the required content.
 function alert_box(content) {
   if (alert_visible == 0) {
     console.log(alert_visible);
@@ -18,12 +18,14 @@ function alert_box(content) {
   }
 }
 
-// When the user clicks on <span> (x), close the alert
+// Begin the animation for hiding the alert two seconds after it first appears
 function hide_alert_1() {
   alert_content.style.animationName = "animatebottom";
   hide_alert = setTimeout(hide_alert_2, 500);
+  console.log(alert_content);
 }
 
+//Hide the alert fully and set the variable to not visible
 function hide_alert_2() {
   alert_div.style.display = "none";
   alert_visible = 0;
