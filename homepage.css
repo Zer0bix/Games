@@ -30,12 +30,58 @@ Table, tr, th {
 
 }
 
-.wrapper {
+.wrapper_grey {
     background-color:rgba(100, 100, 100, 0.7);
     border-radius: 5px;
     border-color: rgba(125, 125, 125, 0.8);
     border-style:solid;
-    width: 10%;
-    height: 10%;
+    padding: 5px;
     
+}
+
+.wrapper_blue {
+    background-color:rgba(100, 100, 115, 0.7);
+    border-radius: 5px;
+    border-color: rgba(125, 125, 165, 0.8);
+    border-style:solid;
+    padding: 5px;
+    
+}
+
+.indent {
+    margin-left: 100px;
+    margin-top: 50px;
+}
+
+.title {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 30px;
+    color:aquamarine;
+}
+
+.description {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 15px;
+}
+
+.game_tab_div {
+    display: block;
+    overflow:scroll;
+}
+
+.game_div {
+    margin-top: 10px;
+}
+
+#tree_game_div {
+    background-size:500px;
+}
+
+.game_preview {
+    width: 512px;
+}
+
+.game_title {
+    font-size: 20px;
+    color:rgba(148, 192, 136, 0.7);
 }
