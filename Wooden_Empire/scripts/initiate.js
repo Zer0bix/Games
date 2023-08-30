@@ -1,6 +1,6 @@
 //Declaring all the global variables here.
 
-version = "0.0.1";
+version = "0.0.2";
 
 //Tutorial variables
 tutorial_needed = 0;

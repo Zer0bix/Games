@@ -122,14 +122,14 @@ function refresh_buildings() {
 
     //Display destroy building button if unlocked
     destroy_building_list = document.getElementsByClassName("b_button_destroy");
-    if (destroy_building_buttons_displayed == 0 && game_save.research_data.r_destroy.owned > 0) {
+    if (destroy_building_buttons_displayed == 0 && game_save.research_data.r_dynamite.owned > 0) {
         destroy_building_buttons_displayed = 1;
         for (i=0;i<8;i++) {
             destroy_building_list[i].style.display = "block";
         }
         
     }
-    else if (game_save.research_data.r_destroy.owned = 0) {
+    else if (game_save.research_data.r_dynamite.owned = 0) {
         destroy_building_buttons_displayed = 0;
         for (i=0;i<8;i++) {
             destroy_building_list[i].style.display = "none";
