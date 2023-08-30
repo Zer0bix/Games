@@ -19,11 +19,14 @@ a {
     background-color: rgba(0, 0, 0, 0.7)
 }
 
-
+#page_name {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
 
 #main_dividor {
     position: absolute;
     margin-top: 10px;
+    padding-bottom: 30px;
 }
 
 #warning {

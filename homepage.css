@@ -8,6 +8,10 @@ body {
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
+#main {
+    padding: 25px;
+}
+
 input {
     background-image: linear-gradient(red, yellow);
     height: 36;
@@ -22,6 +26,10 @@ Table, tr, th {
     border-left:1px solid rgba(255, 0, 255, 0.9);
     border-right:1px solid rgba(255, 0, 255, 0.9);
     width: 50%;
+}
+
+a {
+    text-decoration: none;
 }
 
 .icon_large {
@@ -59,29 +67,56 @@ Table, tr, th {
     color:aquamarine;
 }
 
+.title_div {
+    width: 1000px;
+}
+
 .description {
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 15px;
 }
 
 .game_tab_div {
-    display: block;
-    overflow:scroll;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    width: 1000px;
+    height: 500px;
 }
 
-.game_div {
-    margin-top: 10px;
-}
+
 
 #tree_game_div {
     background-size:500px;
 }
 
 .game_preview {
-    width: 512px;
+    width: 900px;
+    border-radius: 5px;
+    border:rgba(125, 125, 165, 0.8) solid;
 }
 
 .game_title {
     font-size: 20px;
     color:rgba(148, 192, 136, 0.7);
+    border-radius: 3px;
+    
 }
+
+.game_head, .game_foot {
+    background-color: rgba(48, 92, 36, 0.3);
+    padding: 5px;
+    border-radius: 5px;
+    border: rgba(125, 125, 165, 0.8) solid;
+}
+
+
+.image_test_1 {
+    position: absolute;
+    right: 50%;
+    width: 900px;
+}
+
+.page_icon {
+    border-radius: 50px; 
+}
+

@@ -3,6 +3,11 @@
     cursor: url('../Images/cursor_tree.png'), auto;
 }
 
+body {
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
 .number {
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 
@@ -11,6 +16,7 @@
 header {
     width: 110%;
     height: 50px;
+    max-height: 10%;
     background-color: rgba(125, 140, 160, 0.9);
     padding-left: 10px;
     padding-top: 3px;
@@ -21,6 +27,22 @@ header {
     font-size: 40px;
     position: fixed;
     display:flex;
+}
+
+
+footer {
+    height: 25px;
+    background-color: rgba(25, 40, 60, 0.3);
+    padding-left: 10px;
+    padding-top: 3px;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-size: 20px;
+    display:flex;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: 5;
 }
 
 
