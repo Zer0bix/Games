@@ -6,7 +6,7 @@ window.addEventListener('mousemove', (event) => {
 function shortenum(num) {
     var num2 = 0;
     num2 = num;
-    while (stop=False) {
+    while (stop==False) {
         num2 = num2/1000;
         if (num2 < 1000) {
             stop = True;

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<HTML>
+    <head>
+        <link rel="stylesheet" href="src/styles/cps.css" id="maincss">
+        <link rel="stylesheet" href="src/styles/homepage.css" id="homepagecss">
+        <link rel="stylesheet" href="Wooden_Empire/styles/idle_global.css" id="globalcss">
+
+        <script type="text/javascript" src="src/scripts/cps.js" id="mainjs"></script>
+        <Title>Zer0bi CPS test</title>
+        <link rel="icon" href="src/Images/Zer0bi_games_logo_icon.png" class="page_icon">
+        
+    </head>
+    
+    <body>
+
+        <header>
+            <a href="index.html"><img src="Wooden_Empire/Images/cursor_tree.png" id="page_icon" data_tooltip_display="Back to homepage" class="display_tooltip cursor_hand icon_large" tooltip_direct="down"></img></a>
+            <span id="page_name" data_tooltip_display="Game Name" class="display_tooltip", tooltip_direct="down">Zer0bi CPS</span>
+        </header>
+        <br><br><br>
+
+
+        <div id="main" class="wrapper_blue">
+            <div id="clicker_div">
+                <span id="cps_title" class="title">Clicks per second</span>
+                <br>
+                <span id="cps_description" class="description">Click the button to start testing your cps</span>
+                <br><br><br><br><br>
+                <button type="button" id="cps_zoom" class="zoom_button" onclick="zoom_cps_clicker();">+</button>
+                <br>
+                <button type="button" id="cps_clicker" class="cps_clicker" onclick="cps_click();">Click</button>
+                
+            </div>
+
+            <div id="display_div">
+                <span class="label">Averages of time-based measurements:</span>
+                <span class="description">Clicks over 1 second:</span><span class="number" id="cps_1">0</span><br>
+                <span class="description">Clicks over 3 seconds:</span><span class="number" id="cps_3">0</span><br>
+                <span class="description">Clicks over 5 seconds:</span><span class="number" id="cps_5">0</span><br>
+                <span class="description">Clicks over 10 seconds:</span><span class="number" id="cps_10">0</span><br>
+                <br>
+                <span class="label">Other measurements:</span>
+                <span class="description">Square root of clicks (1 sec):</span><span class="number" id="cps_root">0</span><br>
+
+            </div>
+        </div>
+        <br>
+        <div id="highest" class="wrapper_blue">
+            <span class="label">Highest scores:</span>
+            <br>
+            <span class="description">Clicks over 1 second:</span><span class="number" id="h_cps_1">0</span><br>
+            <span class="description">Clicks over 3 seconds:</span><span class="number" id="h_cps_3">0</span><br>
+            <span class="description">Clicks over 5 seconds:</span><span class="number" id="h_cps_5">0</span><br>
+            <span class="description">Clicks over 10 seconds:</span><span class="number" id="h_cps_10">0</span><br>
+            <span class="description">Square root of clicks (1 sec):</span><span class="number" id="h_cps_root">0</span><br>
+            <br><br><br><br><br><br>
+            <button class="warning" onclick="reset_scores();">RESET HIGH SCORES</button>
+
+        </div>
+
+
+
+
+    <footer>
+        <span id="page_name" data_tooltip_display="Game Name" class="display_tooltip", tooltip_direct="down">Zer0bi Games</span>
+    </footer>
+</body>

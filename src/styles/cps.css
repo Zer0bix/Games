@@ -1,0 +1,72 @@
+* {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+body {
+    background-image:url("Wooden_Empire/Images/pattern_background.png");
+    margin: 0;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.label {
+    font-size: 17px;
+    font-family:'Courier New', Courier, monospace;
+    color: rgb(100, 200, 100);
+
+}
+.number {
+    color: rgba(150, 100, 250);
+}
+
+.cps_clicker {
+    background-image:radial-gradient(rgba(100, 100, 0, 0.5), rgba(100, 200, 50, 0.8));
+    border: rgba(200, 200, 200, 1.0) ridge 10px;
+    border-radius: 25px;
+    width: 150px;
+    height: 100px;
+    font-size: 40px;
+    color: yellow;
+}
+
+.zoom_button {
+    background-image:radial-gradient(rgba(100, 100, 0, 0.5), rgba(100, 200, 50, 0.8));
+    border: rgba(200, 200, 200, 1.0) ridge;
+    border-radius: 5px;
+    width: 40px;
+    height: 25px;
+}
+
+.cps_clicker:hover {
+    border: rgba(200, 200, 200, 1.0) ridge 14px;
+    background-image:radial-gradient(rgba(75, 75, 0, 0.4), rgba(75, 175, 25, 0.8));
+    border-radius: 25px;
+}
+
+.button {
+    background-image:radial-gradient(rgba(100, 100, 100, 0.5), rgba(100, 100, 75, 0.8));
+    border: rgba(200, 200, 200, 1.0) ridge 1px;
+    border-radius: 3px;
+    position: absolute;
+    top: -50px;
+}
+
+.warning {
+    background-image:radial-gradient(rgba(250, 100, 100, 0.5), rgba(200, 100, 75, 0.8));
+    border: rgba(200, 200, 200, 1.0) ridge 1px;
+    border-radius: 3px;
+    font-size: 20px;
+}
+
+#display_div {
+    position: absolute;
+    right: 5px;
+    top: 10%;
+    text-align:right;
+}
+
+.description {
+    text-align: left;
+}
+.number {
+    text-align: right;
+}

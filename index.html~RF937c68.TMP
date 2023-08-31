@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <HTML>
     <head>
-        <link rel="stylesheet" href="src/styles/homepage.css" id="maincss">
+        <link rel="stylesheet" href="homepage.css" id="maincss">
         <link rel="stylesheet" href="Wooden_Empire/styles/idle_global.css" id="globalcss">
         <Title>Zer0bi Games</title>
-        <link rel="icon" href="src/Images/Zer0bi_games_logo_icon.png" class="page_icon">
+        <link rel="icon" href="Images/Zer0bi_games_logo_icon.png" class="page_icon">
         
     </head>
     
     <body>
 
         <header>
-            <a href="index.html"><img src="src/Images/Zer0bi_games_logo.png" id="page_icon" data_tooltip_display="Back to homepage" class="display_tooltip cursor_hand icon_large" tooltip_direct="down"></img></a>
+            <a href="index.html"><img src="Images/Zer0bi_games_logo.png" id="page_icon" data_tooltip_display="Back to homepage" class="display_tooltip cursor_hand icon_large" tooltip_direct="down"></img></a>
             <span id="page_name" data_tooltip_display="Game Name" class="display_tooltip", tooltip_direct="down">Zer0bi Games</span>
         </header>
         <br><br><br>
@@ -35,30 +35,30 @@
                 
                     <div class="game_head cursor_hand">
                         <img src="Wooden_Empire/Images/Tree_1.png" class="icon_big cursor_hand"></img>
-                        <span class="game_title cursor_hand">Wooden Empire</span>
+                        <span class="game_title cursor_hand">Tree Game</span>
                     </div>
                     <div id="tree_div" class="wrapper_blue cursor_hand">
-                    <img src="src/Images/Wooden_Empire_screenshot.png" class="game_preview cursor_hand">
+                    <img src="Images/Wooden_Empire_screenshot.png" class="game_preview cursor_hand">
                 </div>
             </a>
             
             <div class="game_foot">
-                <span class="description">An incremental game made using Javascript, HTML and CSS about growing your empire of trees. Features buildings, research and more.</span>
+                <span class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</span>
             </div>
             <br><br><br><br>
-            <a href="cps_test.html">
+            <a>
                 
                     <div class="game_head cursor_hand">
                         <img src="Wooden_Empire/Images/cursor_tree.png" class="icon_big cursor_hand"></img>
-                        <span class="game_title cursor_hand">CPS test</span>
+                        <span class="game_title cursor_hand">Image is a placeholder, I haven't made the website at this stage...</span>
                     </div>
                     <div id="tree_div" class="wrapper_blue cursor_hand">
-                    <img src="src/Images/cps_test_preview.png" class="game_preview cursor_hand">
+                    <img src="Images/Jack_Website.png" class="game_preview cursor_hand">
             </div>
             </a>
             
             <div class="game_foot">
-                <span class="description">Simple webpage that can be used to test your CPS, with multiple measurements. Also tracks the highest cps values you have achieved.</span>
+                <span class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</span>
             </div>
             
             <br><br><br><br>
@@ -69,7 +69,7 @@
                         <span class="game_title cursor_hand">Lorem Ipsum dolor</span>
                     </div>
                     <div id="tree_div" class="wrapper_blue cursor_hand">
-                    <img src="src/Images/this_website.png" class="game_preview cursor_hand">
+                    <img src="Images/this_website.png" class="game_preview cursor_hand">
             </div>
             </a>
             

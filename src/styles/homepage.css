@@ -3,7 +3,7 @@
 }
 
 body {
-    background-image:url("Wooden_Empire/Images/pattern_background.png");
+    background-image:url("../../Wooden_Empire/Images/pattern_background.png");
     margin: 0;
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
@@ -80,7 +80,8 @@ a {
     overflow-x: hidden;
     overflow-y: scroll;
     width: 1000px;
-    height: 500px;
+    max-height: 80%;
+    height: 600px;
 }
 
 
