@@ -59,7 +59,7 @@ body {
 
 #display_div {
     position: absolute;
-    right: 5px;
+    right: 15px;
     top: 10%;
     text-align:right;
 }
@@ -69,4 +69,9 @@ body {
 }
 .number {
     text-align: right;
+}
+
+#highest, #main {
+    margin: 10px;
+    margin-bottom: 30px;
 }
