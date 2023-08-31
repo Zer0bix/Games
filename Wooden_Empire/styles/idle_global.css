@@ -27,6 +27,7 @@ header {
     font-size: 40px;
     position: fixed;
     display:flex;
+    z-index: 5;
 }
 
 
