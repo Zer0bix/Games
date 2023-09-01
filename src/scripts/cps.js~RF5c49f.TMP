@@ -1,0 +1,37 @@
+window.onload = function() {
+    let _1 = 0;
+    let _3 = 0;
+    let _5 = 0;
+    let _10 = 0;
+    let _30 = 0;
+    let _60 = 0;
+    
+
+    cps = Object({_1, _3, _5, _10, _30, _60});
+}
+
+function cps_click() {
+    cps_add(1);
+    cps_add(3);
+    cps_add(5);
+    cps_add(10);
+    cps_add(30);
+    cps_add(60);
+
+}
+
+function cps_add(time) {
+    let key = "_" + time;
+    cps[key] += 1;
+    setTimeout(cps_remove, time*1000, key)
+}
+
+function cps_remove(key) {
+    cps[key] += -1;
+    console.log("removed the following time from the variable", time, cps[key]);
+}
+
+function zoom_cps_clicker() {
+
+}
+

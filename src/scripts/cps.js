@@ -1,4 +1,5 @@
 var keys = ["1", "3", "5", "10"];
+let t_keys = ["1", "3", "5", "10"];
 var big = 0;
 
 window.onload = function() {
@@ -8,10 +9,14 @@ window.onload = function() {
     let _10 = 0;
     let root = 0;
 
+    let t_1 = 0;
+    let t_3 = 0;
+    let t_5 = 0;
+    let t_10 = 0;
     
 
     cps = Object({_1, _3, _5, _10});
-    high_scores = Object({_1, _3, _5, _10, root});
+    high_scores = Object({_1, _3, _5, _10, root, t_1, t_3, t_5, t_10});
 
     //Try loading old save values
     try {
@@ -22,9 +27,9 @@ window.onload = function() {
         console.log(high_scores);
     }
 
-    catch(firstinstance) {}
+    catch(firstinstance) {console.log("no saved scores detected, loading base values");}
 
-    setInterval(refresh_values, 10);
+    setInterval(refresh_values, 25);
     setInterval(save, 1000);
 }
 
@@ -39,8 +44,9 @@ function cps_click() {
 function cps_add(time) {
     let key = "_" + time;
     cps[key] += 1;
-    if (cps[key]/time >= high_scores[key]) {
-        high_scores[key] = Math.floor(cps[key]/time);
+    if (cps[key] >= high_scores[key]) {
+        high_scores[key] = cps[key];
+        high_scores["t" + key] = cps[key];
     }
     setTimeout(cps_remove, time*1000, key);
 }
@@ -72,11 +78,20 @@ function change_value(key) {
     return ele
 }
 function refresh_values() {
+    //Averages
     for (const key in keys) {
         let key_val = "_" + keys[key];
         let id = "cps" + key_val
         ele = change_value(id);
-        ele.innerHTML = Math.floor(cps[key_val]/keys[key]);
+        ele.innerHTML = Math.floor(10*cps[key_val]/keys[key])/10;
+    }
+    
+    //Totals
+    for (const key in keys) {
+        let key_val = "t_cps_" + keys[key];
+        let key_key = "_" + keys[key];
+        ele = change_value(key_val);
+        ele.innerHTML = cps[key_key];
     }
 
     //Non-second related values
@@ -93,7 +108,12 @@ function refresh_values() {
     for (const key in keys) {
         let key_val = "h_cps_" + keys[key];
         ele = change_value(key_val);
-        ele.innerHTML = high_scores["_" + keys[key]];
+        ele.innerHTML = Math.floor((high_scores["_" + keys[key]])*(10/keys[key]))/10;
+    }
+    for (const t_key in t_keys) {
+        let t_key_val = "h_t_cps_" + t_keys[t_key];
+        let t_ele = change_value(t_key_val);
+        t_ele.innerHTML = high_scores["t_" + t_keys[t_key]];
     }
 }
 
@@ -112,6 +132,10 @@ function reset_scores() {
     let _5 = 0;
     let _10 = 0;
     let root = 0;
+    let t_1 = 0;
+    let t_3 = 0;
+    let t_5 = 0;
+    let t_10 = 0;
     
-    high_scores = Object({_1, _3, _5, _10, root});
+    high_scores = Object({_1, _3, _5, _10, root, t_1, t_3, t_5, t_10});
 }

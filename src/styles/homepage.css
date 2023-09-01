@@ -78,10 +78,9 @@ a {
 
 .game_tab_div {
     overflow-x: hidden;
-    overflow-y: scroll;
+    overflow-y:hidden;
     width: 1000px;
     max-height: 80%;
-    height: 600px;
 }
 
 
