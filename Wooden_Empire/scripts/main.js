@@ -172,7 +172,14 @@ function game_refresh() {
     //Set the manual clicking power for trees
     game_save.manual_power = Math.floor((Math.sqrt(clicks_per_sec)) * (1 + game_save.tree_levels + game_save.buildings_data.b_click_costs.effect));
     //Set the trees per second
-        game_save.trees_per_sec = game_save.manual_power + game_save.buildings_data.b_production_costs.effect;
+    game_save.trees_per_sec = game_save.manual_power + game_save.buildings_data.b_production_costs.effect;
+    //Set the stone per second
+    if (clicks_per_sec !== 0) {
+        game_save.stone_per_sec = game_save.buildings_data.b_stone_costs.effect + (0.1*clicks_per_sec*game_save.buildings_data.b_stone_click_costs.effect);
+    }
+    else {
+        game_save.stone_per_sec = game_save.buildings_data.b_stone_costs.effect;
+    }
 
 
     //Set the price of upgrading the tree
@@ -202,6 +209,8 @@ function game_refresh() {
     let build_souls = game_save.buildings_data.b_soul_costs
     build_souls.effect = build_souls.owned*build_souls.research*2
     
+    let build_c_stone = game_save.buildings_data.b_stone_click_costs
+    build_c_stone.effect = 1+build_c_stone.owned*build_c_stone.research*game_save.tree_levels;
 }
 
 function initial_load() {

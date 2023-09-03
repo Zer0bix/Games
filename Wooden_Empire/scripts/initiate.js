@@ -43,8 +43,8 @@ function build_object(trees2, stone, upgrade) {
     return obj
 }
 
-//function build_buildings_list_object(click, production, research, reduce, soul, stone, shop, school, bush, plantation) {
-//    let obj = Object({click, production, research, reduce, soul, stone, shop, school, bush, plantation});
+//function build_buildings_list_object(click, production, research, reduce, soul, stone, stone_click, school, bush, plantation) {
+//    let obj = Object({click, production, research, reduce, soul, stone, stone_click, school, bush, plantation});
 //    return obj
 //}
 
@@ -57,12 +57,12 @@ b_research_costs = build_object(1000, 25, 0);
 b_reduce_costs = build_object(2500, 50, 0);
 b_soul_costs = build_object(5000, 75, 0);
 b_stone_costs = build_object(7500, 100, 0);
-b_shop_costs = build_object(10000, 1000, 0);
+b_stone_click_costs = build_object(1000, 10, 0);
 b_plantation_costs = build_object(1000, 25, 0);
 b_num_total = 0;
 
 //Usage of JSON.parse(JSON.stringify()) makes the objects no longer bound to the above objects, instead creating new objects. This means
-buildings_data = Object({b_click_costs, b_production_costs, b_research_costs, b_reduce_costs, b_soul_costs, b_stone_costs, b_shop_costs, b_plantation_costs, b_num_total});
+buildings_data = Object({b_click_costs, b_production_costs, b_research_costs, b_reduce_costs, b_soul_costs, b_stone_costs, b_stone_click_costs, b_plantation_costs, b_num_total});
 buildings_data_base = JSON.parse(JSON.stringify(clone_object(buildings_data)));
 
 //Other buildings variables
@@ -103,6 +103,7 @@ wipe_times = 0;
 tree_levels = 0;
 land = 0;
 stone = 0;
+stone_per_sec = 0;
 souls = 0;
 research = 0;
 
@@ -121,9 +122,9 @@ lifetime_buildings_bought = 0;
 //game_save is the save of the game
 //game_base_values is the constant variable that tells you what the initial values are
 //game_save_name is how you operate each item in the Object like a list
-game_save = Object({trees, manual_power, trees_chopped, tree_levels, lifetime_clicks, lifetime_trees_chopped, lifetime_buildings_bought, land, buildings_data, version, stone, souls, research, trees_per_sec, research_data});
+game_save = Object({trees, manual_power, trees_chopped, tree_levels, lifetime_clicks, lifetime_trees_chopped, lifetime_buildings_bought, land, buildings_data, version, stone, souls, research, trees_per_sec, stone_per_sec, research_data});
 const game_base_values = JSON.parse(JSON.stringify(game_save));
-const game_save_name = ["trees", 'manual_power', "trees_chopped", "tree_levels", "lifetime_clicks", "lifetime_trees_chopped", "lifetime_buildings_bought", "land", "buildings_data", "research_data"];
+const game_save_name = ["trees", 'manual_power', "trees_chopped", "tree_levels", "lifetime_clicks", "lifetime_trees_chopped", "lifetime_buildings_bought", "land", "buildings_data", "version", "stone", "souls", "research", "trees_per_sec", "stone_per_sec", "research_data"];
 
 //JSON objects for settings, same uses as above, but stores all the settings that will need to be saved.
 setting_save = Object({change_background, auto_save, tooltips_enabled});

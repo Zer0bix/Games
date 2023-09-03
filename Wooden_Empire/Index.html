@@ -17,7 +17,7 @@
 	<link rel="stylesheet" href="styles/research.css" id="research_css">
 	
 	
-	<Title>THE web pages</title>
+	<Title>Wooden Empire</title>
 		
 		<script type="text/javascript" src="scripts/refresh.js" id="refreshjs"></script>
 		<script type="text/javascript" src="scripts/modal.js" id="modaljs"></script>
@@ -102,7 +102,7 @@
 				<div id="stone_count" class="display_value">
 					<img src="Images/stone_icon.png" id="stone_icon" class="icon display_tooltip" data_tooltip_display="Stone"></img>
 					<span class="number count display_tooltip" id="stone_count_num" data-value="stone" data_tooltip_display="Stone">0</span>
-					<span id="stone_per_sec" value="Display" class="number b_count display_tooltip" style="color:green" data-value="stone" data-value-2="per_sec" data_tooltip_display="Stone gain rate">0</span>
+					<span id="stone_per_sec" value="Display" class="number count display_tooltip" style="color:green" data-value="stone_per_sec" data-value-2="per_sec" data_tooltip_display="Stone gain rate">0</span>
 				</div>
 				<br><br>
 				<div id="souls_count" class="display_value">
@@ -338,27 +338,27 @@
 						<button type="button" style="display:none;" class="button b_button_destroy cant_upgrade display_tooltip" data_tooltip_display="Destroys 1 building. YOU WILL NOT GET BACK RESOURCES!"  id="button" value="-1">-1</button>
 					</div>
 
-					<!--Shop Building-->
-					<div class="wrapperb b_midright b_mid_row" id="shop_building" style="display:none;">
-						<span class="b_title">Shop Building</span>
+					<!--Stone Click Building-->
+					<div class="wrapperb b_midright b_mid_row" id="stone_click_building" style="display:none;">
+						<span class="b_title">Stone Click Building</span>
 						<!--Display how many you currently have-->
 						<span id="count" class="owned_count">0</span>
 						<br>
 						<!--Description of the building-->
-						<span class="b_description">Building this is a waste of materials. It is purely cosmetic.</span>
+						<span class="b_description">Increases the stone gained from clicking</span>
 						<!--Display the cost of the building-->
 						<br><br>
 						<div id="build_cost" class="cost_display_wrap">
 							<span>Materials</span>
 							<br>
 							<!--Cost display for trees-->
-							<div class="cost_display" data-value="shop_costs">
+							<div class="cost_display" data-value="stone_click_costs">
 
 									<img src="Images/Tree_1.png" class="icon_0">Tree
 								<span class="build_cost">0</span>
 							</div>
 							<!--Cost display for stone-->
-							<div class="cost_display" data-value="shop_costs">
+							<div class="cost_display" data-value="stone_click_costs">
  
 									<img src="Images/stone_icon.png" class="icon_0">Stone
 								<span class="build_cost">27</span>
