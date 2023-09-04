@@ -8,7 +8,7 @@ window.onload = function() {
 
 //When the function is called, check if the alert is already displayed. If not, display it with the required content.
 function alert_box(content) {
-  if (alert_visible == 0) {
+  if (alert_visible == 0  && setting_save.alerts_enabled == 1) {
     console.log(alert_visible);
     alert_visible = 1;
     alert_content_text.innerHTML = "|" + content + "|";

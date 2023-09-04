@@ -25,8 +25,8 @@
 		<divtabs id="divider_tabs" class="wrapper2" style="display:block">
 			<button id="Tab_1" onclick="open_tab(0);" type="button" class="tablinks tablinks2">Main</button>
 			<button id="Tab_2" onclick="open_tab(1);" type="button" class="tablinks">Buildings</button>
-			<button id="Tab_3" onclick="open_tab(2);" type="button" class="tablinks" value="potato">Upgrades</button>
-			<button id="Tab_4" onclick="open_tab(3);" type="button" class="tablinks" value="View Tree">Research</button>
+			<button id="Tab_3" onclick="open_tab(2);" type="button" class="tablinks" value="potato" style="display:none;">Upgrades</button>
+			<button id="Tab_4" onclick="open_tab(3);" type="button" class="tablinks" value="View Tree" style="display:none;">Research</button>
 		</divtabs>
         <br><br><br>
 
@@ -37,6 +37,7 @@
             </div>
             <br>
             <div class="wrapper_grey">
+                <img src="Wooden_Empire/Images/cursor_tree.png" class="icon_large">
                 <span class="title">Clicking</span>
                 <br><br>
                 <span class="label">Tree clicking</span>
@@ -67,15 +68,16 @@
         </divtab1>
         <divtab2 id="tab_2" style="display:none" class="tabcontent">
             <div class="wrapper_grey">
+                <img src="Wooden_Empire/Images/building.png" class="icon_large">
                 <span class="title">Buildings</span>
                 <br><br>
                 <span class="label">Formulae</span>
                 <br>
-                <span class="label">Price: </span><span class="description">cost = 1.1^(buildings_owned_total) * 1.5 ^ this_building_owned</span>
+                <span class="label">Price: </span><span class="description">cost = (1.01^(buildings_owned_total) * 1/(1+0.1*reduce_costs.owned)) * 1.5 ^ this_building_owned</span>
                 <br>
                 <span class="label">Explanation:</span>
                 <br>
-                <span class="description">For every building of any type owned, multiply the cost of this buildings by 1.1. For every building of this type owned, multiply the cost of this building by 1.5</span>
+                <span class="description">For every building of any type owned, multiply the cost of this buildings by 1.01. Divide this by 1 plus a tenth of the owned reduce_costs building, so 10 owned means half, 20 owned means a third etc. For every building of this type owned, multiply the cost of this building by 1.5</span>
                 <br><br>
                 <span class="label">Effect: </span><span class="description">effect = 1 + owned * multi</span>
                 <br>
@@ -92,11 +94,11 @@
                     </tr>
                     <tr>
                         <td>Click Building</td>
-                        <td>2</td>
+                        <td>2*tree_level</td>
                     </tr>
                     <tr>
                         <td>Production Building</td>
-                        <td>5</td>
+                        <td>5^(rounded(tree_level/1.5))</td>
                     </tr>
                     <tr>
                         <td>Research Building</td>

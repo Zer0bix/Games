@@ -19,7 +19,7 @@ window.onload = function() {
     //Loading the data
 
     //Load some functions now prior to them running after however many seconds
-    initial_load();
+    setTimeout(initial_load, 1000);
     load_check_2 = 1;
     
     //Event handlers
@@ -30,12 +30,25 @@ window.onload = function() {
         ele.onclick = buy_1;
     }
 
+    //Building Destroy Handler
+    let b_button_destroys = document.getElementsByClassName('b_button_destroy');
+    for (i=0; i<b_button_destroys.length; i++) {
+        let ele = b_button_destroys[i]
+        ele.onclick = b_destroy_1;
+    }
+
     //Handler for tooltip
     let tooltips = document.getElementsByClassName("display_tooltip");
     for (i=0; i<tooltips.length; i++) {
         tooltips[i].onmouseover = tooltip_start;
     }
 
+    //Handler for research purchasing
+    let researches = document.getElementsByClassName("r_button");
+    for (i=0; i<researches.length; i++) {
+        let ele = researches[i]
+        ele.onclick = buy_research;
+    }
     load_check_3 = 1;
     console.log("loaded all checks in main.py window.onload function()");
 }
@@ -43,38 +56,40 @@ window.onload = function() {
 
 function background_change() {
     if (game_save.trees_chopped > -1 && game_save.trees_chopped < 1000) {
-        document.body.style.background = "url('Images/full_forest.avif') no-repeat center center fixed";
-        document.body.style.backgroundSize = "cover"
+        document.body.style.background = "url('Images/pattern_background_1.png') center center fixed";
+        document.body.style.backgroundSize = 10;
         
     }
     if (game_save.trees_chopped > 999 && game_save.trees_chopped < 10000) {
-        document.body.style.background = "url('Images/partial_deforest.png') no-repeat center center fixed";
-        document.body.style.backgroundSize = "cover"
+        document.body.style.background = "url('Images/pattern_background_1.png') center center fixed";
+        document.body.style.backgroundSize = 10;
         
     }
     if (game_save.trees_chopped > 9999 && game_save.trees_chopped < 100000) {
-        document.body.style.background = "url('Images/mostly_deforest.avif') no-repeat center center fixed";
-        document.body.style.backgroundSize = "cover"
+        document.body.style.background = "url('Images/pattern_background_1.png')  center center fixed";
+        document.body.style.backgroundSize = 10;
     }
     if (game_save.trees_chopped > 99999) {
-        document.body.style.background = "url('Images/deforested_desert.avif') no-repeat center center fixed";
-        document.body.style.backgroundSize = "cover"
+        document.body.style.background = "url('Images/pattern_background_1.png') center center fixed";
+        document.body.style.backgroundSize = 10;
     }
 }
 
 function refresh100() {
     
-    if (auto_save >= 14) {
+    if (auto_save == auto_save_int_prev) {
         if (auto_save_int_true == 1) {}
         else {
             var localsave_int = setInterval(localsave, 1000*auto_save);
             auto_save_int_true = 1;
+            auto_save_int_prev = auto_save;
         }
     }
     else {
         clearInterval(localsave_int);
         auto_save_int_true = 0;
         console.log("auto saving off");
+        auto_save_int_prev = auto_save;
     }
 
     //Refresh all the variables displayed
@@ -84,7 +99,7 @@ function refresh100() {
         if (vars_game.hasOwnProperty(key)) {
             let location = vars_game[key].getAttribute("data-value");
             if (vars_game[key].getAttribute("data-value-2") == "per_sec") {
-                vars_game[key].innerHTML = "+" + Math.floor(game_save[location]) + "/s"; 
+                vars_game[key].innerHTML = "+" + Math.floor(game_save[location]*10)/10 + "/s"; 
             }
             else {
                 vars_game[key].innerHTML = Math.floor(game_save[location]);
@@ -95,7 +110,7 @@ function refresh100() {
         if (vars_doc.hasOwnProperty(key)) {
             let location = "b_" + vars_doc[key].getAttribute("data-value") + "_costs";
             if (vars_doc[key].getAttribute("data-value-2") == "per_sec") {
-                vars_doc[key].innerHTML = "+" + Math.floor(game_save.buildings_data[location].effect) + "/s";
+                vars_doc[key].innerHTML = "+" + Math.floor(game_save.buildings_data[location].effect*10)/10 + "/s";
             }
             else {
                 vars_doc[key].innerHTML = Math.floor(game_save.buildings_data[location].effect);
@@ -122,7 +137,6 @@ function refresh100() {
     if (document.getElementById('tab_4').style.display == "block") {
         refresh_research();
     }
-    load_check_1 = 1;
 
     //Display the length of the bar for the clicking excersize.
     document.getElementById("click_bar").style.width = clicks_per_sec*10 + "px";
@@ -142,13 +156,23 @@ function refresh10000() {
     }
     catch(firstinstance) {} //The change_background code fails on the first instance, and so this catch command prevents the code from breaking here.
     //Set the colours of setting buttons to either on/off, depending on the value stored in the settings
-    if (setting_save['change_backgroud'] == 1) {
-        changeBackground("change_background_button", "green");
-    }
-    else {
-        changeBackground("change_background_button", "red");
+    let setting_buttons = document.getElementsByClassName("button3");
+    for (const key in setting_buttons) {
+        if (setting_buttons.hasOwnProperty(key)) {
+            //Declare the variables
+            let ele = setting_buttons[key];
+            let set_key = ele.getAttribute('data-value');
+            //Perform a check whether the setting is enabled (1) or disabled (0) and set the colour of the button accordingly.
+            if (setting_save[set_key] == 1) {
+                changeBackground(ele.getAttribute('id'), "green");
+            }
+            else if (setting_save[set_key] == 0) {
+                changeBackground(ele.getAttribute('id'), "red");
+            }
+        }
     }
 
+    //Set the colour of the autosave buttons
     if (setting_save['auto_save'] != setting_base_values['auto_save']) {
         let id_off = 'auto_save_toggle_' + setting_base_values['auto_save'];
         let id = 'auto_save_toggle_' + setting_save['auto_save'];
@@ -170,7 +194,7 @@ function refresh10000() {
 //Sets all the variables for gain and similar to the formulae required
 function game_refresh() {
     //Set the manual clicking power for trees
-    game_save.manual_power = Math.floor((Math.sqrt(clicks_per_sec)) * (1 + game_save.tree_levels + game_save.buildings_data.b_click_costs.effect));
+    game_save.manual_power = Math.floor((Math.sqrt(clicks_per_sec)) * (1 + game_save.tree_levels * game_save.buildings_data.b_click_costs.effect));
     //Set the trees per second
     game_save.trees_per_sec = game_save.manual_power + game_save.buildings_data.b_production_costs.effect;
     //Set the stone per second
@@ -191,14 +215,14 @@ function game_refresh() {
     game_save.land = game_save.tree_levels*land_multi-buildings_count - game_save.buildings_data.b_num_total;
 
     //Set the multiplier for a building's cost.
-    buildings_multi = 1.01**game_save.buildings_data.b_num_total * (1-game_save.buildings_data.b_reduce_costs.owned*0.05);
+    buildings_multi = 1.01**game_save.buildings_data.b_num_total * (1/(1+0.1*game_save.buildings_data.b_reduce_costs.owned));
 
     //Set the effect for each building
     let build_click = game_save.buildings_data.b_click_costs
-    build_click.effect = 1 + build_click.owned*(build_click.research+1)*2 //build_click.research will probably be replaced by build_click.upgrade or something, as I have changed my mind about research. Make sure to remove this comment as well!
+    build_click.effect = 1 + build_click.owned*(build_click.research+1)*2
 
     let build_prod = game_save.buildings_data.b_production_costs
-    build_prod.effect = 1 + build_prod.owned*build_prod.research*5
+    build_prod.effect = 1 + build_prod.owned*build_prod.research*5**(Math.floor(game_save.tree_levels/1.5));
 
     let build_research = game_save.buildings_data.b_research_costs
     build_research.effect = build_research.owned*build_research.research*2
@@ -225,6 +249,7 @@ function initial_load() {
     refresh100();
     refresh10000();
     refresh_research();
+    load_check_1 = 1;
 };
 
 

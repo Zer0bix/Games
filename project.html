@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<HTML>
+    <head>
+        <link rel="stylesheet" href="src/styles/homepage.css" id="maincss">
+        <link rel="stylesheet" href="Wooden_Empire/styles/idle_global.css" id="globalcss">
+        <link rel="stylesheet" href="Wooden_Empire/styles/buttons.css" id="buttonscss">
+        
+        <script type="text/javascript" src="src/scripts/gantt.js" id="ganttjs"></script>
+
+        <Title>Zer0bi Games</title>
+        <link rel="icon" href="src/Images/Zer0bi_games_logo_icon.png" class="page_icon">
+        
+    </head>
+    
+    <body>
+
+        <header>
+            <a href="index.html"><img src="src/Images/Zer0bi_games_logo.png" id="page_icon" data_tooltip_display="Back to homepage" class="display_tooltip cursor_hand icon_large" tooltip_direct="down"></img></a>
+            <span id="page_name" data_tooltip_display="Game Name" class="display_tooltip", tooltip_direct="down">Zer0bi Project</span>
+        </header>
+        <br><br><br>
+        <div class="wrapper_blue">
+            <span class="title">Justification of Theme</span>
+            <br>
+            <span class="description">I chose to make a website based on the concept of Idle/Incremental games. The website would have a main webpage hosting the game, a cps tester (with square root of cps) to see how the click speed affected production, and a wiki to inform the user on the hidden mechanics and fomulae of the game.</span>
+        </div>
+        <div class="wrapper_blue">
+            <span class="title">Gantt Chart</span>
+            <br>
+            <button onclick="swap_gantt();" class="button" style="width: 55px;">Swap</button><span class="description">(Swap between gap-filled and no gaps)</span>
+            <div style="width: 1227px; overflow-x: scroll;" class="game_preview" id="good_gantt">
+                <img src="src/Images/Gantt_chart_good.png">
+            </div>
+            <div style="width: 1250px; overflow-x: scroll; display:none;" class="game_preview" id="big_gantt">
+                <img src="src/Images/Gantt_chart_big.png">
+            </div>
+        </div>
+        
+        <div class="wrapper_blue">
+            <span class="title">Storyboard</span>
+            <img src="src/Images/cps_test_preview.png">
+        </div>
+
+        
+    </body>
+</HTML>

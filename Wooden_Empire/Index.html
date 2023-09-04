@@ -44,11 +44,11 @@
 	</header>
 
 	
-	<divloading id="loading_screen" style="display:block;" class="wrapper3">
+	<divloading id="loading_screen" style="display:block;" class="wrapper_loading">
 		<center><center>
 			<h1 class="title" id="loading_game_text">Loading game</h1>
-			<div id="loading_screen_icon_box">
-				<div id="loading_screen_icon_cover"></div>
+			<div id="loading_screen_icon_box" class="load_wrap">
+				<div id="loading_screen_icon_cover" class="load_cover"></div>
 			</div>
 			<br>
 			<br>
@@ -56,7 +56,7 @@
 		</center></center>
 	</divloading>
 
-	<divtutorial id="tutorial" style="display:none;" class="wrapper">
+	<divtutorial id="tutorial" style="display:none; margin-top: 200px; position: absolute;" class="wrapper">
 		<div id="tutorial_content">
 		<h1>Welcome to Wooden Empire!</h1>
 		<p>Wooden Empire is an incremental game about chopping trees.
@@ -79,9 +79,9 @@
 		<divtabs id="divider_tabs" class="wrapper2" style="display:block">
 			<button id="Tab_1" onclick="open_tab(0);" type="button" class="tablinks tablinks2">Main</button>
 			<button id="Tab_2" onclick="open_tab(1); refresh_buildings();" type="button" class="tablinks">Buildings</button>
-			<button id="Tab_3" onclick="open_tab(2);" type="button" class="tablinks" value="potato">Upgrades</button>
-			<button id="Tab_4" onclick="open_tab(3);" type="button" class="tablinks" value="View Tree">Research</button>
-			<button id="Tab_5" onclick="open_tab(4);" type="button" class="tablinks" value="Settings">Options</button>
+			<button id="Tab_3" onclick="open_tab(2);" type="button" class="tablinks" value="Upgrades" style="display:none;">Upgrades</button>
+			<button id="Tab_4" onclick="open_tab(3);" type="button" class="tablinks" value="Research">Research</button>
+			<button id="Tab_5" onclick="open_tab(4);" type="button" class="tablinks" value="Options">Options</button>
 		</divtabs>
 			
 			<!--Displays for all item counts-->
@@ -250,7 +250,7 @@
 						<span id="count" class="owned_count">0</span>
 						<br>
 						<!--Description of the building-->
-						<span class="b_description">Reduces the cost of building and upgrading buildings by 5% (per building)</span>
+						<span class="b_description">Reduces the cost of buildings</span>
 						<!--Display the cost of the building-->
 						<br><br>
 						<div id="build_cost" class="cost_display_wrap">
@@ -283,7 +283,7 @@
 						<span id="count" class="owned_count">0</span>
 						<br>
 						<!--Description of the building-->
-						<span class="b_description">Enables the production of souls, useful in upgrading buildings</span>
+						<span class="b_description">Enables the production of souls, which are another variable to increase the value of.</span>
 						<!--Display the cost of the building-->
 						<br><br>
 						<div id="build_cost" class="cost_display_wrap">
@@ -371,12 +371,12 @@
 				
 					<!--Plantation Building-->
 					<div class="wrapperb b_end b_mid_row" id="plantation_building" style="display:none;">
-						<span class="b_title">Plantation Building</span>
+						<span class="b_title">Expensive Building</span>
 						<!--Display how many you currently have-->
 						<span id="count" class="owned_count">0</span>
 						<br>
 						<!--Description of the building-->
-						<span class="b_description">Allows you to start regrowing trees</span>
+						<span class="b_description">Makes other buildings 1% more expensive.</span>
 						<!--Display the cost of the building-->
 						<br><br>
 						<div id="build_cost" class="cost_display_wrap">
@@ -402,16 +402,31 @@
 					</div>					
 				</divtab2>
 				<divtab3 id="tab_3" style="display:none" class="tabcontent">
-					<p>TO BE CONTINUED #3</p>
+					<!--Upgrades header-->
+					<div style="margin-left: 10px;">
+						<img class="tab_icon" src="Images/red_up_arrow.png"></img><span class="tab_title">Upgrades</span><img class="tab_icon" src="Images/green_up_arrow.png"></img>
+						<br>
+						<span class="description">Upgrades increase the efficiency of your buildings.</span>
+						<br>
+						<span class="description">Upgrades are purchased with souls.</span>
+					</div>
+					<div class="wrapper">
+						<span class="description">Upgrade Click Building</span>
+						<img class="icon_0" src="Images/souls_icon.png">
+						<span class="number">0</span>
+						<span class="description">  BONUS: </span>
+						<span class="number">0</span>
+						<button class="button_text u_button">+1</button>
+					</div>
 				</divtab3>
 				<divtab4 id="tab_4" style="display:none" class="tabcontent">
-					<div>
-						<span class="tab_title">Research</span>
+					<!--Upgrades header-->
+					<div style="margin-left: 10px;">
+						<img class="tab_icon" src="Images/research_icon.png"></img><span class="tab_title">Research</span>
 						<br>
-						<span class="description">Research can be used to learn new things and upgrade existing things. </span>
+						<span class="description">Research can be used to learn new things and upgrade existing things.</span>
 						<br>
 						<span class="description">More research is progressively unlocked as the game progresses.</span>
-						<br><br>
 					</div>
 					<div class="r_wrapper">
 						<img class="r_icon r_border">
@@ -460,7 +475,7 @@
 					<div class="sTabcontent_4" id='sTab_2'>
 						<h2>SETTINGS</h1>
 						<p>Toggle Background Change</p>
-						<button type="button" id="change_background_button" onclick="toggle_setting('change_background', 'change_background_button');" class="button3"></button>
+						<button type="button" id="change_background_button" onclick="toggle_setting('change_background', 'change_background_button');" class="button3" data-value="change_background"></button>
 
 						<p>Auto Save Duration</p>
 						<table>
@@ -480,7 +495,9 @@
 							</tr>
 						</table>
 						<p>Toggle Tooltips</p>
-						<button type="button" id="toggle_tooltips_button" onclick="toggle_setting('tooltips_enabled', 'toggle_tooltips_button');" class="button3"></button>
+						<button type="button" id="toggle_tooltips_button" onclick="toggle_setting('tooltips_enabled', 'toggle_tooltips_button');" class="button3" data-value="tooltips_enabled"></button>
+						<p>Toggle alerts</p>
+						<button type="button" id="toggle_alerts_button" onclick="toggle_setting('alerts_enabled', 'toggle_alerts_button')" class="button3" data-value="alerts_enabled"></button>
 					</div>
 					<!--Stats-->
 					<div class="sTabcontent_4" id="sTab_3">

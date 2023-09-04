@@ -26,28 +26,6 @@ function load(data, recurse_value) {
         
 }
 
-function settingload(data) {
-
-        if (typeof(data) == "object") {
-            for (const values in data) {
-                if (isNaN(data[values])) {
-                    console.log("Detected null (NaN) with name:", values, ":with value:", setting_save[values]);
-                    setting_save_base[values] = setting_base_values[values];
-                    console.log("replaced:", setting_save_name[values], ":with:", setting_save[values])
-
-                }
-                else {
-                    setting_save_base[values] = data[values];
-                }
-            }
-            return setting_save_base;
-        }
-        else {
-            console.log("Data incompatible, should be an object but is a", typeof(data));
-            return setting_save
-        }
-    }
-
 
 function export_save() {
 
@@ -87,7 +65,7 @@ function localLoad() {
         let loadSaveStateStringSettings = localStorage.getItem('tree_setting_save');
         let loadSaveStateSettings = JSON.parse(atob(loadSaveStateStringSettings));
         console.log("Settings loaded from: ", loadSaveStateSettings);
-        setting_save = settingload(loadSaveStateSettings, game_base_values);
+        setting_save = load(loadSaveStateSettings, setting_base_values);
     }
     catch (exception) {
         game_save = game_base_values;

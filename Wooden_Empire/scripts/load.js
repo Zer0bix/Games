@@ -44,7 +44,7 @@ function check_load() {
 function move_bar() {
     var bar = document.getElementById("loading_screen_icon_cover");
     width = 38.3*load_bar_progress;
-    marginleft = 38.3*(1-load_bar_progress);
     bar.style.width = width + "%";
-    bar.style.marginLeft = marginleft + "%";
+
+
 }

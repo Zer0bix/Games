@@ -3,16 +3,17 @@
     border-color: rgba(255, 255, 255, 1);
     border-radius: 3px;
     border-style: groove;
-    margin-left: 3%;
+    margin-left: 1%;
     background-image: url("../Images/Colourful_slider.png");
     background-size: 20%;
 }
 
 #loading_screen_icon_cover {
-    background-color: black;
-    position: fixed;
-    width: 38.4%;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 5;
+    width: 96.5%;
     height: 30px;
-    align-self: right;
-    margin-left: 0%;
+    right: 11px;
+    position: absolute;
+    border-radius: 3px;
 }

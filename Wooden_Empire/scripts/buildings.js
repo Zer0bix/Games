@@ -6,7 +6,6 @@ function buy_1(element) {
     let stone_cost = parent_ele.children.build_cost.children[3];
     let tree_key = "b_" + tree_cost.getAttribute('data-value');
     if (game_save.trees >= game_save.buildings_data[tree_key].trees2 && game_save.land >= 1 && game_save.stone >= game_save.buildings_data[tree_key].stone) {
-        console.log(game_save.trees, "is greater than", game_save.buildings_data[tree_key].trees2);
         game_save.buildings_data[tree_key].owned += 1;
         game_save.trees -= game_save.buildings_data[tree_key].trees2;
         game_save.stone -= game_save.buildings_data[tree_key].stone;
@@ -107,13 +106,13 @@ function refresh_buildings() {
     }
 
     //See if the bottom row of buildings can be display, and display them if so. Otherwise, see if they shouldn't be displayed, and then hide them.
-    if (high_tier_buildings_displayed == 0 && game_save['tree_levels'] >= 4) {
+    if (high_tier_buildings_displayed == 0 && game_save['tree_levels'] >= 3) {
         high_tier_buildings_displayed = 1;
         for (i=0;i<4;i++) {
             second_row_buildings[i].style.display = "block";
         }
     }
-    else if (game_save['tree_levels'] < 4) {
+    else if (game_save['tree_levels'] < 3) {
         high_tier_buildings_displayed = 0;
         for (i=0;i<4;i++) {
             second_row_buildings[i].style.display = "none";
@@ -137,3 +136,17 @@ function refresh_buildings() {
     }
 }
 
+function b_destroy_1(element) {
+    let ele = element.target;
+    let parent_ele = ele.parentElement;
+    let tree_cost = parent_ele.children.build_cost.children[2];
+    let key = "b_" + tree_cost.getAttribute('data-value');
+    
+    //Destroy the building (no checks for them hahaha)
+    if (game_save.buildings_data[key].owned >= 1) {
+        game_save.buildings_data[key].owned -= 1;
+    }
+    else {
+        alert_box("You can't demolish a non-existent building!");
+    }
+}

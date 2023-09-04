@@ -76,6 +76,10 @@ a {
     font-size: 15px;
 }
 
+.link {
+    color: rgba(200, 150, 150, 0.9);
+}
+
 .game_tab_div {
     overflow-x: hidden;
     overflow-y:hidden;

@@ -1,6 +1,6 @@
 //Declaring all the global variables here.
 
-version = "0.0.2";
+version = "0.0.3";
 
 //Tutorial variables
 tutorial_needed = 0;
@@ -17,6 +17,10 @@ load_progress = 0;
 
 // Set that the alert is not currently visible
 alert_visible = 0;
+
+//Auto Save Variables
+auto_save_int_true = 0;
+auto_save_int_prev = 0;
 
 //miscellaneous variables
 upg_tree_set_class_cursor = 1;
@@ -51,7 +55,7 @@ function build_object(trees2, stone, upgrade) {
 
 //Creates objects for each building detailing data about that building
 b_empty = build_object(0, 0, 0);
-b_click_costs = build_object(10, 5, 0);
+b_click_costs = build_object(10, 2, 0);
 b_production_costs = build_object(100, 10, 0);
 b_research_costs = build_object(1000, 25, 0);
 b_reduce_costs = build_object(2500, 50, 0);
@@ -93,6 +97,11 @@ r_prod_eff = research_object(1000, 0);
 research_data = Object({r_dynamite, r_upgrade_eff, r_prod_eff});
 research_data_base = JSON.parse(JSON.stringify(clone_object(research_data)));
 
+//Upgrades Variables
+function upgrade_object(cost, owned) {
+
+}
+
 
 //Game data variables
 trees = 1;
@@ -111,6 +120,7 @@ research = 0;
 change_background = 0;
 auto_save = 60;
 tooltips_enabled = 1;
+alerts_enabled = 1;
 
 //Stats variables
 lifetime_clicks = 0;
@@ -127,12 +137,9 @@ const game_base_values = JSON.parse(JSON.stringify(game_save));
 const game_save_name = ["trees", 'manual_power', "trees_chopped", "tree_levels", "lifetime_clicks", "lifetime_trees_chopped", "lifetime_buildings_bought", "land", "buildings_data", "version", "stone", "souls", "research", "trees_per_sec", "stone_per_sec", "research_data"];
 
 //JSON objects for settings, same uses as above, but stores all the settings that will need to be saved.
-setting_save = Object({change_background, auto_save, tooltips_enabled});
-setting_save_base = Object({change_background, auto_save});
-const setting_base_values = Object({change_background, auto_save});
-const setting_save_name = ["change_background", "auto_save"];
-
-const strung = JSON.stringify(game_save);
+setting_save = Object({change_background, auto_save, tooltips_enabled, alerts_enabled});
+const setting_base_values = JSON.parse(JSON.stringify(setting_save));
+const setting_save_name = ["change_background", "auto_save", "tooltips_enabled", "alerts_enabled"];
 
 
 

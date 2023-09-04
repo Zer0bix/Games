@@ -27,6 +27,18 @@
     width: 40%;
 }
 
+.wrapper_loading {
+    position: absolute;
+    margin-left: 30%;
+    margin-top: 10%;
+    padding-right: 10px;
+    padding-bottom: 10px;
+	background-color: rgba(0,0,0,0.7);
+	border-radius: 15px;
+    border-color: rgba(255, 0, 255, 0.9);
+    width: 40%;
+}
+
 .wrapper4 {
     padding-right: 10px;
     padding-bottom: 10px;
