@@ -212,7 +212,8 @@ function game_refresh() {
     }
 
     //Set the amount of remaining land
-    game_save.land = game_save.tree_levels*land_multi-buildings_count - game_save.buildings_data.b_num_total;
+    land_multi = 2*game_save.tree_levels;
+    game_save.land = 10 + game_save.tree_levels*land_multi-buildings_count - game_save.buildings_data.b_num_total;
 
     //Set the multiplier for a building's cost.
     buildings_multi = 1.01**game_save.buildings_data.b_num_total * (1/(1+0.1*game_save.buildings_data.b_reduce_costs.owned));
@@ -228,13 +229,13 @@ function game_refresh() {
     build_research.effect = build_research.owned*build_research.research*2
 
     let build_stone = game_save.buildings_data.b_stone_costs
-    build_stone.effect = build_stone.owned*build_stone.research
+    build_stone.effect = build_stone.owned*build_stone.research*build_stone.owned
 
     let build_souls = game_save.buildings_data.b_soul_costs
     build_souls.effect = build_souls.owned*build_souls.research*2
     
     let build_c_stone = game_save.buildings_data.b_stone_click_costs
-    build_c_stone.effect = 1+build_c_stone.owned*build_c_stone.research*game_save.tree_levels;
+    build_c_stone.effect = 1+build_c_stone.owned*build_c_stone.research*game_save.tree_levels/5;
 }
 
 function initial_load() {

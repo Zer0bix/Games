@@ -78,7 +78,7 @@ function tooltip(element) {
                 t_content.innerHTML = ele.getAttribute("data_tooltip_display");
                 t_wrap.style.display = "block";
                 t_wrap.style.left = (mouse_pos.x - 15) + "px";
-                t_wrap.style.top = (mouse_pos.y - 40) + "px";
+                t_wrap.style.top = (mouse_pos.y - 50) + "px";
             }
         }
     }

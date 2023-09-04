@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+
+
+<HTML>
+    <head>
+        <Title>Wooden Empire Wiki</Title>
+        <link rel="icon" href="Wooden_Empire/Images/Tree_outline_white.png" class="page_icon">
+        <link rel="stylesheet" href="Wooden_Empire/styles/idle_global.css" id="globalcss">
+        <link rel="stylesheet" href="src/styles/homepage.css" id="homepagecss">
+        <link rel="stylesheet" href="Wooden_Empire/styles/buttons.css" id="tablist1css">
+        <link rel="stylesheet" href="Wooden_Empire/styles/wrapper.css" id="tablist2css">
+        <link rel="stylesheet" href="src/styles/wiki.css" id="maincss">
+
+        <script type="text/javascript" src="Wooden_Empire/scripts/tabs.js" id="tabsjs"></script>
+
+    </head>
+    <body>
+        <header>
+            <a href="index.html"><img src="Wooden_Empire/Images/Tree_outline_white.png" id="page_icon" data_tooltip_display="Back to homepage" class="display_tooltip cursor_hand icon_large" tooltip_direct="down"></img></a>
+            <span id="page_name" data_tooltip_display="Game Name" class="display_tooltip", tooltip_direct="down">Wooden Empire Wiki</span>
+        </header>
+
+        <div id="all">
+        <br><br><br>
+		<divtabs id="divider_tabs" class="wrapper2" style="display:block">
+			<button id="Tab_1" onclick="open_tab(0);" type="button" class="tablinks tablinks2">Main</button>
+			<button id="Tab_2" onclick="open_tab(1);" type="button" class="tablinks">Buildings</button>
+			<button id="Tab_3" onclick="open_tab(2);" type="button" class="tablinks" value="potato">Upgrades</button>
+			<button id="Tab_4" onclick="open_tab(3);" type="button" class="tablinks" value="View Tree">Research</button>
+		</divtabs>
+        <br><br><br>
+
+        <divtab1 id="tab_1" style="display:block" class="tabcontent">
+            <div class="wrapper_blue">
+                <div class="title">Main page</div>
+                <div class="description">Use the tabs at the top to navigate to the chosen page</div>
+            </div>
+            <br>
+            <div class="wrapper_grey">
+                <span class="title">Clicking</span>
+                <br><br>
+                <span class="label">Tree clicking</span>
+                <br>
+                <span class="label">Formula:</span>
+                <br>
+                <span class="description">floor((sqrt(clicks_per_sec)) * (1 + tree_levels + click_building_effect))</span>
+                <br>
+                <span class="label">Explanation:</span>
+                <br>
+                <span class="description">Takes the square root of how many clicks you have, and multiplies it by the sum of 1, your tree level and the power of the click building. It then rounds this down to the nearest whole number.</span>
+                <br>
+                <span class="description">This is added on top of the already existing tree production.</span>
+                <br><br>
+                <span class="label">Stone Clicking</span>
+                <br>
+                <span class="label">Formula:</span>
+                <br>
+                <span class="description">(0.1 * clicks_per_sec * tree_levels) * click_stone_building_effect</span>
+                <br>
+                <span class="label">Explanation:</span>
+                <br>
+                <span class="description">Multiplies the clicks per second by your tree level, then multiplies that by 0.1, all multiplied by the power of the stone click building.</span>
+                <br>
+                <span class="description">This is added on top of the already existing stone production.</span>
+                <br><br>
+            </div>
+        </divtab1>
+        <divtab2 id="tab_2" style="display:none" class="tabcontent">
+            <div class="wrapper_grey">
+                <span class="title">Buildings</span>
+                <br><br>
+                <span class="label">Formulae</span>
+                <br>
+                <span class="label">Price: </span><span class="description">cost = (1.01^(buildings_owned_total) * 1/(1+0.1*reduce_costs.owned)) * 1.5 ^ this_building_owned</span>
+                <br>
+                <span class="label">Explanation:</span>
+                <br>
+                <span class="description">For every building of any type owned, multiply the cost of this buildings by 1.01. Divide this by 1 plus a tenth of the owned reduce_costs building, so 10 owned means half, 20 owned means a third etc. For every building of this type owned, multiply the cost of this building by 1.5</span>
+                <br><br>
+                <span class="label">Effect: </span><span class="description">effect = 1 + owned * multi</span>
+                <br>
+                <span class="label">Explanation:</span>
+                <br>
+                <span class="description">Multiply how many of a building you own by the building's multi. Add one to this to prevent values of less than 1 from occuring, which would cause either 0 production, or cause a division by 0 (resulting in a math error)</span>
+                <br>
+                <span class="label">Table of building multis</span>
+                <br>
+                <Table>
+                    <tr>
+                        <td class="label">Building</td>
+                        <td class="label">Multiplier</td>
+                    </tr>
+                    <tr>
+                        <td>Click Building</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td>Production Building</td>
+                        <td>5</td>
+                    </tr>
+                    <tr>
+                        <td>Research Building</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td>Stone Building</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>Soul Building</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td>Stone Click Building</td>
+                        <td>0.1</td>
+                    </tr>
+                </Table>
+                
+            </div>
+        </divtab2>
+        <divtab3 id="tab_3" style="display:none" class="tabcontent">
+            <div class="wrapper_grey">Uhh yeah haven't made this yet</div>
+        </divtab3>
+        <divtab4 id="tab_4" style="display:none" class="tabcontent">
+            <div class="wrapper_grey">Also haven't made this</div>
+        </divtab4>
+
+
+
+
+    </div>
+    <footer>
+        <span id="page_name" data_tooltip_display="Game Name" class="display_tooltip", tooltip_direct="down">Zer0bi Games</span>
+    </footer>
+    </body>
+</HTML>

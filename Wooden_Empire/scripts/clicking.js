@@ -30,6 +30,7 @@ function upgrade_tree() {
     if (game_save.trees>upgrade_tree_price-1) {
         game_save.tree_levels += 1;
         game_save.trees -= upgrade_tree_price;
+        land_multi = 2*game_save.tree_levels;
     }
 }
 
