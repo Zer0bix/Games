@@ -2,8 +2,7 @@ function buy_1(element) {
     refresh_buildings();
     let ele_1 = element.target
     let parent_ele = ele_1.parentElement;
-    let tree_cost = parent_ele.children.build_cost.children[2];
-    let stone_cost = parent_ele.children.build_cost.children[3];
+    let tree_cost = parent_ele.children.build_cost.children[2]; 
     let tree_key = "b_" + tree_cost.getAttribute('data-value');
     if (game_save.trees >= game_save.buildings_data[tree_key].trees2 && game_save.land >= 1 && game_save.stone >= game_save.buildings_data[tree_key].stone) {
         game_save.buildings_data[tree_key].owned += 1;

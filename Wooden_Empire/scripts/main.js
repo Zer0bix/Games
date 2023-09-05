@@ -235,7 +235,7 @@ function game_refresh() {
     build_souls.effect = build_souls.owned*build_souls.research*2
     
     let build_c_stone = game_save.buildings_data.b_stone_click_costs
-    build_c_stone.effect = 1+build_c_stone.owned*build_c_stone.research*game_save.tree_levels/5;
+    build_c_stone.effect = 1+(build_c_stone.owned*build_c_stone.research*game_save.tree_levels**2)/5;
 }
 
 function initial_load() {

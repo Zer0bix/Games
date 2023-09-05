@@ -23,15 +23,13 @@
             <div class="wrapper_blue">
                 <span class="title">Reflection</span>
                 <br>
-                <span class="description">For this task, we were asked to create a website with a specific theme. The theme I chose was a game development website. The website required knowledge of HTML, CSS and Javascript, and so as I was creating the website, I was also learning the functions of various tags, functions and stylisations. This was mainly done through searching on the Internet, "How do I do x" (where x is the desired outcome), and then reading all the things it suggested. I then used the new elements and functions I had learnt about to build the desired outcome.</span>
+                <span class="description">For this task, we were asked to create a website with a specific theme. The theme I chose was a game development website. The website required knowledge of HTML, CSS and Javascript, and so as I was creating the website, I was also learning the functions of various tags, functions and stylisations. This was mainly done through searching on the Internet, "How do I do this", and then reading all the things it suggested and combining them together for what I wanted.</span>
                 <br><br>
                 <span class="description">I planned the website primarily within <a href="trello.com" class="cursor_hand" style="color:rgba(255, 150, 150, 0.8); font-size:15px;">trello</a>, using a different board for each page on the site. The website was created in a slightly chaotic fashion, where I would decide to work on a specific feature, and while working on that feature I would improve other features that I noticed were lacking.</span>
                 <br><br>
                 <span class="description">The main drawback to creating a game website was that I needed to create a game. While this was highly enjoyable, the amount and difficulty of coding the necessary javascript significantly lengthened the time that it would take to create the first project. For example, the saving functionality of Wooden Empire took up a span of 46 days (not all the days were worked on, but a good number were). This led to only a few weeks being devoted to a decent proportion of the task (all the other pages), meaning they lacked in quality.</span>
                 <br><br>
-                <span class="description">I decided to use a dark colour scheme for the website, as my website is aimed at people used to surfing the internet, and the game is likely to be played at night. <span style="opacity:0.2;">(or in a classroom where it makes it easier to hide)</span>. I created every image either through a screenshot or using a sprite creator, though due to my lesser skills in sprite creation, it is not the most visually appealing (especially the research icon). I also have a different perception</span>
-                <br><br>
-                <span class="description">The pages can be navigated to via clicking on the icon in the top left corner, which takes you back to the homepage. The individual pages can then be navigated to from there.</span>
+                <span class="description">I decided to use a dark colour scheme for the website, as my website is aimed at people used to surfing the internet, and the game is likely to be played at night (or in a classroom where a bright page would be more easily noticeable as not-work)</span>
                 <br><br>
                 <span class="label">Things I would do differently:</span>
                 <br>
@@ -43,30 +41,30 @@
                 <br>
                 <span class="description"><span class="label">4.</span>Spend more time on the main tab of the game, making the clicker better with an image.</span>
                 <br>
-                <span class="description"><span class="label">5.</span>I would seek to minimize the javascript required, hence making the project much simpler. I would try and use functions that are more global, which would increase the ease of adding new content.</span>
+                <span class="description"><span class="label">5.</span></span>
                 <br><br>
-                <span class="label">Example of similar code:</span><span class="description"> The code could be simplified to create a global function, which would allow me to create new researches, buildings and even new types of purchasables very easily.</span>
-            </div>
-            <br>
-            <div class="wrapper_blue" style="display:flex;">
-                <div style="overflow: scroll; width: 500px;">
-                    <img src="src/Images/buildings_snippet.png">
-                </div>
-                <div style="overflow: scroll; width: 500px;">
-                    <img src="src/Images/research_snippet.png">
-                </div>
-            </div>
-            <div class="wrapper_blue">
-                <span class="title">Bibliography</span>
-                <br>
-                <span class="label">For sprites:</span>
-                <br>
-                <a class="description cursor_hand" href="https://www.piskelapp.com/p/create/sprite">www.piskelapp.com</a>
-                <br><br>
-                <span class="label">For information about HTML, CSS and Javascript:</span>
-                <br>
-                <a class="description cursor_hand" href="https://www.w3schools.com/">www.w3schools.com</a>
-                <br>
+
+                <span class="description">
+                    <br><br>
+                    1. Introduction: Introduce the topic of building a website and mention that you're reflecting on the experience as a Year 10 student.
+                    <br><br>
+                    2. Overview: Provide a brief overview of the website-building process and the skills you gained.
+                    <br><br>
+                    3. Planning and Preparation: Discuss how you planned the website, defined its purpose, and identified the target audience.
+                    <br><br>
+                    4. Design: Talk about the design phase, including your choices for colors, fonts, and layout, and how they reflected your personality or theme.
+                    <br><br>
+                    5. Content Creation: Explain how you crafted the content, ensuring it was engaging, informative, and well-organized.
+                    <br><br>
+                    6. Technical Aspects: Describe the technical challenges you faced, such as learning coding basics and using tools or platforms suitable for your skill level.
+                    <br><br>
+                    7. Testing and Launching: Discuss the importance of testing the website on different devices and browsers and share your feelings about launching it.
+                    <br><br>
+                    8. Personal Growth: Reflect on the skills you acquired and how the project helped you develop abilities like planning, organization, and problem-solving.
+                    <br><br>
+                    9. Conclusion: Summarize the overall experience, express your pride in the accomplishment, and mention your enthusiasm for future projects in web development.
+                    <br><br>
+                </span>
             </div>
         </div>
 

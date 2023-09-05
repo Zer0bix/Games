@@ -3,9 +3,7 @@ function buy_research(element) {
     let parent_ele = ele.parentElement;
     let key = parent_ele.getAttribute("data-display-path");
     let game_save_key = "r_" + key;
-    console.log(game_save_key);
     //Check if the thing can be purchased
-    console.log(game_save.research);
     if (game_save.research >= game_save.research_data[game_save_key].cost) {
         //Set the necessary values, and take away the research points
         game_save.research_data[game_save_key].owned = 1;
@@ -13,6 +11,12 @@ function buy_research(element) {
         game_save.research_data[game_save_key].display = 0;
         console.log(game_save.research_data[game_save_key].display);
         console.log("Research Purchased!")
+    }
+    else if (game_save.research < game_save.research_data[game_save_key].cost) {
+        alert_box("You cannot afford that research!");
+    }
+    else {
+        console.log("Cannot purchase research but has enough research");
     }
 
     refresh_research();

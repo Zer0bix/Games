@@ -39,6 +39,8 @@
 
 <body id="body">
 	<header>
+		<a href="../index.html"><img src="../src/Images/back_arrow.png" id="page_icon" data_tooltip_display="Back to homepage" class="display_tooltip cursor_hand" tooltip_direct="down"></img></a>
+		<a href="../index.html"><img src="../src/Images/blank.png" id="page_icon" data_tooltip_display="Back to homepage" class="display_tooltip cursor_hand" tooltip_direct="down"></img></a>
 		<a href="../index.html"><img src="Images/Tree_1.png" id="page_icon" data_tooltip_display="Back to homepage" class="display_tooltip cursor_hand" tooltip_direct="down"></img></a>
 		<span id="page_name" data_tooltip_display="Game Name" class="display_tooltip", tooltip_direct="down">Wooden Empire</span>
 	</header>
@@ -474,7 +476,9 @@
 					<!--Settings-->
 					<div class="sTabcontent_4" id='sTab_2'>
 						<h2>SETTINGS</h1>
-						<p>Toggle Background Change</p>
+						<span>Toggle Background Change</span>
+						<span class="description">(will take a few seconds)</span>
+						<br>
 						<button type="button" id="change_background_button" onclick="toggle_setting('change_background', 'change_background_button');" class="button3" data-value="change_background"></button>
 
 						<p>Auto Save Duration</p>
